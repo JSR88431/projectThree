@@ -10,7 +10,7 @@ class Restaurant extends React.Component {
 
     componentDidMount() {
         // after component loads, get all products from db
-        axios.get("/allRestaurant").then((response) => {
+        axios.get("/api/allRestaurant").then((response) => {
           this.setState({
             results: response.data
           });

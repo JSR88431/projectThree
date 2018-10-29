@@ -9,7 +9,7 @@ router.get("/home", function(req, res) {
 
 
 
-router.get("/allRestaurant", function(req, res) {
+router.get("/allRestaurant/", function(req, res) {
   // axios.get
   // Grab every document in the Articles collection
   db.familyRestaurant.findAll({})
@@ -26,7 +26,7 @@ router.get("/allRestaurant", function(req, res) {
 });
 
  
-app.get("/allLaCurbed", function(req, res) {
+router.get("/allLaCurbed/", function(req, res) {
   // Grab every document in the Articles collection
   db.laCurbed.findAll({})
     .then(function(scrapeDb) {
