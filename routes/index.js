@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-
-
 //REQUIRE ROUTES
 const apiRoutes = require("./api");
 const john = require("./john");
@@ -10,6 +8,7 @@ const carrie = require("./carrie")
 
 
 // INITIALIZE ROUTERS
+router.use("/api", apiRoutes);
 router.use("/john", john);
 router.use("/joseph", joseph);
 router.use("/carrie", carrie);
