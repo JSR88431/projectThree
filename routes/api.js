@@ -10,6 +10,7 @@ router.get("/home", function(req, res) {
 
 
 router.get("/allRestaurant", function(req, res) {
+  // axios.get
   // Grab every document in the Articles collection
   db.familyRestaurant.findAll({})
     .then(function(data) {
