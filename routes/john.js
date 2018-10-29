@@ -1,5 +1,6 @@
 const router = require("express").Router();
-import axios from "axios";
+var cheerio = require("cheerio");
+var axios = require("axios");
 
 // la curbed scrape
 router.get("/scrapeLaCurbed", function(req, res) {
