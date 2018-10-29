@@ -10,6 +10,7 @@ const carrie = require("./carrie")
 
 
 // INITIALIZE ROUTERS
+router.use("/api", apiRoutes);
 router.use("/john", john);
 router.use("/joseph", joseph);
 router.use("/carrie", carrie);
