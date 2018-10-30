@@ -15,7 +15,6 @@ router.get("/allRestaurant", function(req, res) {
         res.json(err);
       });
   });
-  
 
   router.get("/scrapeAllRestaurant", function(req, res) {
     // Make a request via axios for the news section of `ycombinator`
@@ -55,8 +54,6 @@ router.get("/allRestaurant", function(req, res) {
     res.send("Scrape Complete");
   });
 
-
-
   router.get("/scrapeClasses", function(req, res) {
     // Make a request via axios for the news section of `ycombinator`
     axios.get("http://redtri.com/family-vacation-ideas/los-angeles/").then(function(response) {
@@ -88,13 +85,9 @@ router.get("/allRestaurant", function(req, res) {
         }
       });
 
-
     });
-  
     // Send a "Scrape Complete" message to the browser
     res.send("Scrape Complete 2");
   });
-
-
 
 module.exports = router;
