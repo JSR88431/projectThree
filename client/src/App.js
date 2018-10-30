@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Restaurant from "./components/Restaurant.js";
-import axios from "axios";
+// import axios from "axios";
 
 class App extends React.Component {
 
