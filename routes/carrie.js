@@ -71,7 +71,7 @@ router.get("/scrapeRedTriHacks", function (req, res) {
       console.log(inserted);
        }
    });
-    }
+    
   });
 
     res.send("Scrape Complete");
