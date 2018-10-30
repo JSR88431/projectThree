@@ -33,6 +33,7 @@ class Restaurant extends React.Component {
                     {item.address}
                     <br />
                     {item.link}
+                    {item.id}
                   </li>
                 );
               })
