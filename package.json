@@ -21,10 +21,14 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
+    "fetch-promise": "^1.0.2",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.5",
     "mysql2": "^1.6.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.41.0",
     "yarn": "^1.10.1"
   }
