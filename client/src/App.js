@@ -1,6 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Restaurant from "./components/Restaurant.js";
+
+class App extends React.Component {
+
+
 import axios from "axios";
 import Nav from "./components/Nav.js";
 import ThingsToDo from "./components/ThingsToDo.js";
