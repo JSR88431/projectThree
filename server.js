@@ -3,6 +3,10 @@ const path = require("path");
 const bodyParser = require('body-parser');
 var db = require("./models");
 
+var passport = require('passport');
+var session = require('express-session');
+var dotenv = require('dotenv').config()
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -15,6 +19,20 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+// Log-ins
+app.use(session({ secret: 'aNtCaRjOhJoS', resave: true, saveUninitialized: true })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+//Models
+var models = require("./models");
+
+//load passport strategies
+require('./config/passport/passport.js')(passport, models.user);
+
+// Log-in Routes
+var authRoute = require('./routes/auth.js')(app, passport);
 
 // Define API routes here
 const routes = require("./routes/index.js");

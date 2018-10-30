@@ -20,15 +20,28 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
+    "dotenv": "^6.1.0",
     "express": "^4.16.3",
+
+    "express-session": "^1.15.6",
+
     "fetch-promise": "^1.0.2",
+
     "if-env": "^1.0.4",
     "mongoose": "^5.3.5",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
+
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+
     "sequelize": "^4.41.0",
     "yarn": "^1.10.1"
   }
