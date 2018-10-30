@@ -12,6 +12,34 @@ router.get("/scrapeRedTriHacks", function (req, res) {
 
     var $ = cheerio.load(response.data);
 
+    console.log(response.data);
+    res.send(response.data);
+
+
+    // if (title && link && description && descriptionTwo && address) {
+
+      db.RedTriHacks.create({
+      title: title,
+      link: link,
+      description: description,
+      descriptionTwo: descriptionTwo,
+      address: address
+      },
+      function (err, inserted) {
+        if (err) {
+       console.log(err);
+       }
+      else {
+      console.log(inserted);
+       }
+   });
+    
+  });
+
+    res.send("Scrape Complete");
+});
+
+
     $(".item-body.fadeout").each(function (i, element) {
       var title = $(element).find("a").text();
       var link = $(element).find("a").attr("href");
