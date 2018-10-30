@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const familyRestaurant = require("../models/familyRestaurant.js");
 
-
-
 router.get("/home", function(req, res) {
   res.send("Family Restaurant");
 });
@@ -21,11 +19,10 @@ router.get("/allRestaurant/", function(req, res) {
       // If an error occurred, send it to the client
       res.json(err);
     });
-
-    
 });
 
  
+
 router.get("/allLaCurbed/", function(req, res) {
   // Grab every document in the Articles collection
   db.laCurbed.findAll({})
@@ -39,6 +36,40 @@ router.get("/allLaCurbed/", function(req, res) {
     });
 });
 
+router.get("/allLaFun", function(req,res) {
+  db.FunLa.findAll({})
+  .then(function(scrapeDb) {
+    res.json(err);
+  });
+});
+
+// ---------- FUN LA Events -----------------
+
+router.get("/allFunLa", function(req,res) {
+  db.FunLa.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
+
+//  ------- RedTri Hacks -----------------------
+router.get("/allRedTriHacks", function(req,res) {
+  db.RedTriHacks.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
+
+
+// ---------
 
 
 module.exports = router;
