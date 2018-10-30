@@ -1,10 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Restaurant from "./components/Restaurant.js";
+<<<<<<< HEAD
 
 class App extends React.Component {
 
 
+=======
+import Calendar from "./components/Calendar.js";
+>>>>>>> calendar
 import axios from "axios";
 import Nav from "./components/Nav.js";
 import ThingsToDo from "./components/ThingsToDo.js";
@@ -23,7 +27,8 @@ class App extends React.Component {
 
 
  return (
-
+  <div>
+  <Calendar />
   <Router>
     <div className="container">
       <Nav/>
@@ -35,7 +40,7 @@ class App extends React.Component {
       <Route exact path="/ThingsToDo" component={ThingsToDo} />
     </div>
   </Router>
-
+ </div>
 );
  }}
 
