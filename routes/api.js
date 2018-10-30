@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const familyRestaurant = require("../models/familyRestaurant.js");
-
+const db = require("../models")
 
 
 router.get("/home", function(req, res) {
