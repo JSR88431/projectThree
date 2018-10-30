@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Restaurant from "./components/Restaurant.js";
 import axios from "axios";
 
-class app extends Component {
+class App extends React.Component {
 
-  getScrape() {
-    axios.get("/john/scrape")
-  }
+  // getScrape() {
+  //   axios.get("/john/scrape")
+  // }
  render() {
 
 
