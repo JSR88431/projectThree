@@ -1,10 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
-    var laCurbed = sequelize.define("laCurbed", {
+    var redTriEvents = sequelize.define("redTriEvents", {
         title: {
             type: DataTypes.STRING
         },
 
-        phone: {
+        link: {
             type: DataTypes.STRING
         },
         description:{
@@ -15,13 +15,13 @@ module.exports = function (sequelize, DataTypes) {
         },
         address:{
             type:DataTypes.STRING
-        },        
-        link:{
+        },
+        image:{
             type:DataTypes.STRING
-        }   
+        }
     },
         {
         timestamps: false
         });
-    return laCurbed;
+    return redTriEvents;
 }
