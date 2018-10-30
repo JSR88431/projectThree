@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 // import "./Login.css";
 
-export default class Login extends Component {
+export default class Signup extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
+      <div className="Signup">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
@@ -53,7 +53,7 @@ export default class Login extends Component {
             disabled={!this.validateForm()}
             type="submit"
           >
-            Login
+            Signup
           </Button>
         </form>
       </div>

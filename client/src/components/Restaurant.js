@@ -27,7 +27,7 @@ class Restaurant extends React.Component {
                   <li className="list-group-item">
                     {item.title}
                     <br />
-                   
+                    
                     {item.link}
                   
                   </li>
