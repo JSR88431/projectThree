@@ -1,6 +1,7 @@
 const router = require("express").Router();
 var cheerio = require("cheerio");
 var axios = require("axios");
+var db = require("../models");
 
 // la curbed scrape
 router.get("/scrapeLaCurbed", function(req, res) {
@@ -16,7 +17,8 @@ router.get("/scrapeLaCurbed", function(req, res) {
         var description = $(element).find("p").eq(0).text();
         var descriptionTwo = $(element).find("p").eq(1).text();
         var address = $(element).find("div.c-mapstack__address").text();
-        var image = $("div.embed").children().find("href");
+        var image = $(element).find("a.EmbeddedMedia").attr("href");
+        // var image = $("div.embed").children().find("href");
         console.log(image);
         // var address = $(element).children().text();
         // If this found element had both a title and a link
@@ -27,7 +29,8 @@ router.get("/scrapeLaCurbed", function(req, res) {
             link: link,
             description: description,
             descriptionTwo:descriptionTwo,
-            address: address            
+            address: address,
+            image: image            
           },
           function(err, inserted) {
             if (err) {
@@ -49,9 +52,9 @@ router.get("/scrapeLaCurbed", function(req, res) {
   router.get("/allLaCurbed", function(req, res) {
     // Grab every document in the Articles collection
     db.laCurbed.findAll({})
-      .then(function(scrapeDb) {
+      .then(function(familyRestaurant) {
         // If we were able to successfully find Articles, send them back to the client
-        res.json(scrapeDb);
+        res.json(familyRestaurant);
       })
       .catch(function(err) {
         // If an error occurred, send it to the client

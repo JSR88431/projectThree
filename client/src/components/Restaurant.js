@@ -2,23 +2,18 @@ import React from "react";
 import axios from "axios";
 
 class Restaurant extends React.Component {
-    
-    
     state = {
       results: []
     };
-
     componentDidMount() {
         // after component loads, get all products from db
-        axios.get("/api/allRestaurant").then((response) => {
+        axios.get("/john/allLaCurbed").then((response) => {
+          console.log(response);
           this.setState({
             results: response.data
           });
         });
       }
-
-
-
       render() {
         return (
           <ul className="list-group">

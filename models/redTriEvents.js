@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var laCurbed = sequelize.define("laCurbed", {
+    var redTriEvents = sequelize.define("redTriEvents", {
         title: {
             type: DataTypes.STRING
         },
@@ -23,5 +23,5 @@ module.exports = function (sequelize, DataTypes) {
         {
         timestamps: false
         });
-    return laCurbed;
+    return redTriEvents;
 }
