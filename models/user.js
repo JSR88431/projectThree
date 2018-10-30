@@ -1,6 +1,6 @@
 module.exports = function(sequelize, Sequelize) {
  
-    var User = sequelize.define('user', {
+    var User = sequelize.define('User', {
  
         id: {
             autoIncrement: true,
@@ -54,6 +54,14 @@ module.exports = function(sequelize, Sequelize) {
  
  
     });
+
+    User.associate = function(models) {
+        // Associating Category with Posts
+        // When an Category is deleted, also delete any associated Posts
+        User.hasMany(models.Post, {
+          onDelete: "cascade"
+        });
+      };
  
     return User;
  

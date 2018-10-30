@@ -4,7 +4,8 @@ const router = require('express').Router();
 const apiRoutes = require("./api");
 const john = require("./john");
 const joseph = require("./joseph");
-const carrie = require("./carrie")
+const carrie = require("./carrie");
+const forum = require('./forum');
 
 
 // INITIALIZE ROUTERS
@@ -12,5 +13,6 @@ router.use("/api", apiRoutes);
 router.use("/john", john);
 router.use("/joseph", joseph);
 router.use("/carrie", carrie);
+router.use("/forum", forum);
 
 module.exports = router; 
