@@ -8,7 +8,7 @@ class Restaurant extends React.Component {
     componentDidMount() {
         // after component loads, get all products from db
         axios.get("/john/allLaCurbed").then((response) => {
-          console.log(response);
+          console.log(response.data);
           this.setState({
             results: response.data
           });
@@ -22,8 +22,17 @@ class Restaurant extends React.Component {
                 // create a route-able link for each product
                 return (
                   <li className="list-group-item">
-                    {item.name}
-                    
+                    {item.title}
+                    <br />
+                    {item.phone}
+                    <br />
+                    {item.description}
+                    <br />
+                    {item.descriptionTwo}
+                    <br />
+                    {item.address}
+                    <br />
+                    {item.link}
                   </li>
                 );
               })
