@@ -7,24 +7,22 @@ var db = require("../models");
 // Redtri - Parenting - Dad Hacks
 
 router.get("/scrapeRedTriHacks", function (req, res) {
-  // console.log("hit function")
   axios.get("http://redtri.com/mom-hacks/national/").then(function (response) {
 
     var $ = cheerio.load(response.data);
 
-    console.log(response.data);
-    res.send(response.data);
+    $(".item-body.fadeout").each(function (i, element) {
+      var title = $(element).find("a").text();
+      var link = $(element).find("a").attr("href");
+      console.log(title, link);
 
-
-    // if (title && link && description && descriptionTwo && address) {
+    if (title && link) {
 
       db.RedTriHacks.create({
       title: title,
       link: link,
-      description: description,
-      descriptionTwo: descriptionTwo,
-      address: address
       },
+
       function (err, inserted) {
         if (err) {
        console.log(err);
@@ -33,40 +31,14 @@ router.get("/scrapeRedTriHacks", function (req, res) {
       console.log(inserted);
        }
    });
-    
+  }
   });
-
+  });
     res.send("Scrape Complete");
 });
 
 
-    $(".item-body.fadeout").each(function (i, element) {
-      var title = $(element).find("a").text();
-      var link = $(element).find("a").attr("href");
-
-      if (title && link) {
-
-        db.RedTriHacks.create({
-          title: title,
-          link: link,
-        },
-          function (err, inserted) {
-            if (err) {
-              console.log(err);
-            }
-            else {
-              console.log(inserted);
-            }
-          });
-      }
-    });
-  }); 
-    res.send("Scrape Complete");
-  });
-
-
-
-  router.get("/allRedTriHacks", function (req, res) {
+  router.get("/allMomsLaClasses", function (req, res) {
     db.RedTriHacks.findAll({})
       .then(function (scrapeDb) {
         res.json(scrapeDb);

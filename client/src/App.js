@@ -1,15 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Restaurant from "./components/Restaurant.js";
-<<<<<<< HEAD
-
-class App extends React.Component {
-
-
-=======
 import Calendar from "./components/Calendar.js";
->>>>>>> calendar
-import axios from "axios";
 import Nav from "./components/Nav.js";
 import ThingsToDo from "./components/ThingsToDo.js";
 import Login from "./components/Login.js";

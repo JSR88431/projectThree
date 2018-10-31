@@ -1,15 +1,14 @@
 import React from "react";
 import axios from "axios";
-import Nav from "./Nav.js";
+
 
 class Restaurant extends React.Component {
     state = {
       results: []
     };
+
     componentDidMount() {
         // after component loads, get all products from db
-        axios.get("/john/allLaCurbed").then((response) => {
-
         axios.get("/joseph/AllRestaurant").then((response) => {
           console.log(response.data);
           this.setState({
@@ -28,22 +27,9 @@ class Restaurant extends React.Component {
                   <li className="list-group-item">
                     {item.title}
                     <br />
-
-                    {item.phone}
-                    <br />
-                    {item.description}
-                    <br />
-                    {item.descriptionTwo}
-                    <br />
-                    {item.address}
-                    <br />
-                    {item.link}
-                    {item.id}
-
                     
                     {item.link}
                   
-
                   </li>
                 );
               })

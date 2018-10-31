@@ -11,11 +11,9 @@ export default class Login extends Component {
       password: ""
     };
   }
-
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
-
   handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value
