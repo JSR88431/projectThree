@@ -1,0 +1,11 @@
+  .nav-link,.navbar-brand{
+    color: white;
+}
+
+nav{
+    background-color: black;
+}
+
+.topMargin{
+    margin-top: 100px;
+}
