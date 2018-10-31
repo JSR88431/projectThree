@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 //load passport strategies
-require('./config/passport/passport.js')(passport, db.user);
+require('./config/passport/passport.js')(passport, db.User);
 
 // Log-in Routes
 var authRoute = require('./routes/auth.js')(app, passport);
@@ -41,7 +41,7 @@ app.get("*", (req, res) => {
 });
 
 // Connect to the DB
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

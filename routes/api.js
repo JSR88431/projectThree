@@ -4,6 +4,8 @@ const familyRestaurant = require("../models/familyRestaurant.js");
 const db = require("../models")
 
 
+
+
 router.get("/home", function(req, res) {
   res.send("Family Restaurant");
 });
@@ -72,7 +74,91 @@ router.get("/allRedTriHacks", function(req,res) {
   });
 
 
-// ---------
+// ---------------- Forums GETs
 
+router.get("/categories/all", function (req, res) {
+  db.Category.findAll({})
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+router.get("/categories/:id", function (req, res) {
+  db.Category.findOne({
+      where: {
+          title: req.params.id
+      },
+      include: [
+          {
+              model: db.Topic, include: [
+                  {
+                      model: db.Post
+                  }]
+          }]
+  })
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+router.get("/topics", function (req, res) {
+  db.Topic.findAll({})
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+router.get("/posts", function (req, res) {
+  db.Post.findAll({})
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+// ---------------- Forums POSTs
+
+router.post("/categories", function (req, res) {
+  db.Category.create(req.body)
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+router.post("/topics", function (req, res) {
+
+  db.Topic.create(req.body)
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+router.post("/posts", function (req, res) {
+
+  db.Post.create(req.body)
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
 
 module.exports = router;

@@ -13,6 +13,5 @@ router.use("/api", apiRoutes);
 router.use("/john", john);
 router.use("/joseph", joseph);
 router.use("/carrie", carrie);
-router.use("/forum", forum);
 
 module.exports = router; 
