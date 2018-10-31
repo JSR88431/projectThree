@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const familyRestaurant = require("../models/familyRestaurant.js");
+// const familyRestaurant = require("../models/familyRestaurant.js");
+// const MomsLaClasses = require("../models/momsLaClasses.js");
 
 const db = require("../models")
 
@@ -27,7 +28,6 @@ router.get("/allRestaurant/", function(req, res) {
 });
 
  
-
 router.get("/allLaCurbed/", function(req, res) {
   // Grab every document in the Articles collection
   db.laCurbed.findAll({})
@@ -41,25 +41,7 @@ router.get("/allLaCurbed/", function(req, res) {
     });
 });
 
-router.get("/allLaFun", function(req,res) {
-  db.FunLa.findAll({})
-  .then(function(scrapeDb) {
-    res.json(err);
-  });
-});
 
-// ---------- FUN LA Events -----------------
-
-router.get("/allFunLa", function(req,res) {
-  db.FunLa.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
-
-  });
-  });
 
 //  ------- RedTri Hacks -----------------------
 router.get("/allRedTriHacks", function(req,res) {
@@ -73,6 +55,19 @@ router.get("/allRedTriHacks", function(req,res) {
   });
   });
 
+
+// --------- MomsLaClasses ----------------------
+
+router.get("/allMomsLaClasses", function(req,res) {
+  db.MomsLaClasses.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
 
 // ---------------- Forums GETs
 

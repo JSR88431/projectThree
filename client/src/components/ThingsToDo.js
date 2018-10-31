@@ -1,15 +1,15 @@
 import React from "react";
 import axios from "axios";
+import Nav from "./Nav.js";
 
-
-class Restaurant extends React.Component {
+class ThingsToDo extends React.Component {
     state = {
       results: []
     };
 
     componentDidMount() {
         // after component loads, get all products from db
-        axios.get("/joseph/AllRestaurant").then((response) => {
+        axios.get("/john/allLaCurbed").then((response) => {
           console.log(response.data);
           this.setState({
             results: response.data
@@ -27,9 +27,16 @@ class Restaurant extends React.Component {
                   <li className="list-group-item">
                     {item.title}
                     <br />
-                    
+                    {item.phone}
+                    <br />
+                    {item.description}
+                    <br />
+                    {item.descriptionTwo}
+                    <br />
+                    {item.address}
+                    <br />
                     {item.link}
-                  
+                    {item.id}
                   </li>
                 );
               })
@@ -38,4 +45,4 @@ class Restaurant extends React.Component {
         );
       }
 }
-export default Restaurant;
+export default ThingsToDo;
