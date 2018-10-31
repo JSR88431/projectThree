@@ -27,7 +27,8 @@ router.get("/allRestaurant", function(req, res) {
         // Save the text and href of each link enclosed in the current element
         var title = $(element).find("a").text();
         var link = $(element).find("a").attr("href");
-  
+  //       var image = $(element).parent().find(".wrapper-img").children().attr("src");
+  // console.log(image);
         // If this found element had both a title and a link
         if (title && link) {
           // Insert the data in the scrapedData db
