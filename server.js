@@ -3,6 +3,9 @@ const path = require("path");
 const bodyParser = require('body-parser');
 var db = require("./models");
 
+var flash = require('connect-flash');
+
+
 var passport = require('passport');
 var session = require('express-session');
 var dotenv = require('dotenv').config()
@@ -24,6 +27,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(session({ secret: 'aNtCaRjOhJoS', resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+
+app.use(flash());
 
 //load passport strategies
 require('./config/passport/passport.js')(passport, db.User);

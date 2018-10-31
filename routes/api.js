@@ -1,4 +1,5 @@
 const router = require("express").Router();
+var Sequelize = require("sequelize");
 // const familyRestaurant = require("../models/familyRestaurant.js");
 // const MomsLaClasses = require("../models/momsLaClasses.js");
 
@@ -87,9 +88,12 @@ router.get("/allMomsLaClasses", function(req,res) {
   });
   });
 
+// -------------------------- FORUMS ---------------------------------
 
 // ---------------- Forums GETS ---------------------
 
+
+// GET alls
 router.get("/categories/all", function (req, res) {
   db.Category.findAll({})
       .then(function (data) {
@@ -100,18 +104,35 @@ router.get("/categories/all", function (req, res) {
       });
 });
 
-router.get("/categories/:id", function (req, res) {
-  db.Category.findOne({
-      where: {
-          title: req.params.id
-      },
-      include: [
-          {
-              model: db.Topic, include: [
-                  {
-                      model: db.Post
-                  }]
-          }]
+// router.get("/categories/:id", function (req, res) {
+//   db.Category.findOne({
+//       where: {
+//           title: req.params.id
+//       },
+//       include: [
+//           {
+//               model: db.Topic, include: [
+//                   {
+//                       model: db.Post
+//                   }]
+//           }]
+//   })
+//       .then(function (data) {
+//           res.json(data);
+//       })
+//       .catch(function (err) {
+//           res.json(err);
+//       });
+// });
+
+router.get("/topics/all", function (req, res) {
+  db.Topic.findAll({
+    //   attributes: {
+    //       include: [[Sequelize.fn("COUNT", Sequelize.col("posts.TopicId")), "postNumber"]]
+    //   },
+    //   include: [{
+    //       model: db.Post, attributes: []
+    //   }]
   })
       .then(function (data) {
           res.json(data);
@@ -121,28 +142,66 @@ router.get("/categories/:id", function (req, res) {
       });
 });
 
-router.get("/topics", function (req, res) {
-  db.Topic.findAll({})
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
-});
+router.get("/posts/all", function (req, res) {
+    db.Post.findAll({})
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+  });
 
-router.get("/posts", function (req, res) {
-  db.Post.findAll({})
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
-});
+
+// GET specifics
+router.get("/topics/:catId", function (req, res) {
+    console.log(req.params.catId)
+    db.Topic.findAll({
+        where: {
+            CategoryId: req.params.catId
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+  });
+
+router.get("/posts/topicId", function (req, res) {
+    console.log(req.params.topicId)
+    db.Post.findAll({
+        where: {
+            TopicId: req.params.topicId
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+  });
+
+  router.get("/posts/:userId", function (req, res) {
+
+    db.Post.findAll({
+        where: {
+            UserId: req.params.userId
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+  });
 
 // ---------------- Forums POSTS -----------------------------
 
+// Post new category
 router.post("/categories", function (req, res) {
   db.Category.create(req.body)
       .then(function (data) {
@@ -153,7 +212,11 @@ router.post("/categories", function (req, res) {
       });
 });
 
-router.post("/topics", function (req, res) {
+// Post new Topic to specific Category
+router.post("/topics/:catId", function (req, res) {
+
+    let newTopic = req.body;
+    console.log(newTopic)
 
   db.Topic.create(req.body)
       .then(function (data) {
@@ -164,7 +227,11 @@ router.post("/topics", function (req, res) {
       });
 });
 
-router.post("/posts", function (req, res) {
+// Post a new Post to specific Topic
+router.post("/posts/:topicId", isLoggedIn, function (req, res) {
+
+    let postInfo = req.body;
+    console.log(postInfo)
 
   db.Post.create(req.body)
       .then(function (data) {
@@ -174,6 +241,17 @@ router.post("/posts", function (req, res) {
           res.json(err);
       });
 });
+
+function isLoggedIn(req, res, next) {
+
+    if (req.isAuthenticated())
+
+        return next();
+
+    res.redirect('/signin');
+
+}
+
 
 
 

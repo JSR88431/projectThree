@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import NavTabs from "./NavTabs";
+import Topic from "./forumlevels/Topic"
+import Post from "./forumlevels/Post"
 
 class Forum extends React.Component {
     state = {
         results: [],
-        inCategory: false
+        currentLevel: "Forum"
     };
 
     componentDidMount() {
@@ -19,58 +22,40 @@ class Forum extends React.Component {
 
     }
 
+    handleLevelChange = level => {
+        this.setState({ currentLevel: level })
+        console.log(this.state.currentLevel)
+    }
 
-    loadCat = (e) => {
-        e.preventDefault();
-        this.setState({ inCategory: true });
-        // make a put request to subtract one from quantity
-        axios.get(`/api/topics`).then((response) => {
-            // update state object with newest data
-            this.setState({
-                results: response.data
-            });
-        });
-    };
+    renderLevel = () => {
+        console.log("Render Level is called.")
 
-    upOneLevel = (e) => {
-        e.preventDefault();
-        if (this.state.inCategory === true) {
-            axios.get("/api/categories/all").then((response) => {
-                console.log(response)
-                this.setState({
-                    results: response.data,
-                    inCategory: false
-                });
-            });
+        if (this.state.currentLevel === "Topic") {
+            return <Topic 
+            currentLevel={this.state.currentLevel}
+            handleLevelChange={this.handleLevelChange}
+            />;
         }
-    };
+        if (this.state.currentLevel === "Post") {
+            return <Post />;
+        }
+
+
+    }
+
 
     render() {
         console.log(this.state.results)
+        console.log(this.state.currentLevel)
 
-        const inCategory = this.state.inCategory;
         let section;
 
-        if (inCategory) {
-            section =
-                this.state.results.map((item) => {
-                    // create a route-able link for each item
-                    return (
-                        <li className="list-group-item" key={item.id}>
-                            <a><h1>{item.title}</h1></a>
-                            <p>Original Poster: {item.owner}</p>
-                            <p>Number of Posts in Thread: {item.postNumber}</p>
-                            <p>Last Post At: {item.updatedAt}</p>
-                        </li>
-                    );
-                })
-        } else {
-
+        if (this.state.currentLevel === "Forum") {
             section = this.state.results.map((item) => {
                 // create a route-able link for each item
                 return (
                     <li className="list-group-item" key={item.id}>
-                        <a href="/forum" onClick={this.loadCat}><h1>{item.title}</h1></a>
+                        <a onClick={() => this.handleLevelChange("Topic")}><h1>{item.title}</h1></a>
                         <p>{item.description}</p>
                     </li>
                 );
@@ -78,26 +63,17 @@ class Forum extends React.Component {
         }
 
 
-
         return (
             <div>
-            <ul className="list-group">
-                {section}
-            </ul>
-            <button onClick={this.upOneLevel}>Up One Level</button>
+                <ul className="list-group">
+                    {section}
+                    {this.renderLevel()}
+                </ul>
+
             </div>
         );
     }
 }
 
 export default Forum;
-// import React, { Component } from 'react'
 
-// class Forum extends React.Component {
-//     state = {  }
-//     render() { 
-//         return (  );
-//     }
-// }
- 
-// export default Forum;

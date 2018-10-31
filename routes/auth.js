@@ -7,11 +7,15 @@ module.exports = function (app) {
 
     app.get('/signin', authController.signin);
 
+    app.get('/signinfailure', authController.signinfailure);
+    app.get('/signinsuccess', authController.signinsuccess);
+
     app.post('/signup', passport.authenticate('local-signup', {
 
         successRedirect: '/dashboard',
 
         failureRedirect: '/signup'
+
     }
 
     ));
@@ -20,13 +24,19 @@ module.exports = function (app) {
 
     app.get('/logout', authController.logout);
 
-    app.post('/signin', passport.authenticate('local-signin', {
-        successRedirect: '/dashboard',
+    app.post('/signin',
+        passport.authenticate('local-signin', {
+            successRedirect: '/signinsuccess',
 
-        failureRedirect: '/signin'
-    }
+            failureRedirect: '/signinfailure',
 
-    ));
+            // successFlash: 'Welcome!',
+
+            failureFlash: true
+        }),
+        function (req, res) {
+            console.log(req.body, "req.body")
+        });
 
     // Redirect the user to Facebook for authentication.  When complete,
     // Facebook will redirect the user back to the application at

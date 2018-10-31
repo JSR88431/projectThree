@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from "axios";
 // import "./Login.css";
 
 export default class Login extends Component {
@@ -22,6 +23,18 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    
+    axios.post('/signin', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(function (response) {
+      console.log(response.body, "axios response")
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+
   }
 
   render() {
