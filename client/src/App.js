@@ -22,7 +22,6 @@ class App extends React.Component {
 
  return (
   <div>
-  <Calendar />
   <Router>
     <div className="container">
       <Route exact path="/forum" component={Forum} />
