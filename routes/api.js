@@ -11,7 +11,24 @@ router.get("/home", function(req, res) {
   res.send("Family Restaurant");
 });
 
+//  -------- VACATIONS  ------------------
 
+router.get("/allVacations/", function(req, res) {
+  // axios.get
+  // Grab every document in the Articles collection
+  db.Vacations.findAll({})
+    .then(function(data) {
+      // If we were able to successfully find Articles, send them back to the client
+      res.json(data);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
+
+//  -------- FAMILY RESTAURANTS ------------------
 
 router.get("/allRestaurant/", function(req, res) {
   // axios.get
@@ -27,8 +44,9 @@ router.get("/allRestaurant/", function(req, res) {
     });
 });
 
+// ------------ LA CURBED 30 THINGS TO DO IN LA WITh KIDS -------------------
  
-router.get("/allLaCurbed/", function(req, res) {
+router.get("/alllaCurbed/", function(req, res) {
   // Grab every document in the Articles collection
   db.laCurbed.findAll({})
     .then(function(scrapeDb) {
@@ -69,7 +87,8 @@ router.get("/allMomsLaClasses", function(req,res) {
   });
   });
 
-// ---------------- Forums GETs
+
+// ---------------- Forums GETS ---------------------
 
 router.get("/categories/all", function (req, res) {
   db.Category.findAll({})
@@ -122,7 +141,7 @@ router.get("/posts", function (req, res) {
       });
 });
 
-// ---------------- Forums POSTs
+// ---------------- Forums POSTS -----------------------------
 
 router.post("/categories", function (req, res) {
   db.Category.create(req.body)
@@ -155,5 +174,46 @@ router.post("/posts", function (req, res) {
           res.json(err);
       });
 });
+
+
+
+// ----------- MOMS LA DONATE -------------------
+
+router.get("/allDonate", function(req,res) {
+  db.Donate.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
+
+  // ----------- MOMS LA THINGS TO DO  -------------------
+
+router.get("/allMomsLaTtd", function(req,res) {
+  db.MomsLaTtd.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
+
+  // ------------- LA PARENT CALENDAR OF EVENTS --------------
+
+  // router.get("/allLaParentEvents", function(req,res) {
+  //   db.LaParentEvents.findAll({})
+  //   .then(function(scrapeDb) {
+  //     res.json(scrapeDb);
+  //   })
+  //   .catch(function(err) {
+  //     res.json(err);
+  
+  //   });
+  //   });
 
 module.exports = router;
