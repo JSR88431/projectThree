@@ -5,7 +5,8 @@ import axios from "axios";
 class Forum extends React.Component {
     state = {
         results: [],
-        inCategory: false
+        inCategory: false,
+        currentLevel: "Forum"
     };
 
     componentDidMount() {
@@ -19,6 +20,9 @@ class Forum extends React.Component {
 
     }
 
+    handleLevelChange = level => {
+        this.setState({ currentLevel: level})
+    }
 
     loadCat = (e) => {
         e.preventDefault();
@@ -31,6 +35,18 @@ class Forum extends React.Component {
             });
         });
     };
+
+    // renderLevel = () => {
+    //     if (this.state.currentPage === "Home") {
+    //         return <Home />;
+    //       } else if (this.state.currentPage === "About") {
+    //         return <About />;
+    //       } else if (this.state.currentPage === "Blog") {
+    //         return <Blog />;
+    //       } else {
+    //         return <Contact />;
+    //       }
+    // }
 
     upOneLevel = (e) => {
         e.preventDefault();
@@ -81,23 +97,14 @@ class Forum extends React.Component {
 
         return (
             <div>
-            <ul className="list-group">
-                {section}
-            </ul>
-            <button onClick={this.upOneLevel}>Up One Level</button>
+                <ul className="list-group">
+                    {section}
+                </ul>
+                <button onClick={this.upOneLevel}>Up One Level</button>
             </div>
         );
     }
 }
 
 export default Forum;
-// import React, { Component } from 'react'
 
-// class Forum extends React.Component {
-//     state = {  }
-//     render() { 
-//         return (  );
-//     }
-// }
- 
-// export default Forum;

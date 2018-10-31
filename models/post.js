@@ -28,6 +28,12 @@ module.exports = function(sequelize, Sequelize) {
           }
         });
 
+        Post.belongsTo(models.User, {
+            foreignKey: {
+              allowNull: false
+            }
+          });
+
         
       };
     
