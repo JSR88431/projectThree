@@ -4,7 +4,8 @@ const router = require('express').Router();
 const apiRoutes = require("./api");
 const john = require("./john");
 const joseph = require("./joseph");
-const carrie = require("./carrie")
+const carrie = require("./carrie");
+const forum = require('./forum');
 
 
 // INITIALIZE ROUTERS

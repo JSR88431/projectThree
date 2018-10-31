@@ -25,11 +25,8 @@ app.use(session({ secret: 'aNtCaRjOhJoS', resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-//Models
-var models = require("./models");
-
 //load passport strategies
-require('./config/passport/passport.js')(passport, models.user);
+require('./config/passport/passport.js')(passport, db.User);
 
 // Log-in Routes
 var authRoute = require('./routes/auth.js')(app, passport);
