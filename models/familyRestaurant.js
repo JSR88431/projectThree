@@ -5,10 +5,10 @@ module.exports = function (sequelize, DataTypes) {
       },
       link: {
           type: DataTypes.STRING,
-      },
-      image: {
-          type: DataTypes.STRING,
       }
+    //   image: {
+    //       type: DataTypes.STRING,
+    //   }
   },
       {
       timestamps: false
