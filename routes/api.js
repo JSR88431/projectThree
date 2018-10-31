@@ -70,7 +70,7 @@ router.get("/allMomsLaClasses", function(req,res) {
   });
   });
 
-// ---------------- Forums GETs
+// -------------------------- FORUMS ---------------------------------
 
 
 // GET alls

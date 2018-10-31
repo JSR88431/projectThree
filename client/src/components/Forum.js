@@ -5,8 +5,8 @@ import axios from "axios";
 class Forum extends React.Component {
     state = {
         results: [],
-        inCategory: false,
-        currentLevel: "Forum"
+        inCategory: false
+        // currentLevel: "Forum"
     };
 
     componentDidMount() {
@@ -20,15 +20,15 @@ class Forum extends React.Component {
 
     }
 
-    handleLevelChange = level => {
-        this.setState({ currentLevel: level})
-    }
+    // handleLevelChange = level => {
+    //     this.setState({ currentLevel: level})
+    // }
 
     loadCat = (e) => {
         e.preventDefault();
         this.setState({ inCategory: true });
         // make a put request to subtract one from quantity
-        axios.get(`/api/topics`).then((response) => {
+        axios.get(`/api/topics/all`).then((response) => {
             // update state object with newest data
             this.setState({
                 results: response.data
@@ -68,8 +68,7 @@ class Forum extends React.Component {
         let section;
 
         if (inCategory) {
-            section =
-                this.state.results.map((item) => {
+            section = this.state.results.map((item) => {
                     // create a route-able link for each item
                     return (
                         <li className="list-group-item" key={item.id}>

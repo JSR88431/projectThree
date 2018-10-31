@@ -13,6 +13,18 @@ exports.signin = function(req, res) {
  
 }
 
+exports.signinfailure = function(req, res) {
+ 
+    res.json('Incorrect username or password.');
+ 
+}
+
+exports.signinsuccess = function(req, res) {
+ 
+    res.json('Logged in!');
+ 
+}
+
 exports.dashboard = function(req, res) {
  
     res.json('this should be the dashboard');
