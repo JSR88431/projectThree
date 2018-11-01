@@ -7,8 +7,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-
-         <div className="container py-3 topMargin">
+        
+        <div className="container py-3 topMargin">
           <div className="card">
             <div className="row ">
               <div className="col-md-4">
@@ -26,7 +26,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-       
+
 
         <div className="container py-3">
           <div className="card">
@@ -49,7 +49,7 @@ class Home extends React.Component {
 
 
       </div>
-      
+
 
     );
   }

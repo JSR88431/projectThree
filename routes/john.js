@@ -14,7 +14,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
         // Save the text and href of each link enclosed in the current element
         var title = $(element).find("h1").text();
         console.log(title);
-        var link = $(element).find("a").eq(1).attr("href");
+        var phone = $(element).find("a").eq(1).attr("href");
         var description = $(element).find("p").eq(0).text();
         var descriptionTwo = $(element).find("p").eq(1).text();
         var address = $(element).find("div.c-mapstack__address").text();
@@ -23,7 +23,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
         // console.log(image);
         // var address = $(element).children().text();
         // If this found element had both a title and a link
-        if (title && link && description && descriptionTwo && address) {
+        if (phone && link && description && descriptionTwo && address) {
           // Insert the data in the scrapedData db
           db.laCurbed.create({
             title: title,
@@ -44,6 +44,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
             }
           });
         }
+        
       });
     });
     // Send a "Scrape Complete" message to the browser

@@ -4,9 +4,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         },
 
-        phone: {
-            type: DataTypes.STRING
-        },
+        
         description:{
             type:DataTypes.TEXT
         },
@@ -16,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
         address:{
             type:DataTypes.STRING
         },        
-        link:{
+        Phone:{
             type:DataTypes.STRING
         },
         // image: {
