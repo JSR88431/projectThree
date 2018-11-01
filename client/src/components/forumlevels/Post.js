@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import ForumCard from "../forumcomp/forumCard.js"
 class Post extends React.Component {
     state = {
         results: []
@@ -38,6 +38,11 @@ class Post extends React.Component {
                 <ul className="list-group">
                     {section}
                 </ul>
+                <ForumCard
+                postId={this.props.postId}
+                handleChange={this.props.handleChange}
+                forumInput={this.props.forumInput}
+                />
             </div>
         );
     }

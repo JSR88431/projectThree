@@ -11,7 +11,8 @@ class Forum extends React.Component {
         results: [],
         currentLevel: "Forum",
         topicId: "",
-        postId: ""
+        postId: "",
+        forumInput: ""
     };
 
     componentDidMount() {
@@ -24,6 +25,14 @@ class Forum extends React.Component {
         });
 
     }
+
+    
+    handleChange = event => {
+        this.setState({
+          [event.target.id]: event.target.value
+        });
+      }
+
 
     handleLevelChange = (e, level) => {
         console.log(e, "e")
@@ -47,6 +56,21 @@ class Forum extends React.Component {
             this.setState({ currentLevel: "Topic"})
         }
     }
+    
+    // makeAPost = () => {
+         
+    //     axios.post("/posts/:topicId", {
+    //         author: author,
+    //         body:body
+    //     })
+    //     .then(function (response) {
+    //         console.log(response.body, "axios response")
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error)
+    //     })
+
+    // }
 
     renderLevel = () => {
         console.log("Render Level is called.")
@@ -60,9 +84,14 @@ class Forum extends React.Component {
             />;
         }
         if (this.state.currentLevel === "Post") {
+
             return <Post 
             postId={this.state.postId}
             upOneLevel={this.upOneLevel}
+
+            handleChange={this.handleChange}
+
+            forumInput={this.state.forumInput}
             />;
         }
 
