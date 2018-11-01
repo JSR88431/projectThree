@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
   var KidsGuideCal= sequelize.define("KidsGuideCal", {
       title: {
-          type: DataTypes.STRING
+          type: DataTypes.TEXT
       },
       description:{
-          type:DataTypes.STRING
+          type:DataTypes.TEXT
       },      
       link:{
-          type:DataTypes.STRING
+          type:DataTypes.TEXT
       }
   },
       {

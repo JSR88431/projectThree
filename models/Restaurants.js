@@ -1,14 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
   var Restaurants = sequelize.define("Restaurants", {
       title: {
-          type: DataTypes.STRING
+          type: DataTypes.TEXT
       },
       link: {
-          type: DataTypes.STRING,
-      }
-    //   image: {
-    //       type: DataTypes.STRING,
-    //   }
+          type: DataTypes.TEXT
+      },
   },
       {
       timestamps: false

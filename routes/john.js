@@ -12,26 +12,26 @@ router.get("/scrapeLaCurbed", function(req, res) {
       // For each element with a "title" class
       $(".c-mapstack__card").each(function(i, element) {
         // Save the text and href of each link enclosed in the current element
-        // var title = $(element).find("h1").text();
-        // console.log(title);
-        // var link = $(element).find("a").eq(1).attr("href");
-        // var description = $(element).find("p").eq(0).text();
-        // var descriptionTwo = $(element).find("p").eq(1).text();
-        // var address = $(element).find("div.c-mapstack__address").text();
-        var image = $(element).find(".c-mapstack_card-hed").find(".c-entry-content").find(".c-mapstack_video").find(".c-video-embed--media").find(".instagram-media.instagram-media-rendered").attr("src");
-        console.log(image);
+        var title = $(element).find("h1").text();
+        console.log(title);
+        var link = $(element).find("a").eq(1).attr("href");
+        var description = $(element).find("p").eq(0).text();
+        var descriptionTwo = $(element).find("p").eq(1).text();
+        var address = $(element).find("div.c-mapstack__address").text();
+        // var image = $(element).find(".c-mapstack_card-hed").find(".c-entry-content").find(".c-mapstack_video").find(".c-video-embed--media").find(".instagram-media.instagram-media-rendered").attr("src");
+        // console.log(image);
 
         // If this found element had both a title and a link
         // if (title && link && description && descriptionTwo && address) {
-          if (image) {
+          if (title && link && description && descriptionTwo && address) {
           // Insert the data in the scrapedData db
           db.laCurbed.create({
-            // title: title,
-            // link: link,
-            // description: description,
-            // descriptionTwo:descriptionTwo,
-            // address: address,
-            image: image            
+            title: title,
+            link: link,
+            description: description,
+            descriptionTwo:descriptionTwo,
+            address: address,
+            // image: image            
           },
           function(err, inserted) {
             if (err) {

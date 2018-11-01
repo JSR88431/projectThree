@@ -1,10 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
     var laCurbed = sequelize.define("laCurbed", {
-        // title: {
-        //     type: DataTypes.STRING
-        // },
-
-        
+        title: {
+            type: DataTypes.TEXT
+        },
         description:{
             type:DataTypes.TEXT
         },
@@ -12,13 +10,13 @@ module.exports = function (sequelize, DataTypes) {
             type:DataTypes.TEXT
         },
         address:{
-            type:DataTypes.STRING
+            type:DataTypes.TEXT
         },        
-        Phone:{
-            type:DataTypes.STRING
+        link:{
+            type:DataTypes.TEXT
         },
         // image: {
-        //     type: DataTypes.STRING 
+        //     type: DataTypes.TEXT 
         // }
     },
         {

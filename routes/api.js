@@ -86,8 +86,6 @@ router.get("/allMomsLaClasses", function(req,res) {
   });
   });
 
-// -------------------------- FORUMS ---------------------------------
-
 // ----------- MOMS LA DONATE -------------------
 
 router.get("/allDonate", function(req,res) {
