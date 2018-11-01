@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var familyRestaurant = sequelize.define("familyRestaurant", {
+  var Restaurants = sequelize.define("Restaurants", {
       title: {
           type: DataTypes.STRING
       },
@@ -13,5 +13,5 @@ module.exports = function (sequelize, DataTypes) {
       {
       timestamps: false
       });
-  return familyRestaurant;
+  return Restaurants;
 }
