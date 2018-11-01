@@ -1,16 +1,16 @@
 module.exports = function (sequelize, DataTypes) {
   var Donate = sequelize.define("Donate", {
       title: {
-          type: DataTypes.STRING
+          type: DataTypes.TEXT
       },
       address:{
-          type:DataTypes.STRING
+          type:DataTypes.TEXT
       },
       description:{
-          type:DataTypes.STRING
+          type:DataTypes.TEXT
       },        
       link:{
-        type:DataTypes.STRING
+        type:DataTypes.TEXT
     },   
   },
       {

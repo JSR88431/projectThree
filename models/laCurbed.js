@@ -1,26 +1,26 @@
 module.exports = function (sequelize, DataTypes) {
     var laCurbed = sequelize.define("laCurbed", {
-        // title: {
-        //     type: DataTypes.STRING
-        // },
+        title: {
+            type: DataTypes.TEXT
+        },
 
-        // phone: {
-        //     type: DataTypes.STRING
-        // },
-        // description:{
-        //     type:DataTypes.TEXT
-        // },
-        // descriptionTwo:{
-        //     type:DataTypes.TEXT
-        // },
-        // address:{
-        //     type:DataTypes.STRING
-        // },        
-        // link:{
-        //     type:DataTypes.STRING
-        // },
+        phone: {
+            type: DataTypes.TEXT
+        },
+        description:{
+            type:DataTypes.TEXT
+        },
+        descriptionTwo:{
+            type:DataTypes.TEXT
+        },
+        address:{
+            type:DataTypes.TEXT
+        },        
+        link:{
+            type:DataTypes.TEXT
+        },
         image: {
-            type: DataTypes.STRING 
+            type: DataTypes.TEXT 
         }
     },
         {

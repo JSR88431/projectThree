@@ -1,19 +1,19 @@
 module.exports = function (sequelize, DataTypes) {
   var MomsLaClasses = sequelize.define("MomsLaClasses", {
     title: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
 
     link: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
   }
   ,
     description: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
 
     image: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     }   
   },
       {

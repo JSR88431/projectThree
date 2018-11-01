@@ -1,15 +1,12 @@
 module.exports = function (sequelize, DataTypes) {
     var RedTriHacks = sequelize.define("RedTriHacks", {
         title: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
 
         link: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
-        image: {
-            type: DataTypes.STRING
-        }
     },
         {
         timestamps: false
