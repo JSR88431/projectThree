@@ -4,6 +4,7 @@ import axios from "axios";
 import NavTabs from "./NavTabs";
 import Topic from "./forumlevels/Topic"
 import Post from "./forumlevels/Post"
+import "./Styles.css";
 
 class Forum extends React.Component {
     state = {
@@ -24,22 +25,27 @@ class Forum extends React.Component {
 
     }
 
-    onClick = (event, level) => {
-        this.handleLevelChange(level);
-        this.handleClickId(event);
-
-    }
-
-    handleClickId = (e) => {
-        console.log(e, "e")
-        console.log(e.target.id, "e.target.id")
-    }
-
     handleLevelChange = (e, level) => {
         console.log(e, "e")
         console.log(e.currentTarget.id, "e.currentTarget.id")
-        this.setState({ currentLevel: level, topicId: e.currentTarget.id, postId: e.currentTarget.id })
+
+        if (this.state.currentLevel === "Forum") {
+            this.setState({ currentLevel: level, topicId: e.currentTarget.id})
+        }
+        if (this.state.currentLevel === "Topic") {
+            this.setState({ currentLevel: level, postId: e.currentTarget.id })
+        }
+
         console.log(this.state.currentLevel)
+    }
+
+    upOneLevel = () => {
+        if (this.state.currentLevel === "Topic") {
+            this.setState({ currentLevel: "Forum"})
+        }
+        if (this.state.currentLevel === "Post") {
+            this.setState({ currentLevel: "Topic"})
+        }
     }
 
     renderLevel = () => {
@@ -50,11 +56,13 @@ class Forum extends React.Component {
             currentLevel={this.state.currentLevel}
             handleLevelChange={this.handleLevelChange}
             topicId={this.state.topicId}
+            upOneLevel={this.upOneLevel}
             />;
         }
         if (this.state.currentLevel === "Post") {
             return <Post 
             postId={this.state.postId}
+            upOneLevel={this.upOneLevel}
             />;
         }
 

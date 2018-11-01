@@ -37,6 +37,7 @@ class Topic extends React.Component {
 
         return (
             <div>
+                <button onClick={this.props.upOneLevel}>Up One Level</button>
                 <ul className="list-group">
                     {section}
                 </ul>
