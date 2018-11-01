@@ -7,18 +7,14 @@ import Post from "./forumlevels/Post";
 import "./Styles.css";
 
 class Forum extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.renderLevel = this.renderLevel.bind(this);
-  }
 
   state = {
     results: [],
     currentLevel: "Forum",
     topicId: "",
     postId: "",
-    forumInput: ""
+    forumInput: "",
+    topicTitle: ""
   };
 
   componentDidMount() {
@@ -92,7 +88,122 @@ class Forum extends React.Component {
         console.log(error);
       });
   };
+
+  makeATopic = () => {
+
+    let topicId = this.state.topicId
+
+    axios.post(`/api/topics/${topicId}`, {
+        owner: "Anthony",
+        title: this.state.topicTitle,
+        CategoryId: topicId
+    }).then((response) => {
+
+        console.log("the response: " + response.data)
+        let postId = response.data
+        this.setState({ postId: postId })
+
+        let userId = "2";
+
+        axios
+        .post(`/api/posts/${postId}/${userId}`, {
+          author: "Anthony",
+          body: this.state.forumInput,
+          TopicId: postId,
+          UserId: userId
+        })
+        .then(response => {
+          let postId = this.state.postId
+          // after component loads, get all products from db
+          axios.get(`/api/posts/${postId}`).then((res) => {
+              console.log(res)
+              // update state object with newest data
+              this.setState({
+                  results: res.data
+              });
+              console.log(this)
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
+
+
+
+
+
+
+
+
+
+        // after component loads, get all products from db
+        // axios.get(`/api/topics/${topicId}`).then(response => {
+        //   // update state object with newest data
+        //   this.setState({
+        //     results: response.data
+        //   });
+        // });
+    })
+
+
+
+    // console.log("current level card: " + this.state.currentLevel);
+    // let postId = this.state.postId;
+    // let userId = "2";
+
+    // axios
+    //   .post(`/api/posts/${postId}/${userId}`, {
+    //     author: "Anthony",
+    //     body: this.state.forumInput,
+    //     TopicId: postId,
+    //     UserId: userId
+    //   })
+    //   .then(response => {
+    //     let postId = this.state.postId
+    //     // after component loads, get all products from db
+    //     axios.get(`/api/posts/${postId}`).then((res) => {
+    //         console.log(res)
+    //         // update state object with newest data
+    //         this.setState({
+    //             results: res.data
+    //         });
+    //         console.log(this)
+    //     });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
+  };
   
+    makeAPost = () => {
+    console.log("current level card: " + this.state.currentLevel);
+    let postId = this.state.postId;
+    let userId = "2";
+
+    axios
+      .post(`/api/posts/${postId}/${userId}`, {
+        author: "Anthony",
+        body: this.state.forumInput,
+        TopicId: postId,
+        UserId: userId
+      })
+      .then(response => {
+        let postId = this.state.postId
+        // after component loads, get all products from db
+        axios.get(`/api/posts/${postId}`).then((res) => {
+            console.log(res)
+            // update state object with newest data
+            this.setState({
+                results: res.data
+            });
+            console.log(this)
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
 
   renderLevel = () => {
     if (this.state.currentLevel === "Topic") {
@@ -100,8 +211,11 @@ class Forum extends React.Component {
         <Topic
           currentLevel={this.state.currentLevel}
           handleLevelChange={this.handleLevelChange}
+          handleChange={this.handleChange}
           topicId={this.state.topicId}
           upOneLevel={this.upOneLevel}
+          forumInput={this.state.forumInput}
+          makeATopic={this.makeATopic}
         />
       );
     }
@@ -112,6 +226,7 @@ class Forum extends React.Component {
           upOneLevel={this.upOneLevel}
           handleChange={this.handleChange}
           forumInput={this.state.forumInput}
+          topicTitle={this.state.topicTitle}
           renderLevel={this.renderLevel}
           currentLevel={this.state.currentLevel}
           makeAPost={this.makeAPost}

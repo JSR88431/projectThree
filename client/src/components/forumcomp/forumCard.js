@@ -5,34 +5,6 @@ import Forum from '../Forum';
 
 class ForumCard extends React.Component {
 
-
-
-    // makeAPost = () => {
-
-
-    //     console.log("current level card: " + this.props.currentLevel)
-    //     let postId = this.props.postId
-    //     let userId = "2"
-
-    //     console.log("card postid: " + postId)
-         
-    //     axios.post(`/api/posts/${postId}/${userId}`, {
-    //         author: "Anthony",
-    //         body: this.props.forumInput,
-    //         TopicId: postId,
-    //         UserId: userId
-    //     })
-    //     .then((response) => {
-
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error)
-    //     })
-
-
-
-    // }
-
   render() {
     return (
       <Form>

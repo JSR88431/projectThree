@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import TopicCard from "../forumcomp/topicCard.js";
 
 class Topic extends React.Component {
   state = {
@@ -19,9 +20,9 @@ class Topic extends React.Component {
     });
   }
 
-  render() {
-    console.log(this.state.results);
+  
 
+  render() {
     let section = this.state.results.map(item => {
       // create a route-able link for each item
       return (
@@ -43,6 +44,16 @@ class Topic extends React.Component {
       <div>
         <button onClick={this.props.upOneLevel}>Up One Level</button>
         <ul className="list-group">{section}</ul>
+        <h1>Create a Topic</h1>
+        <TopicCard
+            postId={this.props.postId}
+            handleChange={this.props.handleChange}
+            forumInput={this.props.forumInput}
+            topicTitle={this.props.topicTitle}
+            renderLevel={this.props.renderLevel}
+            currentLevel={this.props.currentLevel}
+            makeATopic={this.props.makeATopic}
+        />
       </div>
     );
   }

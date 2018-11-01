@@ -255,7 +255,7 @@ router.post("/topics/:catId", function (req, res) {
 
   db.Topic.create(req.body)
       .then(function (data) {
-          res.json(data);
+          res.json(data.id);
       })
       .catch(function (err) {
           res.json(err);
