@@ -2,14 +2,14 @@ import React from "react";
 import axios from "axios";
 
 
-class Restaurant extends React.Component {
+class Classes extends React.Component {
   state = {
     results: []
   };
 
   componentDidMount() {
     // after component loads, get all products from db
-    axios.get("/joseph/allRestaurants").then((response) => {
+    axios.get("/carrie/allMomsLaClasses").then((response) => {
       console.log(response.data);
       this.setState({
         results: response.data
@@ -33,8 +33,7 @@ class Restaurant extends React.Component {
                   <div className="col-md-8 px-3">
                     <div className="card-block px-3 mt-3">
                       <h4 className="card-title">{item.title}</h4>
-                      <p className="card-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                      <p className="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p className="card-text">{item.description}.</p>
                       <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
                     </div>
                   </div>
@@ -48,30 +47,4 @@ class Restaurant extends React.Component {
     );
   }
 }
-export default Restaurant;
-
-
-
-
-// {
-//   this.state.results.map((item) => {
-//     // create a route-able link for each product
-//     return (
-
-//       <li className="list-group-item">
-//         {item.title}
-//         <br />
-//         {item.phone}
-//         <br />
-//         {item.description}
-//         <br />
-//         {item.descriptionTwo}
-//         <br />
-//         {item.address}
-//         <br />
-//         {item.link}
-//         {item.id}
-//       </li>
-//     );
-//   })
-// }
+export default Classes;

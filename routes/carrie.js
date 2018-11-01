@@ -15,7 +15,12 @@ router.get("/scrapeRedTriHacks", function (req, res) {
   $(".item-body.fadeout").each(function (i, element) {
     var title = $(element).find("a").text();
     var link = $(element).find("a").attr("href");
-    // var image = $(element).parent(".item.col-xs-3").children(".wrapper-img").find("a").find("img").attr("src");
+    // var image = $(element).find("a").find("img").attr("src");
+    // console.log(image);
+  
+  // $(".events-3-cols-grid").each(function (i, element) {
+  //   var title = $(element).find(".item.col-xs-3").find(".item-body").find("h2").find("a").text();
+  //   var link = $(element).find(".item.col-xs-3").find(".item-body").find("h2").find("a").attr("href");
 
     if (title && link) {
       

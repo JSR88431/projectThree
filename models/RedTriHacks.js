@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
         link: {
             type: DataTypes.TEXT
         },
+    
     },
         {
         timestamps: false

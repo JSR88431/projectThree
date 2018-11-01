@@ -9,6 +9,10 @@ import ThingsToDo from "./components/ThingsToDo.js";
 import Login from "./components/Login.js";
 import Signup from "./components/Signup.js";
 import Home from "./components/Home.js";
+import Vacation from "./components/Vacation.js";
+import Donate from "./components/Donate.js";
+import Classes from "./components/Classes.js";
+import Dadhacks from "./components/Dadhacks.js";
 // import Forum from "./components/Forum.js";
 
 
@@ -33,6 +37,10 @@ class App extends React.Component {
       <Route exact path="/Home" component={Home} />
       <Route exact path="/Restaurant" component={Restaurant} />
       <Route exact path="/ThingsToDo" component={ThingsToDo} />
+      <Route exact path="/Vacation" component={Vacation} />
+      <Route exact path="/Donate" component={Donate} />
+      <Route exact path="/Classes" component={Classes} />
+      <Route exact path="/Dadhacks" component={Dadhacks} />
     </div>
   </Router>
  </div>
