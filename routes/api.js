@@ -201,7 +201,7 @@ router.get("/posts/:topicId", function (req, res) {
 
 // ---------------- Forums POSTS -----------------------------
 
-// Post new category
+// Post new category (only used for testing)
 router.post("/categories", function (req, res) {
   db.Category.create(req.body)
       .then(function (data) {
@@ -252,6 +252,7 @@ function isLoggedIn(req, res, next) {
 
 }
 
+// ---------- END FORUM SECTION ----------
 
 
 
