@@ -8,8 +8,9 @@ class Post extends React.Component {
     };
 
     componentDidMount() {
+        let postId = this.props.postId
         // after component loads, get all products from db
-        axios.get(`/api/posts/all`).then((response) => {
+        axios.get(`/api/posts/${postId}`).then((response) => {
             // update state object with newest data
             this.setState({
                 results: response.data

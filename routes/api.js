@@ -169,7 +169,7 @@ router.get("/topics/:catId", function (req, res) {
         });
   });
 
-router.get("/posts/topicId", function (req, res) {
+router.get("/posts/:topicId", function (req, res) {
     console.log(req.params.topicId)
     db.Post.findAll({
         where: {

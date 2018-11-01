@@ -8,7 +8,9 @@ import Post from "./forumlevels/Post"
 class Forum extends React.Component {
     state = {
         results: [],
-        currentLevel: "Forum"
+        currentLevel: "Forum",
+        topicId: "",
+        postId: ""
     };
 
     componentDidMount() {
@@ -22,8 +24,21 @@ class Forum extends React.Component {
 
     }
 
-    handleLevelChange = level => {
-        this.setState({ currentLevel: level })
+    onClick = (event, level) => {
+        this.handleLevelChange(level);
+        this.handleClickId(event);
+
+    }
+
+    handleClickId = (e) => {
+        console.log(e, "e")
+        console.log(e.target.id, "e.target.id")
+    }
+
+    handleLevelChange = (e, level) => {
+        console.log(e, "e")
+        console.log(e.currentTarget.id, "e.currentTarget.id")
+        this.setState({ currentLevel: level, topicId: e.currentTarget.id, postId: e.currentTarget.id })
         console.log(this.state.currentLevel)
     }
 
@@ -34,10 +49,13 @@ class Forum extends React.Component {
             return <Topic 
             currentLevel={this.state.currentLevel}
             handleLevelChange={this.handleLevelChange}
+            topicId={this.state.topicId}
             />;
         }
         if (this.state.currentLevel === "Post") {
-            return <Post />;
+            return <Post 
+            postId={this.state.postId}
+            />;
         }
 
 
@@ -55,7 +73,7 @@ class Forum extends React.Component {
                 // create a route-able link for each item
                 return (
                     <li className="list-group-item" key={item.id}>
-                        <a onClick={() => this.handleLevelChange("Topic")}><h1>{item.title}</h1></a>
+                        <a onClick={(e) => this.handleLevelChange(e, "Topic")} id={item.id}><h1>{item.title}</h1></a>
                         <p>{item.description}</p>
                     </li>
                 );
