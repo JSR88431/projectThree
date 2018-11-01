@@ -1,8 +1,12 @@
 import React from "react";
 import axios from "axios";
-
+import {Container, Row, Col} from 'reactstrap';
+import PeopleCard from "./restaurantfolder/RestaurantCard.js";
 
 class Restaurant extends React.Component {
+  constructor (){
+    super();
+  }
   state = {
     results: []
   };
@@ -16,34 +20,26 @@ class Restaurant extends React.Component {
       });
     });
   }
-  render() {
+  
+  render () {
+    let peopleCards = this.state.people.map(person => {
+      return (
+        <Col sm="4">
+          <PeopleCard key={person.id} removePerson={this.removePerson.bind(this)} person={person} />
+        </Col>
+      )
+    })
     return (
-      <div>
-        <ul className="list-group">
-          {
-            this.state.results.map((item) => {
-              // create a route-able link for each product
-              return (
-
-                <li className="list-group-item">
-                  {item.title}
-                  <br />
-
-                  {item.link}
-
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
-
-
-    );
+      <Container fluid>
+        <Row>
+          {peopleCards}
+        </Row>
+      </Container>
+    )
   }
 }
-export default Restaurant;
 
+export default Restaurant;
 
 
 
