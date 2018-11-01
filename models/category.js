@@ -22,9 +22,9 @@ module.exports = function (sequelize, Sequelize) {
         // Associating Category with Posts
         // When an Category is deleted, also delete any associated Posts
         Category.hasMany(models.Topic, {
-          onDelete: "cascade",
           foreignKey: {
-            allowNull: false
+            allowNull: false,
+            onDelete: "cascade"
           }
         });
       };

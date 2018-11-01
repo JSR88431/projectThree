@@ -113,7 +113,7 @@ class Forum extends React.Component {
           UserId: userId
         })
         .then(response => {
-          let postId = this.state.postId
+
           // after component loads, get all products from db
           axios.get(`/api/posts/${postId}`).then((res) => {
               console.log(res)
