@@ -7,6 +7,13 @@ import Post from "./forumlevels/Post"
 import "./Styles.css";
 
 class Forum extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        this.renderLevel = this.renderLevel.bind(this)
+      }
+
     state = {
         results: [],
         currentLevel: "Forum",
@@ -18,7 +25,7 @@ class Forum extends React.Component {
     componentDidMount() {
         // after component loads, get all products from db
         axios.get("/api/categories/all").then((response) => {
-            console.log(response)
+
             this.setState({
                 results: response.data
             });
@@ -35,8 +42,7 @@ class Forum extends React.Component {
 
 
     handleLevelChange = (e, level) => {
-        console.log(e, "e")
-        console.log(e.currentTarget.id, "e.currentTarget.id")
+
 
         if (this.state.currentLevel === "Forum") {
             this.setState({ currentLevel: level, topicId: e.currentTarget.id})
@@ -45,7 +51,7 @@ class Forum extends React.Component {
             this.setState({ currentLevel: level, postId: e.currentTarget.id })
         }
 
-        console.log(this.state.currentLevel)
+
     }
 
     upOneLevel = () => {
@@ -57,23 +63,32 @@ class Forum extends React.Component {
         }
     }
     
-    // makeAPost = () => {
-         
-    //     axios.post("/posts/:topicId", {
-    //         author: author,
-    //         body:body
-    //     })
-    //     .then(function (response) {
-    //         console.log(response.body, "axios response")
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error)
-    //     })
+    makeAPost = () => {
 
-    // }
+        console.log("current level card: " + this.currentLevel)
+        let postId = this.state.postId
+        let userId = "2"
+
+         
+        axios.post(`/api/posts/${postId}/${userId}`, {
+            author: "Anthony",
+            body: this.state.forumInput,
+            TopicId: postId,
+            UserId: userId
+        })
+        .then((response) => {
+            this.renderLevel();
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+
+
+
+    }
 
     renderLevel = () => {
-        console.log("Render Level is called.")
+
 
         if (this.state.currentLevel === "Topic") {
             return <Topic 
@@ -92,6 +107,10 @@ class Forum extends React.Component {
             handleChange={this.handleChange}
 
             forumInput={this.state.forumInput}
+            renderLevel={this.renderLevel}
+            currentLevel={this.state.currentLevel}
+            makeAPost={this.makeAPost}
+        
             />;
         }
 
@@ -100,8 +119,7 @@ class Forum extends React.Component {
 
 
     render() {
-        console.log(this.state.results)
-        console.log(this.state.currentLevel)
+
 
         let section;
 

@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ForumCard from "../forumcomp/forumCard.js"
 class Post extends React.Component {
+
+
     state = {
         results: []
     };
 
     componentDidMount() {
+        console.log("Post did mount")
         let postId = this.props.postId
         // after component loads, get all products from db
         axios.get(`/api/posts/${postId}`).then((response) => {
@@ -17,6 +20,8 @@ class Post extends React.Component {
             });
         });
     }
+
+    
 
     render() {
         console.log(this.state.results)
@@ -42,6 +47,10 @@ class Post extends React.Component {
                 postId={this.props.postId}
                 handleChange={this.props.handleChange}
                 forumInput={this.props.forumInput}
+                renderLevel={this.props.renderLevel}
+                currentLevel={this.props.currentLevel}
+                makeAPost={this.props.makeAPost}
+
                 />
             </div>
         );

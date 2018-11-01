@@ -231,7 +231,6 @@ router.post("/topics/:catId", function (req, res) {
 router.post("/posts/:topicId/:userId", function (req, res) {
 
 
-
   db.Post.create(req.body)
       .then(function (data) {
           res.json(data);
@@ -250,7 +249,7 @@ function isLoggedIn(req, res, next) {
 
         return next();
 
-    res.redirect('/signin');
+    res.json(false);
 
 }
 
