@@ -6,8 +6,6 @@ var Sequelize = require("sequelize");
 const db = require("../models")
 
 
-
-
 router.get("/home", function(req, res) {
   res.send("Family Restaurant");
 });
@@ -31,10 +29,10 @@ router.get("/allVacations/", function(req, res) {
 
 //  -------- FAMILY RESTAURANTS ------------------
 
-router.get("/allRestaurant/", function(req, res) {
+router.get("/allRestaurants/", function(req, res) {
   // axios.get
   // Grab every document in the Articles collection
-  db.familyRestaurant.findAll({})
+  db.Restaurants.findAll({})
     .then(function(data) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(data);
@@ -89,6 +87,45 @@ router.get("/allMomsLaClasses", function(req,res) {
   });
 
 // -------------------------- FORUMS ---------------------------------
+
+// ----------- MOMS LA DONATE -------------------
+
+router.get("/allDonate", function(req,res) {
+  db.Donate.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
+
+  // ----------- RED TRI THINGS TO DO  -------------------
+
+router.get("/allRedTriTtd", function(req,res) {
+  db.RedTriTtd.findAll({})
+  .then(function(scrapeDb) {
+    res.json(scrapeDb);
+  })
+  .catch(function(err) {
+    res.json(err);
+
+  });
+  });
+
+  // ------------- KIDS GUIDE CALENDAR --------------
+
+  router.get("/allKidsGuideCal", function(req,res) {
+    db.KidsGuideCal.findAll({})
+    .then(function(scrapeDb) {
+      res.json(scrapeDb);
+    })
+    .catch(function(err) {
+      res.json(err);
+  
+    });
+    });
 
 // ---------------- Forums GETS ---------------------
 
@@ -255,43 +292,5 @@ function isLoggedIn(req, res, next) {
 
 
 
-// ----------- MOMS LA DONATE -------------------
-
-router.get("/allDonate", function(req,res) {
-  db.Donate.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
-
-  });
-  });
-
-  // ----------- MOMS LA THINGS TO DO  -------------------
-
-router.get("/allMomsLaTtd", function(req,res) {
-  db.MomsLaTtd.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
-
-  });
-  });
-
-  // ------------- LA PARENT CALENDAR OF EVENTS --------------
-
-  // router.get("/allLaParentEvents", function(req,res) {
-  //   db.LaParentEvents.findAll({})
-  //   .then(function(scrapeDb) {
-  //     res.json(scrapeDb);
-  //   })
-  //   .catch(function(err) {
-  //     res.json(err);
-  
-  //   });
-  //   });
 
 module.exports = router;

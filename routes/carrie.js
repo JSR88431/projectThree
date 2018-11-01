@@ -2,6 +2,7 @@ const router = require("express").Router();
 var cheerio = require("cheerio");
 var axios = require("axios");
 var db = require("../models");
+var moment = require('moment');
 
 
 // Redtri - Parenting - Dad Hacks
@@ -11,16 +12,23 @@ router.get("/scrapeRedTriHacks", function (req, res) {
 
     var $ = cheerio.load(response.data);
 
-    $(".item-body.fadeout").each(function (i, element) {
-      var title = $(element).find("a").text();
-      var link = $(element).find("a").attr("href");
-      console.log(title, link);
+    // $(".item-body.fadeout").each(function (i, element) {
+    //   var title = $(element).find("a").text();
+    //   var link = $(element).find("a").attr("href");
+    //   console.log(title, link);
 
-    if (title && link) {
+    $(".events-3-cols-grid").each(function (i, element) {
+      var title = $(element).find(".item.col-xs-3").find(".item-body").find("h2").find("a").text();
+      var link = $(element).find(".item.col-xs-3").find(".item-body").find("h2").find("a").attr("href");
+      var image = $(element).find(".item.col-xs-3").find(".wrapper-img").find("a").find("img").attr("src");
+    console.log(title, link, image);
+
+    if (title && link && image) {
 
       db.RedTriHacks.create({
       title: title,
       link: link,
+      image: image, 
       },
 
       function (err, inserted) {
@@ -48,7 +56,7 @@ router.get("/scrapeRedTriHacks", function (req, res) {
       });
   });
 
-  // // MOMS LA - CLASSES 
+  // // MOMS LA - CLASSES ---------------
 
   router.get("/scrapeMomsLaClasses", function (req, res) {
     // console.log("hit function")
@@ -96,7 +104,7 @@ router.get("/scrapeRedTriHacks", function (req, res) {
         });
     });
 
-     // // MOMS LA - DONATE 
+     // // MOMS LA - DONATE --------------------------------
 
   router.get("/scrapeDonate", function (req, res) {
     // console.log("hit function")
@@ -105,19 +113,15 @@ router.get("/scrapeRedTriHacks", function (req, res) {
       var $ = cheerio.load(response.data);
   
       $(".article-content").each(function (i, element) {
-        // WANT ONLY 1 TIME
-        var donateInfo = $(element).find(".p").find("span").text();
-        // REST TO SHOW TO DATABASE
         var title = $(element).find(".p3").find(".s1").find("b").text();
         var address = $(element).find(".p3").find("s1").text();
         var description = $(element).find(".p3").find("s1").find("b").text();
         var link = $(element).find(".p3").attr("href");
-        console.log(donateInfo, title, address, description, link);
+        console.log(title, address, description, link);
 
-        if (donateInfo && title  && address && description && link) {
+        if (title  && address && description && link) {
   
           db.Donate.create({
-            donateInfo: donateInfo,
             title: title, 
             address: address, 
             description: description,
@@ -149,21 +153,22 @@ router.get("/scrapeRedTriHacks", function (req, res) {
         });
     });
 
- // // MOMS LA - THINGS TO DO 
+ // // REDTRI THINGS TO DO ---------------------
 
- router.get("/scrapeMomsLaTtd", function (req, res) {
+ router.get("/scrapeRedTriTtd", function (req, res) {
  axios.get("http://redtri.com/things-to-do-with-kids/los-angeles/").then(function (response) {
 
     var $ = cheerio.load(response.data);
 
-    $(".events").each(function (i, element) {
-      var title = $(element).find(".item").find(".item-body").find(".h2").find("a").text();
-      var image = $(element).find(".item").find(".wrapper-img").attr("href");
-      var link = $(element).find(".item").find(".item-body").find("h2").find("a").attr("href");
+    $(".item.col-xs-3").each(function (i, element) {
+      var title = $(element).find(".item-body").find("h2").find("a").text();
+      var image = $(element).find(".wrapper-img").find("a").find("img").attr("src");
+      var link = $(element).find(".item-body").find("h2").find("a").attr("href");
+      console.log(title, image, link);
      
       if (title && image && link) {
 
-        db.MomsLaTtd.create({
+        db.RedTriTtd.create({
           title: title,
           image: image,
           link: link,
@@ -184,8 +189,8 @@ router.get("/scrapeRedTriHacks", function (req, res) {
 
 
 
-  router.get("/allMomsLaTtd", function (req, res) {
-    db.MomsLaTtd.findAll({})
+  router.get("/allRedTriTtd", function (req, res) {
+    db.RedTriTtd.findAll({})
       .then(function (scrapeDb) {
         res.json(scrapeDb);
       })
@@ -194,61 +199,57 @@ router.get("/scrapeRedTriHacks", function (req, res) {
       });
   });
 
-  // // LA PARENT EVENTS BY DATE -------------------------
+  // KIDS GUIDE CALENDAR   -------------------------
 
-  // var date = new Date();
-  // var formattedDate = moment(date).format("MM/DD/YYYY");
+  var date = new Date();
+  var formattedDate = moment(date).format("YYYY/MM/DD");
   
-  // var urls = {
-  //   home: `https://www.laparent.com/events/${formattedDate}`
-  // }
+  var urls = {
+    withDate: `http://kidsguidemagazine.com/date/${formattedDate}`
+  }
 
-
-//  router.get("/scrapeLaParentEvents", function (req, res) {
-//  axios.get("https://www.laparent.com/events/").then(function (response) {
+ router.get("/scrapeKidsGuideCal", function (req, res) {
+ axios.get(urls.withDate).then(function (response) {
  
-//      var $ = cheerio.load(response.data);
+     var $ = cheerio.load(response.data);
  
-//      $(".css-events-list").each(function (i, element) {
-//        var title = $(element).find(".event-item").find(".info").find("a").text();
-//        var location = $(element).find(".event-item").find(".info").find("i").text();
-//        var description = $(element).find(".event-item").find(".info").find(".descr").text();
-//        var image = $(element).find(".event-item").find(".image").find("a").find("href").find("img").attr("src");
-//        var link = $(element).find(".event-item").find(".info").find("h4").find("a").attr("href");
+     $(".post").each(function (i, element) {
+       var title = $(element).find("h4").find("a").text();
+       var description = $(element).find("h4").find(".entry").find("p").text();
+       var link = $(element).find("h4").find("a").attr("href");
+       console.log(title, description, link);
       
-//        if (title && location && image && description && link) {
+       if (title && description && link) {
  
-//          db.LaParentEvents.create({
-//            title: title, 
-//            location: location, 
-//            image: image,
-//            description: description, 
-//            link: link,
-//          },
-//            function (err, inserted) {
-//              if (err) {
-//                console.log(err);
-//              }
-//              else {
-//                console.log(inserted);
-//              }
-//            });
-//        }
-//      });
-//    }); 
-//      res.send("Scrape Complete");
-//    });
+         db.KidsGuideCal.create({
+           title: title, 
+           description: description, 
+           link: link,
+         },
+           function (err, inserted) {
+             if (err) {
+               console.log(err);
+             }
+             else {
+               console.log(inserted);
+             }
+           });
+       }
+     });
+   }); 
+     res.send("Scrape Complete");
+   });
  
  
  
-//    router.get("/allLaParentEvents", function (req, res) {
-//      db.LaParentEvents.findAll({})
-//        .then(function (scrapeDb) {
-//          res.json(scrapeDb);
-//        })
-//        .catch(function (err) {
-//          res.json(err);
-//        });
-//    });
+   router.get("/allKidsGuideCal", function (req, res) {
+     db.KidsGuideCal.findAll({})
+       .then(function (scrapeDb) {
+         res.json(scrapeDb);
+       })
+       .catch(function (err) {
+         res.json(err);
+       });
+   });
 
   module.exports = router;

@@ -5,7 +5,7 @@ var db = require("../models");
 
 // --------------- RED TRI FAMILY RESTAURANTS ------------------
 
-  router.get("/scrapeAllRestaurant", function(req, res) {
+  router.get("/scrapeAllRestaurants", function(req, res) {
     // Make a request via axios for the news section of `ycombinator`
     axios.get("http://redtri.com/family-restaurants/los-angeles/").then(function(response) {
       // Load the html body from axios into cheerio
@@ -20,7 +20,7 @@ var db = require("../models");
         // If this found element had both a title and a link
         if (title && link) {
           // Insert the data in the scrapedData db
-          db.familyRestaurant.create({
+          db.Restaurants.create({
             title: title,
             link: link
           },
@@ -45,7 +45,7 @@ var db = require("../models");
   });
   router.get("/allRestaurants", function(req, res) {
     // Grab every document in the Articles collection
-    db.familyRestaurant.findAll({})
+    db.Restaurants.findAll({})
       .then(function(familyRestaurant) {
         // If we were able to successfully find Articles, send them back to the client
         res.json(familyRestaurant);
