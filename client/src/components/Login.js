@@ -29,7 +29,7 @@ export default class Login extends Component {
       password: this.state.password
     })
     .then(function (response) {
-      console.log(response.body, "axios response")
+      console.log(response, "axios response")
     })
     .catch(function (error) {
       console.log(error)

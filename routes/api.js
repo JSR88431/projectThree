@@ -263,10 +263,8 @@ router.post("/topics/:catId", function (req, res) {
 });
 
 // Post a new Post to specific Topic
-router.post("/posts/:topicId", isLoggedIn, function (req, res) {
+router.post("/posts/:topicId/:userId", function (req, res) {
 
-    let postInfo = req.body;
-    console.log(postInfo)
 
   db.Post.create(req.body)
       .then(function (data) {
@@ -277,13 +275,16 @@ router.post("/posts/:topicId", isLoggedIn, function (req, res) {
       });
 });
 
+
+
+
 function isLoggedIn(req, res, next) {
 
     if (req.isAuthenticated())
 
         return next();
 
-    res.redirect('/signin');
+    res.json(false);
 
 }
 
