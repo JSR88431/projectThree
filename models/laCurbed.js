@@ -1,7 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
     var laCurbed = sequelize.define("laCurbed", {
         title: {
-            type: DataTypes.TEXT
+            type: DataTypes.STRING,
+            unique: true
         },
         description:{
             type:DataTypes.TEXT

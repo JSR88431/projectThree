@@ -1,8 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
   var KidsGuideCal= sequelize.define("KidsGuideCal", {
-      title: {
-          type: DataTypes.TEXT
-      },
+    title: {
+        type: DataTypes.STRING,
+        unique: true
+    },
       description:{
           type:DataTypes.TEXT
       },      
