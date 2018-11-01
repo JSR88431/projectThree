@@ -4,24 +4,22 @@ module.exports = function (sequelize, DataTypes) {
         //     type: DataTypes.STRING
         // },
 
-        // phone: {
-        //     type: DataTypes.STRING
-        // },
-        // description:{
-        //     type:DataTypes.TEXT
-        // },
-        // descriptionTwo:{
-        //     type:DataTypes.TEXT
-        // },
-        // address:{
-        //     type:DataTypes.STRING
-        // },        
-        // link:{
-        //     type:DataTypes.STRING
-        // },
-        image: {
-            type: DataTypes.STRING 
-        }
+        
+        description:{
+            type:DataTypes.TEXT
+        },
+        descriptionTwo:{
+            type:DataTypes.TEXT
+        },
+        address:{
+            type:DataTypes.STRING
+        },        
+        Phone:{
+            type:DataTypes.STRING
+        },
+        // image: {
+        //     type: DataTypes.STRING 
+        // }
     },
         {
         timestamps: false

@@ -44,6 +44,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
             }
           });
         }
+        
       });
     });
     // Send a "Scrape Complete" message to the browser
