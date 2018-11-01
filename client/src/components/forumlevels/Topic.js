@@ -8,8 +8,11 @@ class Topic extends React.Component {
     };
 
     componentDidMount() {
+
+        let topicId = this.props.topicId
+
         // after component loads, get all products from db
-        axios.get(`/api/topics/all`).then((response) => {
+        axios.get(`/api/topics/${topicId}`).then((response) => {
             // update state object with newest data
             this.setState({
                 results: response.data
@@ -24,7 +27,7 @@ class Topic extends React.Component {
             // create a route-able link for each item
             return (
                 <li className="list-group-item" key={item.id}>
-                    <a onClick={() => this.props.handleLevelChange("Post")}><h1>{item.title}</h1></a>
+                    <a onClick={(e) => this.props.handleLevelChange(e, "Post")} id={item.id}><h1>{item.title}</h1></a>
                     <p>Original Poster: {item.owner}</p>
                     <p>Number of Posts in Thread: {item.postNumber}</p>
                     <p>Last Post At: {item.updatedAt}</p>
@@ -34,6 +37,7 @@ class Topic extends React.Component {
 
         return (
             <div>
+                <button onClick={this.props.upOneLevel}>Up One Level</button>
                 <ul className="list-group">
                     {section}
                 </ul>
