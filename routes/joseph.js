@@ -15,14 +15,15 @@ var db = require("../models");
         // Save the text and href of each link enclosed in the current element
         var title = $(element).find(".item-body").find("h2").find("a").text();
         var link = $(element).find(".item-body").find("h2").find("a").attr("href");
-        // var image = $(element).find(".wrapper-img").find("a").find("img").attr("src");
-        console.log(title, link);
+        var image = $(element).find(".wrapper-img").find("a").find("img").attr("src");
+        ;
         // If this found element had both a title and a link
-        if (title && link) {
+        if (title && link && image) {
           // Insert the data in the scrapedData db
           db.Restaurants.create({
             title: title,
-            link: link
+            link: link,
+            image: image
           },
           function(err, inserted) {
             if (err) {

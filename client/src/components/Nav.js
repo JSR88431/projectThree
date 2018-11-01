@@ -20,13 +20,19 @@ class Nav extends React.Component {
                                 <a className="nav-link" href="/ThingsToDo">Things To Do</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Camp/Classes</a>
+                                <a className="nav-link" href="/Classes">Camp/Classes</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/Restaurant">Family Restaurant</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Parenting Advice</a>
+                                <a className="nav-link" href="/Vacation">Vacation Ideas</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/Dadhacks">Dad Hacks</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/Donate">Donate</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/Forum">Forum</a>
