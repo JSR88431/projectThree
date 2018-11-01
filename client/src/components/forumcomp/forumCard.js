@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from "axios";
 import Forum from '../Forum';
 
-export default class ForumCard extends React.Component {
+class ForumCard extends React.Component {
 
 
 
@@ -43,14 +43,14 @@ export default class ForumCard extends React.Component {
           value={this.props.forumInput}
           type="textarea" name="text" id="forumInput" />
         </FormGroup>
-        
-        
+                
         <Button
-        onClick={this.props.makeAPost}
-        >
+        onClick={this.props.makeAPost}>
         Submit
         </Button>
       </Form>
     );
   }
 }
+
+export default ForumCard;
