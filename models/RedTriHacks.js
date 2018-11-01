@@ -1,7 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
     var RedTriHacks = sequelize.define("RedTriHacks", {
         title: {
-            type: DataTypes.TEXT
+            type: DataTypes.STRING,
+            unique: true
         },
 
         link: {
