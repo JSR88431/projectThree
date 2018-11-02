@@ -1,51 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import "../Styles.css";
+import TopicCard from "../forumcomp/topicCard"
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-class Topic extends React.Component {
-  state = {
-    results: []
-  };
+const styles = {
+    fontSize: "125%",
+    marginTop: "10%",
+    lineHeight: "200%"
+};
 
-  componentDidMount() {
-    let topicId = this.props.topicId;
+const Topic = (props) => {
 
-    // after component loads, get all products from db
-    axios.get(`/api/topics/${topicId}`).then(response => {
-      // update state object with newest data
-      this.setState({
-        results: response.data
-      });
-    });
-  }
-
-  render() {
-    console.log(this.state.results);
-
-    let section = this.state.results.map(item => {
-      // create a route-able link for each item
-      return (
-        <li className="list-group-item" key={item.id}>
-          <a
-            onClick={e => this.props.handleLevelChange(e, "Post")}
-            id={item.id}
-          >
-            <h1>{item.title}</h1>
-          </a>
-          <p>Original Poster: {item.owner}</p>
-          <p>Number of Posts in Thread: {item.postNumber}</p>
-          <p>Last Post At: {item.updatedAt}</p>
-        </li>
-      );
+    let section = props.topicResults.map(item => {
+        // create a route-able link for each item
+        return (
+            <li className="list-group-item" key={item.id}>
+                <a
+                    onClick={e => props.handleLevelChange(e, "Post")}
+                    id={item.id}
+                >
+                    <h1>{item.title}</h1>
+                </a>
+                <p>Original Poster: {item.owner}</p>
+                <p>Number of Posts in Thread: {item.postNumber}</p>
+                <p>Last Post At: {item.updatedAt}</p>
+            </li>
+        );
     });
 
     return (
-      <div>
-        <button onClick={this.props.upOneLevel}>Up One Level</button>
-        <ul className="list-group">{section}</ul>
-      </div>
+        <div className="forum-element">
+            <Button onClick={props.upOneLevel}>Up One Level</Button>
+            <ul class="list-group">
+            {section}
+            </ul>
+            <TopicCard
+                postId={props.postId}
+                handleChange={props.handleChange}
+                forumInput={props.forumInput}
+                topicTitle={props.topicTitle}
+                renderLevel={props.renderLevel}
+                currentLevel={props.currentLevel}
+                makeATopic={props.makeATopic}
+            />
+        </div>
     );
-  }
 }
 
 export default Topic;
