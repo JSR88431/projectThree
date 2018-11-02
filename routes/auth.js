@@ -11,6 +11,14 @@ module.exports = function (app) {
         res.json(false)
     });
 
+    app.get('/signinsuccess', function(req, res) {
+        res.json(true)
+    });
+
+    app.get('/signinfailure', function(req, res) {
+        res.json(false)
+    });
+
     // app.get('/signin', authController.signin);
 
     // app.get('/signinfailure', authController.signinfailure);
@@ -40,11 +48,7 @@ module.exports = function (app) {
         passport.authenticate('local-signin', {
             successRedirect: '/signinsuccess',
 
-            failureRedirect: '/signinfailure',
-
-            // successFlash: 'Welcome!',
-
-            failureFlash: true
+            failureRedirect: '/signinfailure'
         }),
         function (req, res) {
             console.log(req.body, "req.body")
