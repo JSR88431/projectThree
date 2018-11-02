@@ -3,18 +3,30 @@ var passport = require('passport');
 
 module.exports = function (app) {
 
-    app.get('/signup', authController.signup);
+    app.get('/forum', function(req, res) {
+        res.json(true)
+    });
 
-    app.get('/signin', authController.signin);
+    app.get('/signupfail', function(req, res) {
+        res.json(false)
+    });
 
-    app.get('/signinfailure', authController.signinfailure);
-    app.get('/signinsuccess', authController.signinsuccess);
+    // app.get('/signin', authController.signin);
+
+    // app.get('/signinfailure', authController.signinfailure);
+
+    // app.get('/signinsuccess', authController.signinsuccess);
+
+    // app.get('/signupsuccess', authController.signupsuccess);
+
 
     app.post('/signup', passport.authenticate('local-signup', {
 
-        successRedirect: '/dashboard',
+        successRedirect: '/forum',
 
-        failureRedirect: '/signup'
+        failureRedirect: '/signupfail',
+        
+        failureFlash : true
 
     }
 

@@ -10,7 +10,8 @@ export default class Signup extends Component {
     this.state = {
       email: "",
       password: "",
-      username: ""
+      username: "",
+      taken: false
     };
   }
 
@@ -35,7 +36,12 @@ export default class Signup extends Component {
         password: this.state.password
       })
       .then(response => {
-
+        if (response.data === true) {
+          this.setState({ taken: false })
+          this.props.history.push("/forum")
+        } else if (response.data === false) {
+          this.setState({ taken: true })
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -44,6 +50,15 @@ export default class Signup extends Component {
   }
 
   render() {
+
+    let error;
+
+    if (this.state.taken === true) {
+      error = <div>
+        <p>That username or e-mail is already in use.</p>
+      </div>
+    }
+
     return (
       <div className="Signup">
         <form onSubmit={this.handleSubmit}>
@@ -82,6 +97,7 @@ export default class Signup extends Component {
             Signup
           </Button>
         </form>
+        {error}
       </div>
     );
   }

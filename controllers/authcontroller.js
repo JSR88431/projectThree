@@ -1,11 +1,22 @@
 var exports = module.exports = {}
  
-exports.signup = function(req, res) {
+// exports.signup = function(req, res) {
  
-    res.json('this should be the signup');
+//     res.redirect('/Signup');
  
-}
+// }
 
+// exports.signupsuccess = function(req, res) {
+ 
+//     res.json(true);
+ 
+// }
+
+// exports.signupfailure = function(req, res) {
+ 
+//     res.json(true);
+ 
+// }
 
 exports.signin = function(req, res) {
  
