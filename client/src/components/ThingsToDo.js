@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
-import Nav from "./Nav.js";
+
+import MapContainer from "./MapContainer.js"
+import { Container, Row, Col } from 'reactstrap';
+
 
 class ThingsToDo extends React.Component {
     state = {
@@ -17,8 +20,16 @@ class ThingsToDo extends React.Component {
         });
       }
       render() {
+
+       
         return (
+    
+          
+     
+          
+          <Container>
           <ul className="list-group">
+           <MapContainer />
             {
               this.state.results.map((item) => {
                 // create a route-able link for each product
@@ -42,6 +53,7 @@ class ThingsToDo extends React.Component {
               })
             }
           </ul>
+          </Container>
         );
       }
 }

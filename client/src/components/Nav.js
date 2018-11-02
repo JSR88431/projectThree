@@ -44,7 +44,7 @@ class Nav extends React.Component {
                                 <a className="nav-link" href="/Signup">Signup</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/Search">Search</a>
+                                <a className="nav-link" href="/ThingsToDo">ThingsToDo</a>
                             </li>
 
 
