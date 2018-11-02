@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from "axios";
 // import "./Login.css";
 
 export default class Signup extends Component {
@@ -8,12 +9,13 @@ export default class Signup extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      username: ""
     };
   }
 
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+    return this.state.email.length > 0 && this.state.password.length > 0 && this.state.username.length > 0
   }
 
   handleChange = event => {
@@ -23,13 +25,37 @@ export default class Signup extends Component {
   }
 
   handleSubmit = event => {
+
     event.preventDefault();
+
+    axios
+      .post(`/signup`, {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
   }
 
   render() {
     return (
       <div className="Signup">
         <form onSubmit={this.handleSubmit}>
+          <FormGroup controlId="username" bsSize="large">
+            <ControlLabel>Username</ControlLabel>
+            <FormControl
+              autoFocus
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
             <FormControl

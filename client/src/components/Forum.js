@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import NavTabs from "./NavTabs";
 import Category from "./forumlevels/Category";
 import Topic from "./forumlevels/Topic";
 import Post from "./forumlevels/Post";

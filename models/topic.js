@@ -18,6 +18,10 @@ module.exports = function(sequelize, Sequelize) {
  
         postNumber: {
             type: Sequelize.INTEGER
+        },
+
+        ownerId: {
+            type: Sequelize.INTEGER
         }
 
  
