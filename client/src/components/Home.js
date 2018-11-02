@@ -58,6 +58,14 @@ class Home extends React.Component {
       console.log(this.state.results);
     });
 
+    axios.get("/john/scrapeLaCurbed").then((response) => {
+      console.log(response.data);
+      this.setState({
+        results: response.data
+      });
+      console.log(this.state.results);
+    });
+
     
   }
 
