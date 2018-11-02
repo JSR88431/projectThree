@@ -1,0 +1,48 @@
+import React from "react";
+import axios from "axios";
+
+
+class CalendarCard extends React.Component {
+  state = {
+    results: []
+  };
+
+//   componentDidMount() {
+//     // after component loads, get all products from db
+//     axios.get("/carrie/allMomsLaClasses").then((response) => {
+//       console.log(response.data);
+//       this.setState({
+//         results: response.data
+//       });
+//       console.log(this.state.results);
+//     });
+//   }
+
+
+  render() {
+    return (
+      <div className="topMargin">
+       <div className="container py-3">
+              <div className="card">
+                <div className="row ">
+                  <div className="col-md-4">
+                    <img src={item.image} className="w-100"></img>
+                  </div>
+                  <div className="col-md-8 px-3">
+                    <div className="card-block px-3 mt-3">
+                      <h4 className="card-title">{item.title}</h4>
+                      <p className="card-text">item.date</p>
+                            <br/>
+                      <p className="card-text">{item.description}.</p>
+                      <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+      </div>
+    );
+  }
+}
+export default CalendarCard;

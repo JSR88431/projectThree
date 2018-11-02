@@ -14,7 +14,7 @@ import Donate from "./components/Donate.js";
 import Classes from "./components/Classes.js";
 import Dadhacks from "./components/Dadhacks.js";
 // import Forum from "./components/Forum.js";
-
+import Search from "./components/Search"
 
 class App extends React.Component {
 
@@ -41,6 +41,7 @@ class App extends React.Component {
       <Route exact path="/Donate" component={Donate} />
       <Route exact path="/Classes" component={Classes} />
       <Route exact path="/Dadhacks" component={Dadhacks} />
+      <Route exact path="/Search" component={Search} />
     </div>
   </Router>
  </div>
