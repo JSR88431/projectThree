@@ -213,6 +213,29 @@ class Forum extends React.Component {
         //   });
     };
 
+    deleteAPost = (e) => {
+
+        let specificPost = e.target.id
+
+        axios
+            .delete(`/api/posts/${specificPost}`)
+            .then(response => {
+
+                axios.get(`/api/posts/${this.state.postId}`).then((res) => {
+                    console.log(res)
+
+                    this.setState({
+                        postResults: res.data,
+                        postInput: ""
+                    });
+
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
     renderLevel = () => {
         if (this.state.currentLevel === "Category") {
             return (
@@ -254,6 +277,7 @@ class Forum extends React.Component {
                     currentLevel={this.state.currentLevel}
                     makeAPost={this.makeAPost}
                     postResults={this.state.postResults}
+                    deleteAPost={this.deleteAPost}
                 />
             );
         }

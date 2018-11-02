@@ -308,7 +308,7 @@ router.delete("/topics/:topicId", function (req, res) {
 });
 
 // DELETE post
-router.delete("/posts/:postId", function (req, res) {
+router.delete("/posts/:postId", isLoggedIn, function (req, res) {
 
     db.Post.destroy({
         where: {
