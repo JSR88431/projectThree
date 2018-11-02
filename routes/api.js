@@ -125,6 +125,20 @@ router.get("/allRedTriTtd", function(req,res) {
     });
     });
 
+// ----------- DAD FORUM ---------------------------
+
+router.get("/allDadForum", function(req,res) {
+    db.DadForum.findAll({})
+    .then(function(scrapeDb) {
+      res.json(scrapeDb);
+    })
+    .catch(function(err) {
+      res.json(err);
+  
+    });
+    });
+
+
 // ---------------- Forums GETS ---------------------
 
 

@@ -23,7 +23,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
         var address = $(element).find("div.c-mapstack__address").text();
         var regex = /\r?\n|\r/g;
         address = address.replace(regex, "");
-        console.log(title, description, address);
+        // console.log(title, description, address);
       
         // // var image = $(element).find(".c-mapstack_card-hed").find(".c-entry-content").find(".c-mapstack_video").find(".c-video-embed--media").find(".instagram-media.instagram-media-rendered").attr("src");
         // // console.log(image);
