@@ -29,12 +29,12 @@ const Post = (props) => {
             <Button onClick={props.upOneLevel}>Up One Level</Button>
             <ul className="list-group">{section}</ul>
             <ForumCard
-                postId={props.props.postId}
-                handleChange={props.props.handleChange}
-                forumInput={props.props.forumInput}
-                renderLevel={props.props.renderLevel}
-                currentLevel={props.props.currentLevel}
-                makeAPost={props.props.makeAPost}
+                postId={props.postId}
+                handleChange={props.handleChange}
+                postInput={props.postInput}
+                renderLevel={props.renderLevel}
+                currentLevel={props.currentLevel}
+                makeAPost={props.makeAPost}
             />
         </div>
     );

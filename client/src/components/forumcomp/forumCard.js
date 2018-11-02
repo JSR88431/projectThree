@@ -12,8 +12,8 @@ const ForumCard = (props) => {
           <Label for="exampleText">Text Area</Label>
           <Input 
           onChange={props.handleChange}
-          value={props.forumInput}
-          type="textarea" name="text" id="forumInput" />
+          value={props.postInput}
+          type="textarea" name="text" id="postInput" />
         </FormGroup>
                 
         <Button

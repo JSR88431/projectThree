@@ -17,7 +17,7 @@ class Forum extends React.Component {
         currentLevel: "Category",
         topicId: "",
         postId: "",
-        forumInput: "",
+        postInput: "",
         topicTitle: ""
     };
 
@@ -71,7 +71,10 @@ class Forum extends React.Component {
 
     upOneLevel = () => {
         if (this.state.currentLevel === "Topic") {
-            this.setState({ currentLevel: "Category" });
+            this.setState({ 
+                currentLevel: "Category",
+                topicId: ""
+            });
             // axios.get("/api/categories/all").then(response => {
             //     this.setState({
             //         results: response.data
@@ -79,7 +82,10 @@ class Forum extends React.Component {
             // });
         }
         if (this.state.currentLevel === "Post") {
-            this.setState({ currentLevel: "Topic" });
+            this.setState({ 
+                currentLevel: "Topic",
+                postId: "" 
+            });
 
             axios.get("/api/topics/all").then(response => {
                 this.setState({
@@ -91,27 +97,27 @@ class Forum extends React.Component {
 
 
     makeAPost = () => {
-        console.log("current level card: " + this.state.currentLevel);
+        console.log("makes a post")
         let postId = this.state.postId;
-        let userId = "2";
+        let userId = "1";
 
         axios
             .post(`/api/posts/${postId}/${userId}`, {
                 author: "Anthony",
-                body: this.state.forumInput,
+                body: this.state.postInput,
                 TopicId: postId,
                 UserId: userId
             })
             .then(response => {
-                let postId = this.state.postId
-                // after component loads, get all products from db
+
                 axios.get(`/api/posts/${postId}`).then((res) => {
                     console.log(res)
-                    // update state object with newest data
+
                     this.setState({
-                        results: res.data
+                        postResults: res.data,
+                        postInput: ""
                     });
-                    console.log(this)
+
                 });
             })
             .catch(function (error) {
@@ -138,7 +144,7 @@ class Forum extends React.Component {
             axios
                 .post(`/api/posts/${postId}/${userId}`, {
                     author: "Anthony",
-                    body: this.state.forumInput,
+                    body: this.state.postInput,
                     TopicId: postId,
                     UserId: userId
                 })
@@ -185,7 +191,7 @@ class Forum extends React.Component {
         // axios
         //   .post(`/api/posts/${postId}/${userId}`, {
         //     author: "Anthony",
-        //     body: this.state.forumInput,
+        //     body: this.state.postInput,
         //     TopicId: postId,
         //     UserId: userId
         //   })
@@ -206,35 +212,6 @@ class Forum extends React.Component {
         //   });
     };
 
-    makeAPost = () => {
-        console.log("current level card: " + this.state.currentLevel);
-        let postId = this.state.postId;
-        let userId = "2";
-
-        axios
-            .post(`/api/posts/${postId}/${userId}`, {
-                author: "Anthony",
-                body: this.state.forumInput,
-                TopicId: postId,
-                UserId: userId
-            })
-            .then(response => {
-                let postId = this.state.postId
-                // after component loads, get all products from db
-                axios.get(`/api/posts/${postId}`).then((res) => {
-                    console.log(res)
-                    // update state object with newest data
-                    this.setState({
-                        results: res.data
-                    });
-                    console.log(this)
-                });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    };
-
     renderLevel = () => {
         if (this.state.currentLevel === "Category") {
             return (
@@ -244,7 +221,7 @@ class Forum extends React.Component {
                     // handleChange={this.handleChange}
                     // topicId={this.state.topicId}
                     // upOneLevel={this.upOneLevel}
-                    // forumInput={this.state.forumInput}
+                    // postInput={this.state.postInput}
                     // makeATopic={this.makeATopic}
                     // currentLevel={this.state.currentLevel}
                 />
@@ -258,7 +235,7 @@ class Forum extends React.Component {
                     handleChange={this.handleChange}
                     topicId={this.state.topicId}
                     upOneLevel={this.upOneLevel}
-                    forumInput={this.state.forumInput}
+                    postInput={this.state.postInput}
                     makeATopic={this.makeATopic}
                     topicResults={this.state.topicResults}
                 />
@@ -270,7 +247,7 @@ class Forum extends React.Component {
                     postId={this.state.postId}
                     upOneLevel={this.upOneLevel}
                     handleChange={this.handleChange}
-                    forumInput={this.state.forumInput}
+                    postInput={this.state.postInput}
                     topicTitle={this.state.topicTitle}
                     renderLevel={this.renderLevel}
                     currentLevel={this.state.currentLevel}

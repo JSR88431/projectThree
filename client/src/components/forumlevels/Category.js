@@ -27,7 +27,7 @@ const Category = (props) => {
 
   return (
     <div className="col-lg-4 forum-element" style={styles}>
-        <ul class="list-group">
+        <ul className="list-group">
         {section}
         </ul>
     </div>
