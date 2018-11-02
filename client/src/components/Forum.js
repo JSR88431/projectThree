@@ -71,7 +71,7 @@ class Forum extends React.Component {
 
     upOneLevel = () => {
         if (this.state.currentLevel === "Topic") {
-            this.setState({ 
+            this.setState({
                 currentLevel: "Category",
                 topicId: ""
             });
@@ -82,9 +82,9 @@ class Forum extends React.Component {
             // });
         }
         if (this.state.currentLevel === "Post") {
-            this.setState({ 
+            this.setState({
                 currentLevel: "Topic",
-                postId: "" 
+                postId: ""
             });
 
             axios.get("/api/topics/all").then(response => {
@@ -137,14 +137,12 @@ class Forum extends React.Component {
 
             console.log("the response: " + response.data)
             let postId = response.data
-            this.setState({ postId: postId })
-
             let userId = "2";
 
             axios
                 .post(`/api/posts/${postId}/${userId}`, {
                     author: "Anthony",
-                    body: this.state.postInput,
+                    body: this.state.forumInput,
                     TopicId: postId,
                     UserId: userId
                 })
@@ -155,7 +153,10 @@ class Forum extends React.Component {
                         console.log(res)
                         // update state object with newest data
                         this.setState({
-                            results: res.data
+                            postResults: res.data,
+                            currentLevel: "Post",
+                            postId: postId,
+                            postInput: ""
                         });
                         console.log(this)
                     });
@@ -218,12 +219,12 @@ class Forum extends React.Component {
                 <Category
                     handleLevelChange={this.handleLevelChange}
                     categoryResults={this.state.categoryResults}
-                    // handleChange={this.handleChange}
-                    // topicId={this.state.topicId}
-                    // upOneLevel={this.upOneLevel}
-                    // postInput={this.state.postInput}
-                    // makeATopic={this.makeATopic}
-                    // currentLevel={this.state.currentLevel}
+                // handleChange={this.handleChange}
+                // topicId={this.state.topicId}
+                // upOneLevel={this.upOneLevel}
+                // postInput={this.state.postInput}
+                // makeATopic={this.makeATopic}
+                // currentLevel={this.state.currentLevel}
                 />
             );
         }

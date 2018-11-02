@@ -35,7 +35,7 @@ const Topic = (props) => {
             <ul class="list-group">
             {section}
             </ul>
-            {/* <TopicCard
+            <TopicCard
                 postId={props.postId}
                 handleChange={props.handleChange}
                 forumInput={props.forumInput}
@@ -43,7 +43,7 @@ const Topic = (props) => {
                 renderLevel={props.renderLevel}
                 currentLevel={props.currentLevel}
                 makeATopic={props.makeATopic}
-            /> */}
+            />
         </div>
     );
 }
