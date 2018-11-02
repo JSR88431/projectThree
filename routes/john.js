@@ -13,7 +13,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
       $(".c-mapstack__card").each(function(i, element) {
         // Save the text and href of each link enclosed in the current element
         var title = $(element).find("h1").text();
-        console.log(title);
+        // console.log(title);
         var link = $(element).find("a").eq(1).attr("href");
         var description = $(element).find("p").eq(0).text();
         var descriptionTwo = $(element).find("p").eq(1).text();
@@ -40,7 +40,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
             }
             else {
               // Otherwise, log the inserted data
-              console.log(inserted);
+              // console.log(inserted);
             }
           });
         }
