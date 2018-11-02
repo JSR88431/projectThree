@@ -19,17 +19,22 @@ class ThingsToDo extends React.Component {
           });
         });
       }
-      render() {
 
-       
+      mapStyle = {
+        display: "block",
+        height: "50%",
+        width: "50%"
+      }
+
+      render() {
         return (
-    
-          
-     
-          
-          <Container>
-          <ul className="list-group">
-           <MapContainer />
+          <div>
+            <div style={this.mapStyle}>
+               <MapContainer />
+            </div>
+            <div>
+          {/* <ul style={this.ulStyle} className="list-group">
+
             {
               this.state.results.map((item) => {
                 // create a route-able link for each product
@@ -52,9 +57,13 @@ class ThingsToDo extends React.Component {
                 );
               })
             }
-          </ul>
-          </Container>
+               </ul> */}
+            </div>
+          </div>
+          
         );
+        
       }
+      
 }
 export default ThingsToDo;
