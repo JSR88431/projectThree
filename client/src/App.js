@@ -28,13 +28,15 @@ class App extends React.Component {
   <div>
   <Router>
     <div className="container">
+
       <Route exact path="/forum" component={Forum} />
       <Route exact path="/categories/:catname" component={Forum} />
       {/* <Route exact path="/product/:id" component={Product} /> */}
       <Nav/>
+      
       <Route exact path="/Login" component={Login} />
       <Route exact path="/Signup" component={Signup} />
-      <Route exact path="/Home" component={Home} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/Restaurant" component={Restaurant} />
       <Route exact path="/ThingsToDo" component={ThingsToDo} />
       <Route exact path="/Vacation" component={Vacation} />
