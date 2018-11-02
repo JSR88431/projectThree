@@ -14,6 +14,10 @@ module.exports = function(sequelize, Sequelize) {
  
         body: {
             type: Sequelize.TEXT
+        },
+
+        ownerId: {
+            type: Sequelize.INTEGER
         }
 
  

@@ -22,11 +22,14 @@ module.exports = function (passport, user) {
     });
 
     passport.use('local-signup', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-        function (req, email, password, done) {
+        function (req, username, password, done) {
+
+            console.log(req.body)
+
+            let email = req.body.email
+
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
@@ -40,22 +43,38 @@ module.exports = function (passport, user) {
                         message: 'That email is already taken'
                     });
                 } else {
-                    var userPassword = generateHash(password);
-                    var data = {
-                        email: email,
-                        password: userPassword,
-                        firstname: req.body.firstname,
-                        lastname: req.body.lastname
-                    };
-                    User.create(data).then(function (newUser, created) {
-                        if (!newUser) {
-                            return done(null, false);
+                    User.findOne({
+                        where: {
+                            username: username
                         }
-                        if (newUser) {
-                            return done(null, newUser);
+                    }).then(function (user) {
+                        if (user) {
+                            return done(null, false, {
+                                message: 'That username is already taken'
+                            })
+                        } else {
+                            var userPassword = generateHash(password);
+                            var data = {
+                                email: email,
+                                password: userPassword,
+                                // firstname: firstname,
+                                // lastname: lastname,
+                                username: username
+                            };
+                            User.create(data).then(function (newUser, created) {
+                                if (!newUser) {
+                                    return done(null, false);
+                                }
+                                if (newUser) {
+                                    return done(null, newUser);
+                                }
+                            });
                         }
-                    });
+
+                    })
                 }
+
+
             });
         }
     ));

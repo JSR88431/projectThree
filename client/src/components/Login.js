@@ -10,7 +10,8 @@ export default class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      logInError: false
     };
   }
   validateForm() {
@@ -29,8 +30,13 @@ export default class Login extends Component {
       email: this.state.email,
       password: this.state.password
     })
-    .then(function (response) {
-      console.log(response, "axios response")
+    .then((response) => {
+      if (response.data === true) {
+        this.setState({ logInError: false })
+        this.props.history.push("/forum")
+      } else if (response.data === false) {
+        this.setState({ logInError: true })
+      }
     })
     .catch(function (error) {
       console.log(error)
@@ -39,6 +45,15 @@ export default class Login extends Component {
   }
 
   render() {
+
+    let error;
+
+    if (this.state.logInError === true) {
+      error = <div>
+        <p>Incorrect e-mail address or password.</p>
+      </div>
+    }
+
     return (
       <div className="Login topMargin">
         <form onSubmit={this.handleSubmit}>
@@ -68,6 +83,7 @@ export default class Login extends Component {
             Login
           </Button>
         </form>
+        {error}
       </div>
     );
   }
