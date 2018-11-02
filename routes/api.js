@@ -288,6 +288,42 @@ function isLoggedIn(req, res, next) {
 
 }
 
+// ----- Forum DELETEs
+
+
+// DELETE topic
+router.delete("/topics/:topicId", function (req, res) {
+
+  db.Topic.destroy({
+      where: {
+          id: req.params.topicId
+      }
+  })
+      .then(function (data) {
+          res.json(data);
+      })
+      .catch(function (err) {
+          res.json(err);
+      });
+});
+
+// DELETE post
+router.delete("/posts/:postId", function (req, res) {
+
+    db.Post.destroy({
+        where: {
+            id: req.params.postId
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+  });
+
+
 // ---------- END FORUM SECTION ----------
 
 
