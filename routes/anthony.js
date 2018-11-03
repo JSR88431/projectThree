@@ -20,7 +20,9 @@ router.get("/scrapeDadForum", function (req, res) {
         db.Category.create({
           title: title,
           description: description,
-        })
+        }, {
+        logging: false}
+        )
       }
     });
   });
