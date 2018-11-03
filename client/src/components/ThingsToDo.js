@@ -14,6 +14,14 @@ class ThingsToDo extends React.Component {
           this.setState({
             results: response.data
           });
+
+          axios.get("/carrie/scrapeRedTriTtd").then((response) => {
+            console.log(response.data);
+            this.setState({
+              results: response.data
+            });
+            console.log(this.state.results);
+          });
         });
       }
       render() {
