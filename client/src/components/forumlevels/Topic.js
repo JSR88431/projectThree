@@ -17,8 +17,10 @@ const Topic = (props) => {
         return (
             <li className="list-group-item" key={item.id}>
                 <a
+                    href="#"
                     onClick={e => props.handleLevelChange(e, "Post")}
                     id={item.id}
+                    txt={item.title}
                 >
                     <h1>{item.title}</h1>
                 </a>
@@ -32,7 +34,7 @@ const Topic = (props) => {
     return (
         <div className="forum-element">
             <Button onClick={props.upOneLevel}>Up One Level</Button>
-            <ul class="list-group">
+            <ul className="list-group">
             {section}
             </ul>
             <TopicCard

@@ -3,7 +3,7 @@ var passport = require('passport');
 
 module.exports = function (app) {
 
-    app.get('/forum', function(req, res) {
+    app.get('/signupsuccess', function(req, res) {
         res.json(true)
     });
 
@@ -30,7 +30,7 @@ module.exports = function (app) {
 
     app.post('/signup', passport.authenticate('local-signup', {
 
-        successRedirect: '/forum',
+        successRedirect: '/signupsuccess',
 
         failureRedirect: '/signupfail',
         

@@ -21,18 +21,24 @@ class Forum extends React.Component {
     };
 
     componentDidMount() {
+        console.log("component did mount")
         // after component loads, get all products from db
-        axios.get("/api/categories/all").then(response => {
-            this.setState({
-                categoryResults: response.data
-            });
-        });
 
-        axios.get("/api/topics/all").then(response => {
-            this.setState({
-                topicResults: response.data
-            });
-        });
+        axios.get("/api/categories/all").then((response) => {
+
+            if (response.data.length === 0) {
+                axios.get("/anthony/scrapeDadForum").then(() => {
+                    axios.get("/api/categories/all").then((response) => {
+                        this.setState({ categoryResults: response.data})
+                    })
+                })            
+            }
+
+            else {
+            this.setState({ categoryResults: response.data})
+            }
+
+        })
 
     }
 
@@ -48,14 +54,28 @@ class Forum extends React.Component {
 
     handleLevelChange = (e, level) => {
         if (this.state.currentLevel === "Category") {
-            this.setState({ currentLevel: level, topicId: e.currentTarget.id });
+            let topicID = e.currentTarget.id
+            axios.get(`/api/topics/${topicID}`).then(response => {
+                // update state object with newest data
+
+                this.setState({
+                    topicResults: response.data,
+                    currentLevel: level,
+                    topicId: topicID
+                });
+
+            });
         }
         if (this.state.currentLevel === "Topic") {
             let postId = e.currentTarget.id
-            this.setState({ currentLevel: level, postId: e.currentTarget.id });
+            let topictitle = e.currentTarget.getAttribute('txt')
+            console.log(e.currentTarget, "e.currenttarget")
+            console.log(e.target, "e.target")
+            console.log(topictitle, "topictitle")
+            this.setState({ currentLevel: level, postId: e.currentTarget.id, topicTitle: topictitle });
             // after component loads, get all products from db
             axios.get(`/api/posts/${postId}`).then(response => {
-                // update state object with newest data
+                // update state object with newest dat
 
                 this.setState({
                     postResults: response.data
@@ -81,14 +101,12 @@ class Forum extends React.Component {
             // });
         }
         if (this.state.currentLevel === "Post") {
-            this.setState({
-                currentLevel: "Topic",
-                postId: ""
-            });
 
-            axios.get("/api/topics/all").then(response => {
+            axios.get(`/api/topics/${this.state.topicId}`).then(response => {
                 this.setState({
-                    topicResults: response.data
+                    topicResults: response.data,
+                    currentLevel: "Topic",
+                    postId: ""
                 });
             });
         }
@@ -101,13 +119,17 @@ class Forum extends React.Component {
         let userId = "1";
 
         axios
-            .post(`/api/posts/${postId}/${userId}`, {
-                author: "Anthony",
+            .post(`/api/posts/${postId}`, {
                 body: this.state.postInput,
                 TopicId: postId,
                 UserId: userId
             })
             .then(response => {
+                let resInfo = JSON.stringify(response)
+                console.log("post response: " + resInfo)
+                if (response.data === false) {
+                    return this.props.history.push("/Login")
+                }
 
                 axios.get(`/api/posts/${postId}`).then((res) => {
                     console.log(res)
@@ -129,21 +151,20 @@ class Forum extends React.Component {
         let topicId = this.state.topicId
 
         axios.post(`/api/topics/${topicId}`, {
-            owner: "Anthony",
             title: this.state.topicTitle,
             CategoryId: topicId
         }).then((response) => {
 
+            if (response.data === false) {
+                return this.props.history.push("/Login")
+            }
             console.log("the response: " + response.data)
             let postId = response.data
-            let userId = "2";
 
-            axios
-                .post(`/api/posts/${postId}/${userId}`, {
-                    author: "Anthony",
+
+            axios.post(`/api/posts/${postId}`, {
                     body: this.state.forumInput,
-                    TopicId: postId,
-                    UserId: userId
+                    TopicId: postId
                 })
                 .then(response => {
 
