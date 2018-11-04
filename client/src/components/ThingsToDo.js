@@ -4,7 +4,7 @@ import Nav from "./Nav.js";
 // import GoogleMapsContainer from './GoogleMapsContainer.js'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, Container, Row, Col } from 'reactstrap';
-import Geocode from "react-geocode";
+// import Geocode from "react-geocode";
 
 class ThingsToDo extends React.Component {
     state = {

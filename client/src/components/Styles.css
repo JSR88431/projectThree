@@ -2,8 +2,16 @@
     color: white;
 }
 
+.navbar-brand {
+    font-family: marker;
+}
+
+.nav-link {
+    font-family: american typewriter; 
+}
+
 nav{
-    background-color: black;
+    background-color:slategrey;
 }
 
 .topMargin{
