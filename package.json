@@ -39,6 +39,7 @@
     "passport-local": "^1.0.0",
     "react-bootstrap": "^0.32.4",
     "react-calendar": "^2.17.5",
+    "react-geocode": "^0.1.2",
     "react-google-maps": "^9.4.5",
     "reactstrap": "^6.5.0",
     "request": "^2.88.0",

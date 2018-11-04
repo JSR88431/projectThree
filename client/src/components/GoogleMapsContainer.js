@@ -48,14 +48,20 @@ export class GoogleMapsContainer extends React.Component {
         style = { style }
         google = { this.props.google }
         onClick = { this.onMapClick }
-        zoom = { 14 }
-        initialCenter = {{ lat: 39.648209, lng: -75.711185 }}
+        zoom = { 10 }
+        initialCenter = {{ lat: 34.201630, lng: -118.212140 }}
       >
         <Marker
           onClick = { this.onMarkerClick }
           title = { 'Changing Colors Garage' }
-          position = {{ lat: 39.648209, lng: -75.711185 }}
+          position = {{ lat: 34.155338, lng: -118.167236 } }
           name = { 'Changing Colors Garage' }
+        />
+         <Marker
+          onClick = { this.onMarkerClick }
+          title = { 'Changing Colors Garage' }
+          position = {{ lat: 34.201630, lng: -118.212140 } }
+          name = { 'title' }
         />
         <InfoWindow
           marker = { this.state.activeMarker }

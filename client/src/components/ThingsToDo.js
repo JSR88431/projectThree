@@ -4,6 +4,7 @@ import Nav from "./Nav.js";
 import GoogleMapsContainer from './GoogleMapsContainer.js'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, Container, Row, Col } from 'reactstrap';
+import Geocode from "react-geocode";
 
 class ThingsToDo extends React.Component {
     state = {
@@ -20,12 +21,14 @@ class ThingsToDo extends React.Component {
     componentDidMount() {
         // after component loads, get all products from db
         axios.get("/john/allLaCurbed").then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           this.setState({
             results: response.data
           });
         });
       }
+
+      
      render() {
         return (
           <div>
@@ -33,6 +36,14 @@ class ThingsToDo extends React.Component {
             <Col>
             <div className="topMargin">
             {this.state.results.map(item => {
+              Geocode.fromAddress(item.address).then(
+                response => {
+                  let geoResponse = response;
+
+                  console.log(geoResponse);
+                  
+                     }             
+                  )
                 return (
                 <div className="py-3">
                   <div className="card">
@@ -48,21 +59,18 @@ class ThingsToDo extends React.Component {
                           <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
                         </div>
                       </div>
-    
                     </div>
                   </div>
                 </div>
                 );
-                
               })}
           </div>
-
-
-
-        
           </Col>
           <Col >
-          <GoogleMapsContainer/>
+          <GoogleMapsContainer
+            
+          
+          />
           </Col>
           </Row>
        
