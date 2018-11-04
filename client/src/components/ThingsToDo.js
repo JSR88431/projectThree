@@ -1,13 +1,22 @@
 import React from "react";
 import axios from "axios";
 import Nav from "./Nav.js";
-import MapContainer from './MapContainer.js'
+import GoogleMapsContainer from './GoogleMapsContainer.js'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button, Container, Row, Col } from 'reactstrap';
 
 class ThingsToDo extends React.Component {
     state = {
-      results: []
+      results: [],
+      title: "poop"
     };
+    
 
+    style = {
+      width: '30%',
+      height: '30%',
+      
+    }
     componentDidMount() {
         // after component loads, get all products from db
         axios.get("/john/allLaCurbed").then((response) => {
@@ -17,67 +26,50 @@ class ThingsToDo extends React.Component {
           });
         });
       }
-      render() {
-       
+     render() {
         return (
           <div>
-          <MapContainer />
-          
-          <ul className="list-group">
-            {
-              this.state.results.map((item) => {
-                // create a route-able link for each product
+          <Row>
+            <Col>
+            <div className="topMargin">
+            {this.state.results.map(item => {
                 return (
-                  <li className="list-group-item" value={item.id}>
-                  <h2>{item.title}</h2>
-                    {item.phone}
-                      <strong>{item.description}</strong>
-                        <br />
-                         <strong>{item.descriptionTwo}</strong> 
-                            <br />
-                          <div id='address' value={item.id}>{item.address}</div>
-                           <br />
-                          {item.link}
-                  </li>
+                <div className="py-3">
+                  <div className="card">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <img src={item.image} className="w-100"></img>
+                      </div>
+                      <div className="col-md-8 px-3">
+                        <div className="card-block px-3 mt-3">
+                          <h4 className="card-title">{item.title}</h4>
+                          <p className="card-text">{item.description}.</p>
+                          <p className="card-text">{item.address}.</p>
+                          <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
+                        </div>
+                      </div>
+    
+                    </div>
+                  </div>
+                </div>
                 );
-              })
-            }
-          </ul>
+                
+              })}
           </div>
+
+
+
+        
+          </Col>
+          <Col >
+          <GoogleMapsContainer/>
+          </Col>
+          </Row>
+       
+         
+         </div>
         );
       }
-}
+    }
 export default ThingsToDo;
 
-
-
-
-// render() {
-//   return (
-//     <div className="topMargin">
-//       {this.state.results.map(item => {
-//           return (
-//           <div className="container py-3">
-//             <div className="card">
-//               <div className="row ">
-//                 <div className="col-md-4">
-//                   <img src={item.image} className="w-100"></img>
-//                 </div>
-//                 <div className="col-md-8 px-3">
-//                   <div className="card-block px-3 mt-3">
-//                     <h4 className="card-title">{item.title}</h4>
-//                     <p className="card-text">{item.description}.</p>
-//                     <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
-//                   </div>
-//                 </div>
-
-//               </div>
-//             </div>
-//           </div>
-//           );
-//         })}
-//     </div>
-//   );
-// }
-// }
-// export default Classes;
