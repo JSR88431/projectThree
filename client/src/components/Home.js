@@ -9,7 +9,6 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
     
     // // after component loads, get all products from db
     // axios.get("/joseph/scrapeAllRestaurants").then((response) => {
@@ -67,9 +66,6 @@ class Home extends React.Component {
     //   });
     //   console.log(this.state.results);
     // });
-=======
-    // after component loads, get all products from db
->>>>>>> carriestyle
 
     
     // axios.get("/joseph/scrapeAllRestaurants").then((response) => {

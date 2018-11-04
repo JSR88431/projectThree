@@ -10,19 +10,33 @@ class ThingsToDo extends React.Component {
     componentDidMount() {
         // after component loads, get all products from db
         axios.get("/john/allLaCurbed").then((response) => {
-          console.log(response.data);
-          this.setState({
-            results: response.data
-          });
+          if (response.data.length === 0) {
+              axios.get("/john/scrapeLaCurbed").then((res) => {
+                this.setState({
+                  results: res.data
+                })
+              })            
+          }
+          else {
+          this.setState({ results: response.data})
+          }
+    
+      })
 
-          axios.get("/carrie/scrapeRedTriTtd").then((response) => {
-            console.log(response.data);
-            this.setState({
-              results: response.data
-            });
-            console.log(this.state.results);
-          });
-        });
+      axios.get("/carrie/allRedTriTtd").then((response) => {
+        if (response.data.length === 0) {
+            axios.get("/carrie/scrapeRedTriTtd").then((res) => {
+              this.setState({
+                results: res.data
+              })
+            })            
+        }
+        else {
+        this.setState({ results: response.data})
+        }
+  
+    })
+
       }
       render() {
         return (
