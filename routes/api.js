@@ -262,12 +262,13 @@ router.post("/categories", function (req, res) {
 });
 
 // Post new Topic to specific Category
-router.post("/topics/:catId", function (req, res) {
+router.post("/topics/:catId", isLoggedIn, function (req, res) {
 
     let newTopic = req.body;
     console.log(newTopic)
+    newTopic.owner = req.user.username
 
-  db.Topic.create(req.body)
+  db.Topic.create(newTopic)
       .then(function (data) {
           res.json(data.id);
       })
@@ -277,10 +278,17 @@ router.post("/topics/:catId", function (req, res) {
 });
 
 // Post a new Post to specific Topic
-router.post("/posts/:topicId/:userId", function (req, res) {
+router.post("/posts/:topicId", isLoggedIn, function (req, res) {
 
+    let info = JSON.stringify(req.user);
+    console.log("req.user: " + info)
 
-  db.Post.create(req.body)
+    let userInfo = req.body
+
+    userInfo.UserId = req.user.id
+    userInfo.author = req.user.username
+
+  db.Post.create(userInfo)
       .then(function (data) {
           res.json(data);
       })

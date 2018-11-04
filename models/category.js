@@ -14,6 +14,7 @@ module.exports = function (sequelize, Sequelize) {
 
         title: {
             type: Sequelize.STRING,
+            unique: true
         }
 
     });
@@ -25,7 +26,8 @@ module.exports = function (sequelize, Sequelize) {
           foreignKey: {
             allowNull: false,
             onDelete: "cascade"
-          }
+          },
+          onDelete: "cascade"
         });
       };
 
