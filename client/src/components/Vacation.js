@@ -3,7 +3,6 @@ import axios from "axios";
 
 
 
-
 class Vacation extends React.Component {
     state = {
       results: []
@@ -36,7 +35,7 @@ class Vacation extends React.Component {
                 <div className="card">
                   <div className="row ">
                     <div className="col-md-4">
-                      <img src={item.image} className="w-100"></img>
+                      <img src={item.image} className="w-101" id="vacapic"></img>
                     </div>
                     <div className="col-md-8 px-3">
                       <div className="card-block px-3 mt-3">
