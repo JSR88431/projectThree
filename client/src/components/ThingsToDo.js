@@ -18,10 +18,11 @@ class ThingsToDo extends React.Component {
       }
       render() {
         return (
+          <section>
           <div className="topMargin">
             {this.state.results.map(item => {
-                return (
-                <div className="container py-3">
+                return (                  
+                <div className="py-3">
                   <div className="card">
                     <div className="row ">
                       <div className="col-md-4">
@@ -35,13 +36,13 @@ class ThingsToDo extends React.Component {
                           <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
                         </div>
                       </div>
-    
                     </div>
                   </div>
                 </div>
                 );
               })}
           </div>
+          </section>
         );
       }
     }
