@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Nav from "./Nav.js";
-import GoogleMapsContainer from './GoogleMapsContainer.js'
+// import GoogleMapsContainer from './GoogleMapsContainer.js'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, Container, Row, Col } from 'reactstrap';
 import Geocode from "react-geocode";
@@ -79,15 +79,14 @@ class ThingsToDo extends React.Component {
                 );
               })}
           </div>
-          </Col>
-          <Col >
-          <GoogleMapsContainer
-          />
-          </Col>
+           </Col>
+                <Col >
+                {/* <GoogleMapsContainer
+                /> */}
+               </Col>
           </Row>
          </div>
         );
       }
     }
 export default ThingsToDo;
-
