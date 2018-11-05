@@ -17,7 +17,7 @@ const Post = (props) => {
         return (
             <li className="list-group-item" key={item.id}>
                 <p>
-                    {item.author} ------- {item.createdAt}
+                    {item.author} ------- {props.convertTime(item.createdAt)}
                 </p>
                 <p>{item.body}</p>
                 <a href="#" id={item.id} onClick={props.deleteAPost} userid={item.UserId}>Delete</a>
@@ -27,7 +27,7 @@ const Post = (props) => {
 
     return (
         <div className="forum-element">
-            <Button onClick={props.upOneLevel}>Up One Level</Button>
+            <Button onClick={props.upOneLevel}>Back to Topics</Button>
             <ReplyModal
                 postId={props.postId}
                 handleChange={props.handleChange}

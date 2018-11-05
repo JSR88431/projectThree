@@ -6,6 +6,9 @@ import Topic from "./forumlevels/Topic";
 import Post from "./forumlevels/Post";
 import "./Styles.css";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+var moment = require('moment');
+moment().format();
+
 
 class Forum extends React.Component {
 
@@ -57,13 +60,18 @@ class Forum extends React.Component {
             let topicID = e.currentTarget.id
             axios.get(`/api/topics/${topicID}`).then(response => {
                 // update state object with newest data
-
-                this.setState({
-                    topicResults: response.data,
-                    currentLevel: level,
-                    topicId: topicID
-                });
-
+                if (response.data === false) {
+                    this.setState({
+                        currentLevel: level,
+                        topicId: topicID
+                    });
+                } else {
+                    this.setState({
+                        topicResults: response.data,
+                        currentLevel: level,
+                        topicId: topicID
+                    });
+                }
             });
         }
         if (this.state.currentLevel === "Topic") {
@@ -193,6 +201,10 @@ class Forum extends React.Component {
             .delete(`/api/posts/${specificPost}/${userId}`)
             .then(response => {
 
+                if (response.data === false) {
+                    return this.props.history.push("/Login")
+                }
+
                 if (response.data === true) {
                     axios.get(`/api/posts/${this.state.postId}`).then((res) => {
                         console.log(res)
@@ -223,6 +235,11 @@ class Forum extends React.Component {
         axios
             .delete(`/api/topics/${specificTopic}/${owner}`)
             .then(response => {
+        
+                if (response.data === false) {
+                    return this.props.history.push("/Login")
+                }
+
                 if (response.data === true) {
                     axios.get(`/api/topics/${this.state.topicId}`).then((res) => {
                         console.log(res)
@@ -275,10 +292,18 @@ class Forum extends React.Component {
                     makeAPost={this.makeAPost}
                     postResults={this.state.postResults}
                     deleteAPost={this.deleteAPost}
+                    convertTime={this.convertTime}
                 />
             );
         }
     };
+
+    convertTime = (time) => {
+
+        let finalDate = moment(time).format("MM-DD-YYYY, h:mm A")
+
+        return finalDate;
+    }
 
     render() {
 

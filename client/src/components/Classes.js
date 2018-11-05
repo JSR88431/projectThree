@@ -34,7 +34,7 @@ class Classes extends React.Component {
               <div className="card">
                 <div className="row ">
                   <div className="col-md-4">
-                    <img src={item.image} className="w-100"></img>
+                    <img src={item.image} width="300" className="w-100"></img>
                   </div>
                   <div className="col-md-8 px-3">
                     <div className="card-block px-3 mt-3">
