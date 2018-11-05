@@ -2,13 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles.css";
 import TopicCard from "../forumcomp/topicCard"
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText,Row, Col } from 'reactstrap';
 import ModalCard from '../forumcomp/modalCard.js'
 const styles = {
-    fontSize: "125%",
-    marginTop: "10%",
-    lineHeight: "200%"
+    display: "inline-block",
+    float: "right",
+    margintop: "-60px"
 };
+const captionStyle ={
+    display: "inline-block",
+    marginTop: "-60px",
+    float: 'right'
+}
 
 const Topic = (props) => {
 
@@ -16,6 +21,8 @@ const Topic = (props) => {
         // create a route-able link for each item
         return (
             <li className="list-group-item" key={item.id}>
+            <Row>
+                <Col>
                 <a
                     href="#"
                     onClick={e => props.handleLevelChange(e, "Post")}
@@ -24,9 +31,16 @@ const Topic = (props) => {
                 >
                     <h1>{item.title}</h1>
                 </a>
+                </Col>
+            </Row>
                 <p>Original Poster: {item.owner}</p>
-                <p>Number of Posts in Thread: {item.postCount}</p>
-                <p>Last Post At: {item.updatedAt}</p>
+                             <div style={{display: "inline-block",
+                                        marginTop: "-60px",
+                                        float: 'right'}}
+                             >
+                            <p>Number of Posts in Thread: {item.postCount}</p>
+                            <p>Last Post At: {item.updatedAt}</p>
+                        </div>
                 <a href="#" id={item.id} onClick={props.deleteATopic} owner={item.owner}>Delete</a>
             </li>
         );
