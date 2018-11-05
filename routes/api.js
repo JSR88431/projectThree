@@ -210,7 +210,7 @@ router.get("/topics/:catId", function (req, res) {
             CategoryId: req.params.catId
         },
         attributes: {
-            include: [[Sequelize.fn("COUNT", Sequelize.col("posts.id")), "postCount"]] 
+            include: [[Sequelize.fn("COUNT", Sequelize.col("Posts.id")), "postCount"]] 
         },
         include: [{
             model: db.Post, attributes: []
@@ -373,6 +373,48 @@ router.delete("/posts/:postId/:userId", isLoggedIn, function (req, res) {
     } else {
         res.json("You cannot delete others' posts.")
     }
+
+});
+
+router.delete("/alltopics", function (req, res) {
+
+    // Using `==` here because req.user.id is a number and req.params.userId is a string
+
+
+        db.Topic.destroy({
+            where: {
+                id: {
+                    [Sequelize.Op.gt]: 0
+                }
+            }
+        })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+});
+
+router.delete("/allposts", function (req, res) {
+
+    // Using `==` here because req.user.id is a number and req.params.userId is a string
+
+
+        db.Post.destroy({
+            where: {
+                id: {
+                    [Sequelize.Op.gt]: 0
+                }
+            }
+        })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
 
 });
 

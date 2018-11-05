@@ -15,7 +15,7 @@ router.get("/scrapeRedTriHacks", function (req, res) {
   $(".item-body.fadeout").each(function (i, element) {
     var title = $(element).find("a").text();
     var link = $(element).find("a").attr("href");
-    // var image = $(element).find("a").find("img").attr("src");
+    // var image = $(element).parent().find(".wrapper-img").find("a").find("img").attr("src");
     // console.log(image);
   
   // $(".events-3-cols-grid").each(function (i, element) {
@@ -113,17 +113,18 @@ router.get("/scrapeDonate", function (req, res) {
   
     $(".p3").each(function (i, element) {
       var title = $(element).find("a").find(".s1").find("b").text();
-      var address = $(element).find(".s1").find("b").text();
-      var description = $(element).find("span.s1").text();
+      var address = $(element).find(".s1").text();
+
+      // var description = $(element).find(".s1").eq(3).text();
       var link = $(element).find("a").attr("href");
       console.log(address);
       
-      if (title  && address && description && link) {
+      if (title  && address && link) {
       
       db.Donate.create({
         title: title, 
         address: address, 
-        description: description,
+        // description: description,
         link: link,
       },
       function (err, inserted) {
@@ -161,15 +162,12 @@ router.get("/scrapeRedTriTtd", function (req, res) {
   
   $(".item.col-xs-3").each(function (i, element) {
     var title = $(element).find(".item-body").find("h2").find("a").text();
-    var image = $(element).find(".wrapper-img").find("a").find("img").attr("src");
-    var link = $(element).find(".item-body").find("h2").find("a").attr("href");
-    console.log(title, image, link);
+    var link = $(element).find(".wrapper-img").find("a").text; 
     
-    if (title && image && link) {
+    if (title && link) {
       
       db.RedTriTtd.create({
         title: title,
-        image: image,
         link: link,
       },
       function (err, inserted) {
