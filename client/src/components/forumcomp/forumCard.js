@@ -2,13 +2,15 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from "axios";
 import Forum from '../Forum';
+import ForumStyle from "../ForumStyle.css"; 
+
 
 const ForumCard = (props) => {
 
 
     return (
       <Form>
-        <FormGroup>
+        <FormGroup className="Forum gradient">
           <Label for="exampleText">Make a Post</Label>
           <Input 
           onChange={props.handleChange}

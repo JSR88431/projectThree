@@ -1,23 +1,21 @@
-import React from 'react';
+    import React from 'react';
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText,Button } from 'reactstrap';
+import ForumStyle from "../ForumStyle.css"; 
 
 
 
-
-const CategoryCard= (props) => {
+const CategoryCard= (props) => {   
 
 
     return (
         <ListGroup>
             <ListGroupItem>
-                 <ListGroupItemHeading>
-                     <h2>{props.title}</h2>
-                     </ListGroupItemHeading>
+                 <ListGroupItemHeading  className="Forum gradient"> <h2><strong>{props.title}</strong></h2> </ListGroupItemHeading>
                      <ListGroupItemText
                      id={props.id}
                      onClick={e => props.handleLevelChange(e, "Topic")}
-                     >
-                     {props.description}
+                    >
+                     <h4>{props.description}</h4>
                      </ListGroupItemText>
         </ListGroupItem>
       </ListGroup>
