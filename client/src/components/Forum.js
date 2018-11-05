@@ -60,8 +60,15 @@ class Forum extends React.Component {
         if (this.state.currentLevel === "Category") {
             let topicID = e.currentTarget.id
             axios.get(`/api/topics/${topicID}`).then(response => {
+                // console.log(typeof(response.data))
+                // console.log(response.data)
+                // console.log("handlelevelchange response.data: " + JSON.stringify(response.data))
+                // console.log("handlelevelchange response.data (JSON): " + JSON.stringify(response.data))
+                // let results = JSON.stringify(response.data)
+                // console.log(typeof(results))
                 // update state object with newest data
-                if (response.data === false) {
+                if (response.data.length === 0) {
+                    console.log(this.state.topicResults, "topic results")
                     this.setState({
                         currentLevel: level,
                         topicId: topicID

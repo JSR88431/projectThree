@@ -23,24 +23,31 @@ class ModalCard extends React.Component {
 
   render() {
 
-    let section = this.props.topicResults.map(item => {
-      // create a route-able link for each item
-      return (
-        <li className="list-group-item" key={item.id}>
-          <a
-            href="#"
-            onClick={e => this.props.handleLevelChange(e, "Post")}
-            id={item.id}
-            txt={item.title}
-          >
-            <h1>{item.title}</h1>
-          </a>
-          <p>Original Poster: {item.owner}</p>
-          <p>Number of Posts in Thread: {item.postCount}</p>
-          <a href="#" id={item.id} onClick={this.props.deleteATopic} owner={item.owner}>Delete</a>
-        </li>
-      );
-    });
+    let section;
+
+    if (this.props.topicResults.length > 0) {
+
+      section = this.props.topicResults.map(item => {
+        // create a route-able link for each item
+        return (
+          <li className="list-group-item" key={item.id}>
+            <a
+              href="#"
+              onClick={e => this.props.handleLevelChange(e, "Post")}
+              id={item.id}
+              txt={item.title}
+            >
+              <h1>{item.title}</h1>
+            </a>
+            <p>Original Poster: {item.owner}</p>
+            <p>Number of Posts in Thread: {item.postCount}</p>
+            <a href="#" id={item.id} onClick={this.props.deleteATopic} owner={item.owner}>Delete</a>
+          </li>
+        );
+      });
+
+    }
+
 
 
 

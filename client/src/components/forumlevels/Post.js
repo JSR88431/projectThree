@@ -27,8 +27,8 @@ const Post = (props) => {
 
     return (
         <div className="forum-element">
-            <h1>{props.topicTitle}</h1>
             <ReplyModal
+                topicTitle={props.topicTitle}
                 upOneLevel={props.upOneLevel}
                 postId={props.postId}
                 handleChange={props.handleChange}

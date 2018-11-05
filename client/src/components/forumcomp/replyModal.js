@@ -45,6 +45,7 @@ class ReplyModal extends React.Component {
       <div>
         <Button onClick={this.props.upOneLevel}>Back to Topics</Button>
         <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Add Reply</Button>
+        <h1>{this.props.topicTitle}</h1>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <Form>
         <FormGroup>
