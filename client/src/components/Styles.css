@@ -52,4 +52,10 @@ nav{
     margin-top:150px;
 }
 
+.background {
+    background-image:url("./images/niels.jpg");
+    background-repeat: no-repeat
+    
+}
+
  
