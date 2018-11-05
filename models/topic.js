@@ -10,16 +10,14 @@ module.exports = function(sequelize, Sequelize) {
  
         owner: {
             type: Sequelize.STRING,
+            allowNull: false
         },
 
         title: {
             type: Sequelize.STRING,
+            allowNull: false
         },
  
-        postNumber: {
-            type: Sequelize.INTEGER
-        },
-
         ownerId: {
             type: Sequelize.INTEGER
         }
