@@ -6,137 +6,137 @@ var Sequelize = require("sequelize");
 const db = require("../models")
 
 
-router.get("/home", function(req, res) {
-  res.send("Family Restaurant");
+router.get("/home", function (req, res) {
+    res.send("Family Restaurant");
 });
 
 //  -------- VACATIONS  ------------------
 
-router.get("/allVacations/", function(req, res) {
-  // axios.get
-  // Grab every document in the Articles collection
-  db.Vacations.findAll({})
-    .then(function(data) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.json(data);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
+router.get("/allVacations/", function (req, res) {
+    // axios.get
+    // Grab every document in the Articles collection
+    db.Vacations.findAll({})
+        .then(function (data) {
+            // If we were able to successfully find Articles, send them back to the client
+            res.json(data);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
 });
 
 
 //  -------- FAMILY RESTAURANTS ------------------
 
-router.get("/allRestaurants/", function(req, res) {
-  // axios.get
-  // Grab every document in the Articles collection
-  db.Restaurants.findAll({})
-    .then(function(data) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.json(data);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
+router.get("/allRestaurants/", function (req, res) {
+    // axios.get
+    // Grab every document in the Articles collection
+    db.Restaurants.findAll({})
+        .then(function (data) {
+            // If we were able to successfully find Articles, send them back to the client
+            res.json(data);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
 });
 
 // ------------ LA CURBED 30 THINGS TO DO IN LA WITh KIDS -------------------
- 
-router.get("/alllaCurbed/", function(req, res) {
-  // Grab every document in the Articles collection
-  db.laCurbed.findAll({})
-    .then(function(scrapeDb) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.json(scrapeDb);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
+
+router.get("/alllaCurbed/", function (req, res) {
+    // Grab every document in the Articles collection
+    db.laCurbed.findAll({})
+        .then(function (scrapeDb) {
+            // If we were able to successfully find Articles, send them back to the client
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
 });
 
 
 
 //  ------- RedTri Hacks -----------------------
-router.get("/allRedTriHacks", function(req,res) {
-  db.RedTriHacks.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
+router.get("/allRedTriHacks", function (req, res) {
+    db.RedTriHacks.findAll({})
+        .then(function (scrapeDb) {
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            res.json(err);
 
-  });
-  });
+        });
+});
 
 
 // --------- MomsLaClasses ----------------------
 
-router.get("/allMomsLaClasses", function(req,res) {
-  db.MomsLaClasses.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
+router.get("/allMomsLaClasses", function (req, res) {
+    db.MomsLaClasses.findAll({})
+        .then(function (scrapeDb) {
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            res.json(err);
 
-  });
-  });
+        });
+});
 
 // ----------- MOMS LA DONATE -------------------
 
-router.get("/allDonate", function(req,res) {
-  db.Donate.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
+router.get("/allDonate", function (req, res) {
+    db.Donate.findAll({})
+        .then(function (scrapeDb) {
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            res.json(err);
 
-  });
-  });
+        });
+});
 
-  // ----------- RED TRI THINGS TO DO  -------------------
+// ----------- RED TRI THINGS TO DO  -------------------
 
-router.get("/allRedTriTtd", function(req,res) {
-  db.RedTriTtd.findAll({})
-  .then(function(scrapeDb) {
-    res.json(scrapeDb);
-  })
-  .catch(function(err) {
-    res.json(err);
+router.get("/allRedTriTtd", function (req, res) {
+    db.RedTriTtd.findAll({})
+        .then(function (scrapeDb) {
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            res.json(err);
 
-  });
-  });
+        });
+});
 
-  // ------------- KIDS GUIDE CALENDAR --------------
+// ------------- KIDS GUIDE CALENDAR --------------
 
-  router.get("/allKidsGuideCal", function(req,res) {
+router.get("/allKidsGuideCal", function (req, res) {
     db.KidsGuideCal.findAll({})
-    .then(function(scrapeDb) {
-      res.json(scrapeDb);
-    })
-    .catch(function(err) {
-      res.json(err);
-  
-    });
-    });
+        .then(function (scrapeDb) {
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            res.json(err);
+
+        });
+});
 
 // ----------- DAD FORUM ---------------------------
 
-router.get("/allDadForum", function(req,res) {
+router.get("/allDadForum", function (req, res) {
     db.DadForum.findAll({})
-    .then(function(scrapeDb) {
-      res.json(scrapeDb);
-    })
-    .catch(function(err) {
-      res.json(err);
-  
-    });
-    });
+        .then(function (scrapeDb) {
+            res.json(scrapeDb);
+        })
+        .catch(function (err) {
+            res.json(err);
+
+        });
+});
 
 
 // ---------------- Forums GETS ---------------------
@@ -144,13 +144,13 @@ router.get("/allDadForum", function(req,res) {
 
 // GET alls
 router.get("/categories/all", function (req, res) {
-  db.Category.findAll({})
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
+    db.Category.findAll({})
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 // router.get("/categories/:id", function (req, res) {
@@ -175,20 +175,20 @@ router.get("/categories/all", function (req, res) {
 // });
 
 router.get("/topics/all", function (req, res) {
-  db.Topic.findAll({
-    //   attributes: {
-    //       include: [[Sequelize.fn("COUNT", Sequelize.col("posts.TopicId")), "postNumber"]]
-    //   },
-    //   include: [{
-    //       model: db.Post, attributes: []
-    //   }]
-  })
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
+    db.Topic.findAll({
+        //   attributes: {
+        //       include: [[Sequelize.fn("COUNT", Sequelize.col("posts.TopicId")), "postNumber"]]
+        //   },
+        //   include: [{
+        //       model: db.Post, attributes: []
+        //   }]
+    })
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 router.get("/posts/all", function (req, res) {
@@ -199,7 +199,7 @@ router.get("/posts/all", function (req, res) {
         .catch(function (err) {
             res.json(err);
         });
-  });
+});
 
 
 // GET specifics
@@ -216,7 +216,7 @@ router.get("/topics/:catId", function (req, res) {
         .catch(function (err) {
             res.json(err);
         });
-  });
+});
 
 router.get("/posts/:topicId", function (req, res) {
     console.log(req.params.topicId)
@@ -231,9 +231,9 @@ router.get("/posts/:topicId", function (req, res) {
         .catch(function (err) {
             res.json(err);
         });
-  });
+});
 
-  router.get("/posts/:userId", function (req, res) {
+router.get("/posts/:userId", function (req, res) {
 
     db.Post.findAll({
         where: {
@@ -246,19 +246,19 @@ router.get("/posts/:topicId", function (req, res) {
         .catch(function (err) {
             res.json(err);
         });
-  });
+});
 
 // ---------------- Forums POSTS -----------------------------
 
 // Post new category (only used for testing)
 router.post("/categories", function (req, res) {
-  db.Category.create(req.body)
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
+    db.Category.create(req.body)
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 // Post new Topic to specific Category
@@ -268,13 +268,13 @@ router.post("/topics/:catId", isLoggedIn, function (req, res) {
     console.log(newTopic)
     newTopic.owner = req.user.username
 
-  db.Topic.create(newTopic)
-      .then(function (data) {
-          res.json(data.id);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
+    db.Topic.create(newTopic)
+        .then(function (data) {
+            res.json(data.id);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 // Post a new Post to specific Topic
@@ -288,13 +288,13 @@ router.post("/posts/:topicId", isLoggedIn, function (req, res) {
     userInfo.UserId = req.user.id
     userInfo.author = req.user.username
 
-  db.Post.create(userInfo)
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
+    db.Post.create(userInfo)
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 
@@ -314,36 +314,59 @@ function isLoggedIn(req, res, next) {
 
 
 // DELETE topic
-router.delete("/topics/:topicId", function (req, res) {
+router.delete("/topics/:topicId/:owner", function (req, res) {
 
-  db.Topic.destroy({
-      where: {
-          id: req.params.topicId
-      }
-  })
-      .then(function (data) {
-          res.json(data);
-      })
-      .catch(function (err) {
-          res.json(err);
-      });
+    console.log(req.user.username)
+    console.log(req.params.owner)
+
+    if (req.user.username === req.params.owner) {
+
+        res.json(true)
+
+        db.Topic.destroy({
+            where: {
+                id: req.params.topicId
+            }
+        })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    } else {
+
+        res.json("You cannot delete others' topics.")
+    }
+
 });
 
 // DELETE post
-router.delete("/posts/:postId", function (req, res) {
+router.delete("/posts/:postId/:userId", function (req, res) {
 
-    db.Post.destroy({
-        where: {
-            id: req.params.postId
-        }
-    })
-        .then(function (data) {
-            res.json(data);
+    // Using `==` here because req.user.id is a number and req.params.userId is a string
+
+    if (req.user.id == req.params.userId) {
+
+        res.json(true)
+
+        db.Post.destroy({
+            where: {
+                id: req.params.postId
+            }
         })
-        .catch(function (err) {
-            res.json(err);
-        });
-  });
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    } else {
+        res.json("You cannot delete others' posts.")
+    }
+
+});
 
 
 // ---------- END FORUM SECTION ----------
