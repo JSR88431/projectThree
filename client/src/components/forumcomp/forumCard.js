@@ -9,7 +9,7 @@ const ForumCard = (props) => {
     return (
       <Form>
         <FormGroup>
-          <Label for="exampleText">Text Area</Label>
+          <Label for="exampleText">Make a Post</Label>
           <Input 
           onChange={props.handleChange}
           value={props.postInput}

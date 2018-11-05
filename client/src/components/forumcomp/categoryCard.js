@@ -7,18 +7,16 @@ const CategoryCard= (props) => {
     return (
         <ListGroup>
             <ListGroupItem>
-                 <ListGroupItemHeading>
+                 <ListGroupItemHeading
+                  onClick={e => props.handleLevelChange(e, "Topic")}
+                  id={props.id}
+                 >
                         {props.title}
                 </ListGroupItemHeading>
-                     <ListGroupItemText>
+                     <ListGroupItemText 
+                     >
                        {props.description}
                   </ListGroupItemText>
-                    <Button
-                    id={props.id}
-                    onClick={e => props.handleLevelChange(e, "Topic")}
-                    >
-                    Click Here
-                    </Button> 
         </ListGroupItem>
       </ListGroup>
     );

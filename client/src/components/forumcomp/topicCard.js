@@ -8,6 +8,7 @@ const TopicCard = (props) => {
 
     return (
         <Form>
+          <h1>Make a New Topic</h1>
         <FormGroup>
           <Label for="title">Title</Label>
           <Input 
