@@ -93,3 +93,13 @@ nav{
 .forum-wrapper {
     margin: 100px;
 }
+<<<<<<< HEAD
+=======
+
+.caption {
+    position: absolute;
+    background: transparent;
+    float: right;
+    z-index: 5;
+}
+>>>>>>> fixer

@@ -15,6 +15,7 @@ var Bg = {
   backgroundAttachment: 'fixed'
 };
 
+
 class Home extends React.Component {
   state = {
     results: []
@@ -111,8 +112,13 @@ class Home extends React.Component {
 
   render() {
     return (
+      <div>
+      <div style={Bg} className="container-fluid">
       
-       <section style={Bg}></section>
+      </div>
+     
+        
+      </div>
  
      
     );
