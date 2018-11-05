@@ -35,27 +35,26 @@ class ThingsToDo extends React.Component {
     
       })
 
-      axios.get("/carrie/allRedTriTtd").then((response) => {
-        if (response.data.length === 0) {
-            axios.get("/carrie/scrapeRedTriTtd").then((res) => {
-              this.setState({
-                results: res.data
-              })
-            })            
-        }
-        else {
-        this.setState({ results: response.data})
-        }
+    //   axios.get("/carrie/allRedTriTtd").then((response) => {
+    //     if (response.data.length === 0) {
+    //         axios.get("/carrie/scrapeRedTriTtd").then((res) => {
+    //           this.setState({
+    //             results: res.data
+    //           })
+    //         })            
+    //     }
+    //     else {
+    //     this.setState({ results: response.data})
+    //     }
   
-    })
+    // })
 
       }
 
       
      render() {
         return (
-         
-            <div className="topMargin">
+          <div className="topMargin">
             {this.state.results.map(item => {
                 return (
                 <div className="container py-3">
