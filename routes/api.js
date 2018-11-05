@@ -376,6 +376,48 @@ router.delete("/posts/:postId/:userId", isLoggedIn, function (req, res) {
 
 });
 
+router.delete("/alltopics", function (req, res) {
+
+    // Using `==` here because req.user.id is a number and req.params.userId is a string
+
+
+        db.Topic.destroy({
+            where: {
+                id: {
+                    [Sequelize.Op.gt]: 0
+                }
+            }
+        })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+});
+
+router.delete("/allposts", function (req, res) {
+
+    // Using `==` here because req.user.id is a number and req.params.userId is a string
+
+
+        db.Post.destroy({
+            where: {
+                id: {
+                    [Sequelize.Op.gt]: 0
+                }
+            }
+        })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+});
+
 
 // ---------- END FORUM SECTION ----------
 
