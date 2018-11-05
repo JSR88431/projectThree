@@ -5,7 +5,7 @@ import CategoryCard from "../forumcomp/categoryCard"
 
 const styles = {
   fontSize: "125%",
-  marginTop: "10%",
+  marginTop: "10px",
   lineHeight: "200%"
 };
 
