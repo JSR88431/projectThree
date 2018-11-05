@@ -3,6 +3,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
 import "./Styles.css";
 // import "./Login.css";
+import "./Login.css";
 
 export default class Signup extends Component {
   constructor(props) {
@@ -61,8 +62,11 @@ export default class Signup extends Component {
     }
 
     return (
-      <div className="Signup topMargin">
+      <div className="Login">
         <form onSubmit={this.handleSubmit}>
+        <h2><strong>Create an Account</strong></h2>
+        <br />
+        <br />
           <FormGroup controlId="username" bsSize="large">
             <ControlLabel>Username</ControlLabel>
             <FormControl
