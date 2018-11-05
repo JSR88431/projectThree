@@ -1,22 +1,24 @@
 import React from 'react';
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText,Button } from 'reactstrap';
 
+
+
+
 const CategoryCard= (props) => {
 
 
     return (
         <ListGroup>
             <ListGroupItem>
-                 <ListGroupItemHeading
-                  onClick={e => props.handleLevelChange(e, "Topic")}
-                  id={props.id}
-                 >
-                        {props.title}
-                </ListGroupItemHeading>
-                     <ListGroupItemText 
+                 <ListGroupItemHeading>
+                     <h2>{props.title}</h2>
+                     </ListGroupItemHeading>
+                     <ListGroupItemText
+                     id={props.id}
+                     onClick={e => props.handleLevelChange(e, "Topic")}
                      >
-                       {props.description}
-                  </ListGroupItemText>
+                     {props.description}
+                     </ListGroupItemText>
         </ListGroupItem>
       </ListGroup>
     );
