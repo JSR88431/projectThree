@@ -7,15 +7,15 @@
       margin: 0 auto;
       max-width: 320px;
     }
-    .Login{
+    .Login{ 
     /* margin: 0 auto; */
     margin-top: 70px;
     /* max-width: 400px; */
     padding: 40px 40px;
-    background-color: rgba(166,172,175, .8);    }
+    background-color: rgba(112, 128, 144, .7);  
   }
 
-  .center{
+  .center {
     text-align: center;
   }
-  
+}

@@ -7,9 +7,9 @@ module.exports = function (sequelize, DataTypes) {
       address:{
           type:DataTypes.TEXT
       },
-      description:{
-          type:DataTypes.TEXT
-      },        
+    //   description:{
+    //       type:DataTypes.TEXT
+    //   },        
       link:{
         type:DataTypes.TEXT
     },   

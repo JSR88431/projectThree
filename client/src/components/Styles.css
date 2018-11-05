@@ -55,7 +55,8 @@ nav{
     border-color: #2074e6; 
 }
 .list-group-item-heading {
-    font-weight: bolder
+    font-weight: bolder;
+    color: #2074e6
 }
 
 .forum-element {
@@ -83,10 +84,6 @@ nav{
     border-width: 5px; 
     border-color: white;
 } 
-
-.Dadhacks {
-    background: url("./images/vintage-leaves.png")
-}
 
 .forum-nav {
     margin-top: 100px;
