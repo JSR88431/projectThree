@@ -1,24 +1,55 @@
   .nav-link,.navbar-brand{
     color: white;
+    font-family: palatino; 
 }
 
 .navbar-brand {
-    font-family: marker;
+    
+}
+.nav-link {
+    justify-content: space-between
 }
 
-.nav-link {
-    font-family: american typewriter; 
-}
 
 nav{
     background-color:slategrey;
+    /* display: inline-block; */
 }
 
 .topMargin{
     margin-top: 100px;
 }
 
+.card {
+    border-width: 3px; 
+    border-color: #2074e6; 
+}
+
+.card-title {
+    font-weight: bolder; 
+}
+.card-title, .card-text {
+    font-family: palatino; 
+    color: slategrey 
+}
+
+.btn {
+    background-color:#2074e6; 
+    border-width: 5px; 
+    border-color: white; 
+}
+
+.w-100 {
+    border-width: 3px;
+    border-color: #2074e6;
+}
+
+/* #vacapic {
+    background: url("../components/images/vacapic.png") fixed center; 
+} */
 
 .forum-element {
     margin-top:150px;
 }
+
+ 

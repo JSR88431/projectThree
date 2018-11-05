@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import Logo from "./images/dadbase.png";
 import "./Styles.css";
+
 
 class Nav extends React.Component {
     state = {}
@@ -7,14 +9,16 @@ class Nav extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg fixed-top">
-                    <a className="navbar-brand" href="#">dad-a-base</a>
+                    <img className="navbar-brand" src={Logo} width="200"></img>
+                    <br/>
+                    <br/>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item active">
-                                <a className="nav-link" href="/">home <span className="sr-only">(current)</span></a>
+                            <a className="nav-link" href="/">home <span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/ThingsToDo">things to do</a>
@@ -37,7 +41,7 @@ class Nav extends React.Component {
 {/*                         
                        ------------ MOVE TO RIGHT  -----------------------*/}
 
-
+                          
                             <li className="nav-item">
                                 <a className="nav-link" href="/Forum">forum</a>
                             </li>

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Hacks from "./images/dadhacks.jpg";
 
 
 class Dadhacks extends React.Component {
@@ -35,7 +36,7 @@ class Dadhacks extends React.Component {
               <div className="card">
                 <div className="row ">
                   <div className="col-md-4">
-                    <img src={item.image} className="w-100"></img>
+                    <img src={Hacks} width="300"></img>
                   </div>
                   <div className="col-md-8 px-3">
                     <div className="card-block px-3 mt-3">
