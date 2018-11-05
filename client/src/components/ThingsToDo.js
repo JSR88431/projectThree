@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Nav from "./Nav.js";
+import Waterpark from "./images/waterpark.jpg"
 // import GoogleMapsContainer from './GoogleMapsContainer.js'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, Container, Row, Col } from 'reactstrap';
@@ -53,23 +54,21 @@ class ThingsToDo extends React.Component {
       
      render() {
         return (
-          <div>
-          <Row>
-            <Col>
+         
             <div className="topMargin">
             {this.state.results.map(item => {
                 return (
-                <div className="py-3">
+                <div className="container py-3">
                   <div className="card">
                     <div className="row">
                       <div className="col-md-4">
-                        <img src={item.image} className="w-100"></img>
+                        <img src={Waterpark} width="350"></img>
                       </div>
                       <div className="col-md-8 px-3">
                         <div className="card-block px-3 mt-3">
                           <h4 className="card-title">{item.title}</h4>
-                          <p className="card-text">{item.description}.</p>
-                          <p className="card-text">{item.address}.</p>
+                          {/* <p className="card-text">{item.description}.</p>
+                          <p className="card-text">{item.address}.</p> */}
                           <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
                         </div>
                       </div>
@@ -79,13 +78,8 @@ class ThingsToDo extends React.Component {
                 );
               })}
           </div>
-           </Col>
-                <Col >
-                {/* <GoogleMapsContainer
-                /> */}
-               </Col>
-          </Row>
-         </div>
+        
+        
         );
       }
     }
