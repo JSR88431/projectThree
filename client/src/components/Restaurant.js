@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import restPic from "./images/familyrest.png";
 
 
 class Restaurant extends React.Component {
@@ -35,7 +36,7 @@ class Restaurant extends React.Component {
               <div className="card">
                 <div className="row ">
                   <div className="col-md-4">
-                    <img src={item.image}></img>
+                    <img src={restPic} width="300"></img>
                   </div>
                   <div className="col-md-8 px-3">
                     <div className="card-block px-3 mt-3">
