@@ -210,7 +210,7 @@ router.get("/topics/:catId", function (req, res) {
             CategoryId: req.params.catId
         },
         attributes: {
-            include: [[Sequelize.fn("COUNT", Sequelize.col("posts.id")), "postCount"]] 
+            include: [[Sequelize.fn("COUNT", Sequelize.col("Posts.id")), "postCount"]] 
         },
         include: [{
             model: db.Post, attributes: []
