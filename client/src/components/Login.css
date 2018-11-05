@@ -12,7 +12,10 @@
     margin-top: 70px;
     /* max-width: 400px; */
     padding: 40px 40px;
-    background: #fff;
-    }
+    background-color: rgba(166,172,175, .8);    }
+  }
+
+  .center{
+    text-align: center;
   }
   

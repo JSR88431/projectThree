@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Styles.css";
 // import "./Login.css";
 import "./Login.css";
-import "./LogInTemplate.css"
 
 
 export default class Login extends Component {
@@ -65,7 +64,7 @@ export default class Login extends Component {
           <FormGroup controlId="email" bsSize="large">
           <h2><strong>Member Login</strong></h2>
           <br />
-            <ControlLabel>Email</ControlLabel>
+            <ControlLabel>Email:</ControlLabel>
             <FormControl
               autoFocus
               type="email"
@@ -74,7 +73,7 @@ export default class Login extends Component {
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
+            <ControlLabel>Password:</ControlLabel>
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}
