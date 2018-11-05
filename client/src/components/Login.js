@@ -3,6 +3,8 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
 import "./Styles.css";
 // import "./Login.css";
+import "./Login.css";
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -55,10 +57,14 @@ export default class Login extends Component {
     }
 
     return (
-      <div className="Login topMargin">
+      <div class="Login LogInTemplate">
+      <div className="Loginbox LogInTemplate">
+       <div class="login-html">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
+          <h2><strong>Member Login</strong></h2>
+          <br />
+            <ControlLabel>Email:</ControlLabel>
             <FormControl
               autoFocus
               type="email"
@@ -67,7 +73,7 @@ export default class Login extends Component {
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
+            <ControlLabel>Password:</ControlLabel>
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}
@@ -85,6 +91,9 @@ export default class Login extends Component {
         </form>
         {error}
       </div>
+      </div>
+      </div>
+
     );
   }
 }
