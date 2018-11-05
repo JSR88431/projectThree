@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles.css";
+import CategoryCard from "../forumcomp/categoryCard"
 
 const styles = {
   fontSize: "125%",
@@ -13,23 +14,20 @@ const Category = (props) => {
     let section = props.categoryResults.map(item => {
         // create a route-able link for each item
         return (
-          <li className="list-group-item" key={item.id}>
-            <a
-              onClick={e => props.handleLevelChange(e, "Topic")}
+          <CategoryCard
+              key={item.id}
+              handleLevelChange={props.handleLevelChange}
               id={item.id}
-            >
-              <h1>{item.title}</h1>
-            </a>
-            <p>{item.description}</p>
-          </li>
+              title={item.title}
+              description={item.description}
+          />
         );
       });
 
   return (
-    <div className="col-lg-4 forum-element" style={styles}>
-        <ul className="list-group">
+    <div style={styles}>
         {section}
-        </ul>
+      
     </div>
   );
 };
