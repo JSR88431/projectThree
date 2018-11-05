@@ -41,7 +41,7 @@ class Nav extends React.Component {
 {/*                         
                        ------------ MOVE TO RIGHT  -----------------------*/}
 
-                          
+{/*                           
                             <li className="nav-item">
                                 <a className="nav-link" href="/Forum">forum</a>
                             </li>
@@ -50,7 +50,7 @@ class Nav extends React.Component {
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/Signup">signup</a>
-                            </li>
+                            </li> */}
                             {/* <li className="nav-item">
                                 <a className="nav-link" href="/Search">Search</a>
                             </li> */}
@@ -59,6 +59,9 @@ class Nav extends React.Component {
  
                         </ul>
                     </div>
+                    <span><a className="nav-link" href="/Forum">forum</a></span>
+                    <span><a className="nav-link" href="/Login">login</a></span>
+                    <span><a className="nav-link" href="/Signup">signup</a></span>
                 </nav>
             </div>
         );

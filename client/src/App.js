@@ -26,7 +26,7 @@ class App extends React.Component {
  return (
   <div>
   <Router>
-    <div className="container">
+    <div>
 
       <Route exact path="/forum" component={Forum} />
       <Route exact path="/categories/:catname" component={Forum} />

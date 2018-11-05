@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../Styles.css";
 import TopicCard from "../forumcomp/topicCard"
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
+import ModalCard from '../forumcomp/modalCard.js'
 const styles = {
     fontSize: "125%",
     marginTop: "10%",
@@ -35,15 +35,27 @@ const Topic = (props) => {
 
     return (
         <div className="forum-element">
+        <section>
             <Button onClick={props.upOneLevel}>Back to Categories</Button>
+        </section>    
             <ul className="list-group">
+            <section>
+                <ModalCard
+                        handleChange={props.handleChange}
+                        forumInput={props.forumInput}
+                         makeATopic={props.makeATopic}
+                         onChange={props.handleChange}
+                         onClick={props.makeATopic}>
+
+                    >
+                </ModalCard>
+            </section>
             {section}
             </ul>
-            <TopicCard
-                handleChange={props.handleChange}
-                forumInput={props.forumInput}
-                makeATopic={props.makeATopic}
-            />
+        
+            <div>
+             
+            </div>
         </div>
     );
 }
