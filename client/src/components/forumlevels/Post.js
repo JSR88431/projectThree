@@ -20,7 +20,7 @@ const Post = (props) => {
                     {item.author} ------- {item.createdAt}
                 </p>
                 <p>{item.body}</p>
-                <a href="#" id={item.id} onClick={props.deleteAPost}>Delete</a>
+                <a href="#" id={item.id} onClick={props.deleteAPost} userid={item.UserId}>Delete</a>
             </li>
         );
     });

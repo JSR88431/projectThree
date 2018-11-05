@@ -29,13 +29,13 @@ class Forum extends React.Component {
             if (response.data.length === 0) {
                 axios.get("/anthony/scrapeDadForum").then(() => {
                     axios.get("/api/categories/all").then((response) => {
-                        this.setState({ categoryResults: response.data})
+                        this.setState({ categoryResults: response.data })
                     })
-                })            
+                })
             }
 
             else {
-            this.setState({ categoryResults: response.data})
+                this.setState({ categoryResults: response.data })
             }
 
         })
@@ -94,11 +94,7 @@ class Forum extends React.Component {
                 currentLevel: "Category",
                 topicId: ""
             });
-            // axios.get("/api/categories/all").then(response => {
-            //     this.setState({
-            //         results: response.data
-            //     });
-            // });
+
         }
         if (this.state.currentLevel === "Post") {
 
@@ -163,9 +159,9 @@ class Forum extends React.Component {
 
 
             axios.post(`/api/posts/${postId}`, {
-                    body: this.state.forumInput,
-                    TopicId: postId
-                })
+                body: this.state.forumInput,
+                TopicId: postId
+            })
                 .then(response => {
 
                     // after component loads, get all products from db
@@ -184,72 +180,61 @@ class Forum extends React.Component {
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
-
-
-
-
-
-
-
-
-            // after component loads, get all products from db
-            // axios.get(`/api/topics/${topicId}`).then(response => {
-            //   // update state object with newest data
-            //   this.setState({
-            //     results: response.data
-            //   });
-            // });
-        })
-
-
-
-        // console.log("current level card: " + this.state.currentLevel);
-        // let postId = this.state.postId;
-        // let userId = "2";
-
-        // axios
-        //   .post(`/api/posts/${postId}/${userId}`, {
-        //     author: "Anthony",
-        //     body: this.state.postInput,
-        //     TopicId: postId,
-        //     UserId: userId
-        //   })
-        //   .then(response => {
-        //     let postId = this.state.postId
-        //     // after component loads, get all products from db
-        //     axios.get(`/api/posts/${postId}`).then((res) => {
-        //         console.log(res)
-        //         // update state object with newest data
-        //         this.setState({
-        //             results: res.data
-        //         });
-        //         console.log(this)
-        //     });
-        //   })
-        //   .catch(function(error) {
-        //     console.log(error);
-        //   });
+        });
     };
 
     deleteAPost = (e) => {
 
         let specificPost = e.target.id
+        let userId = e.currentTarget.getAttribute('userid')
+        console.log("userid: " + userId)
 
         axios
-            .delete(`/api/posts/${specificPost}`)
+            .delete(`/api/posts/${specificPost}/${userId}`)
             .then(response => {
 
-                axios.get(`/api/posts/${this.state.postId}`).then((res) => {
-                    console.log(res)
+                if (response.data === true) {
+                    axios.get(`/api/posts/${this.state.postId}`).then((res) => {
+                        console.log(res)
 
-                    this.setState({
-                        postResults: res.data,
-                        postInput: ""
+                        this.setState({
+                            postResults: res.data,
+                            postInput: ""
+                        });
+
                     });
+                } else {
+                    alert(response.data)
+                }
 
-                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
+
+    deleteATopic = (e) => {
+
+        let specificTopic = e.target.id
+        let owner = e.currentTarget.getAttribute('owner')
+        console.log("owner: " + owner)
+
+        axios
+            .delete(`/api/topics/${specificTopic}/${owner}`)
+            .then(response => {
+                if (response.data === true) {
+                    axios.get(`/api/topics/${this.state.topicId}`).then((res) => {
+                        console.log(res)
+
+                        this.setState({
+                            topicResults: res.data
+                        });
+
+                    });
+                } else {
+                    alert(response.data)
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -262,26 +247,18 @@ class Forum extends React.Component {
                 <Category
                     handleLevelChange={this.handleLevelChange}
                     categoryResults={this.state.categoryResults}
-                // handleChange={this.handleChange}
-                // topicId={this.state.topicId}
-                // upOneLevel={this.upOneLevel}
-                // postInput={this.state.postInput}
-                // makeATopic={this.makeATopic}
-                // currentLevel={this.state.currentLevel}
                 />
             );
         }
         if (this.state.currentLevel === "Topic") {
             return (
                 <Topic
-                    currentLevel={this.state.currentLevel}
                     handleLevelChange={this.handleLevelChange}
                     handleChange={this.handleChange}
-                    topicId={this.state.topicId}
                     upOneLevel={this.upOneLevel}
-                    postInput={this.state.postInput}
                     makeATopic={this.makeATopic}
                     topicResults={this.state.topicResults}
+                    deleteATopic={this.deleteATopic}
                 />
             );
         }

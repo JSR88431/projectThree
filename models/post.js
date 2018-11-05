@@ -28,14 +28,16 @@ module.exports = function(sequelize, Sequelize) {
         // A Post can't be created without an Author due to the foreign key constraint
         Post.belongsTo(models.Topic, {
           foreignKey: {
-            allowNull: false
-          }
+            allowNull: false,
+          },
+          onDelete: "cascade"
         });
 
         Post.belongsTo(models.User, {
             foreignKey: {
-              allowNull: false
-            }
+              allowNull: false,
+            },
+            onDelete: "cascade"
           });
 
         

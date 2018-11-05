@@ -27,6 +27,7 @@ const Topic = (props) => {
                 <p>Original Poster: {item.owner}</p>
                 <p>Number of Posts in Thread: {item.postNumber}</p>
                 <p>Last Post At: {item.updatedAt}</p>
+                <a href="#" id={item.id} onClick={props.deleteATopic} owner={item.owner}>Delete</a>
             </li>
         );
     });
@@ -38,12 +39,8 @@ const Topic = (props) => {
             {section}
             </ul>
             <TopicCard
-                postId={props.postId}
                 handleChange={props.handleChange}
                 forumInput={props.forumInput}
-                topicTitle={props.topicTitle}
-                renderLevel={props.renderLevel}
-                currentLevel={props.currentLevel}
                 makeATopic={props.makeATopic}
             />
         </div>
