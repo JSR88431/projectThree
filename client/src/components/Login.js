@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
+import Background from "./images/bg1.png";
 import "./Styles.css";
 // import "./Login.css";
 import "./Login.css";
 
+var Bg = {
+  backgroundImage: `url(${Background})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed'
+};
 
 export default class Login extends Component {
   constructor(props) {
@@ -58,6 +66,7 @@ export default class Login extends Component {
     }
 
     return (
+      <div style={Bg}>
       <div class="Login LogInTemplate">
       <div className="Loginbox LogInTemplate">
        <div class="login-html">
@@ -86,6 +95,7 @@ export default class Login extends Component {
             bsSize="large"
             disabled={!this.validateForm()}
             type="submit"
+            className="logInButton"
           >
             Login
           </Button>
@@ -95,7 +105,7 @@ export default class Login extends Component {
       </div>
       </div>
       </div>
-
+    </div>
     );
   }
 }

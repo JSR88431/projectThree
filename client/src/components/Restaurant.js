@@ -1,7 +1,15 @@
 import React from "react";
 import axios from "axios";
 import restPic from "./images/restplate.png"
+import Background from "./images/bg1.png"
 
+var Bg = {
+  backgroundImage: `url(${Background})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed'
+};
 
 class Restaurant extends React.Component {
   state = {
@@ -29,7 +37,7 @@ class Restaurant extends React.Component {
 
   render() {
     return (
-      <div className="topMargin">
+      <div className="topMargin" style={Bg}>
         {this.state.results.map(item => {
             return (
             <div className="container py-3">
