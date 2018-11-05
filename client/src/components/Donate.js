@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import donatePic from "./images/donatePic.png";
 
 
 class Donate extends React.Component {
@@ -35,7 +36,7 @@ class Donate extends React.Component {
               <div className="card">
                 <div className="row ">
                   <div className="col-md-4">
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97400&w=400&h=400" className="w-100"></img>
+                    <img src={donatePic} width="300" className="w-100"></img>
                   </div>
                   <div className="col-md-8 px-3">
                     <div className="card-block px-3 mt-3">
