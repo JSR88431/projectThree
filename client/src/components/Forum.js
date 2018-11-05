@@ -309,7 +309,7 @@ class Forum extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="forum-wrapper">
                 <ForumNav />
                 {this.renderLevel()}
             </div>
