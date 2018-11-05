@@ -3,9 +3,6 @@
     font-family: palatino; 
 }
 
-.navbar-brand {
-    
-}
 .nav-link {
     justify-content: space-between
 }
@@ -45,15 +42,35 @@ nav{
 }
 
 
+.list-group-item {
+    border-width: 2.5px; 
+    border-color: #2074e6; 
+    font-family: palatino; 
+    color: slategrey
+
+}
+
+.list-group-item {
+    border-width: 1.5px; 
+    border-color: #2074e6; 
+}
+.list-group-item-heading {
+    font-weight: bolder
+}
 
 .forum-element {
     margin-top:150px;
 }
 
+.control-label {
+    font-family: palatino; 
+    color: slategrey;
+    font-weight: bolder
+}
+
 .background {
     background-image:url("./images/niels.jpg");
     background-repeat: no-repeat
-    
 }
 
 
@@ -61,3 +78,12 @@ nav{
     margin-top: 60px;
 }
  
+.submit {
+    background-color:#2074e6; 
+    border-width: 5px; 
+    border-color: white;
+} 
+
+.Dadhacks {
+    background: url("./images/vintage-leaves.png")
+}

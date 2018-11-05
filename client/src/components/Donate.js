@@ -42,6 +42,7 @@ class Donate extends React.Component {
                     <div className="card-block px-3 mt-3">
                       <h4 className="card-title">{item.title}</h4>
                       <p className="card-text">{item.address}.</p>
+                      {/* <p className="card-text">{item.description}.</p> */}
                       <a href={item.link} className="btn btn-primary" target="_blank">More Info</a>
                     </div>
                   </div>
