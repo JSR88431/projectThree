@@ -314,7 +314,7 @@ function isLoggedIn(req, res, next) {
 
 
 // DELETE topic
-router.delete("/topics/:topicId/:owner", function (req, res) {
+router.delete("/topics/:topicId/:owner", isLoggedIn, function (req, res) {
 
     console.log(req.user.username)
     console.log(req.params.owner)
@@ -343,7 +343,7 @@ router.delete("/topics/:topicId/:owner", function (req, res) {
 });
 
 // DELETE post
-router.delete("/posts/:postId/:userId", function (req, res) {
+router.delete("/posts/:postId/:userId", isLoggedIn, function (req, res) {
 
     // Using `==` here because req.user.id is a number and req.params.userId is a string
 

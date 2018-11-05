@@ -193,6 +193,10 @@ class Forum extends React.Component {
             .delete(`/api/posts/${specificPost}/${userId}`)
             .then(response => {
 
+                if (response.data === false) {
+                    return this.props.history.push("/Login")
+                }
+
                 if (response.data === true) {
                     axios.get(`/api/posts/${this.state.postId}`).then((res) => {
                         console.log(res)
@@ -223,6 +227,11 @@ class Forum extends React.Component {
         axios
             .delete(`/api/topics/${specificTopic}/${owner}`)
             .then(response => {
+        
+                if (response.data === false) {
+                    return this.props.history.push("/Login")
+                }
+
                 if (response.data === true) {
                     axios.get(`/api/topics/${this.state.topicId}`).then((res) => {
                         console.log(res)
