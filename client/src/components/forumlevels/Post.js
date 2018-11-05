@@ -27,7 +27,7 @@ const Post = (props) => {
 
     return (
         <div className="forum-element">
-            <Button onClick={props.upOneLevel}>Up One Level</Button>
+            <Button onClick={props.upOneLevel}>Back to Topics</Button>
             <h1>{props.topicTitle}</h1>
             <ul className="list-group">{section}</ul>
             <ForumCard

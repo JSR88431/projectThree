@@ -60,13 +60,18 @@ class Forum extends React.Component {
             let topicID = e.currentTarget.id
             axios.get(`/api/topics/${topicID}`).then(response => {
                 // update state object with newest data
-
-                this.setState({
-                    topicResults: response.data,
-                    currentLevel: level,
-                    topicId: topicID
-                });
-
+                if (response.data === false) {
+                    this.setState({
+                        currentLevel: level,
+                        topicId: topicID
+                    });
+                } else {
+                    this.setState({
+                        topicResults: response.data,
+                        currentLevel: level,
+                        topicId: topicID
+                    });
+                }
             });
         }
         if (this.state.currentLevel === "Topic") {
