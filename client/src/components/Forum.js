@@ -284,6 +284,7 @@ class Forum extends React.Component {
                     makeATopic={this.makeATopic}
                     topicResults={this.state.topicResults}
                     deleteATopic={this.deleteATopic}
+                    convertTime={this.convertTime}
                 />
             );
         }

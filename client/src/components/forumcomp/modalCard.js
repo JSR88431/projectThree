@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Row, Col } from 'reactstrap';
 import { Form, FormGroup, Label, FormText } from 'reactstrap';
 
 import TopicCard from './topicCard.js'
@@ -30,21 +30,32 @@ class ModalCard extends React.Component {
       section = this.props.topicResults.map(item => {
         // create a route-able link for each item
         return (
-          <li className="list-group-item" key={item.id}>
-            <a
-              href="#"
-              onClick={e => this.props.handleLevelChange(e, "Post")}
-              id={item.id}
-              txt={item.title}
-            >
-              <h1>{item.title}</h1>
-            </a>
-            <p>Original Poster: {item.owner}</p>
-            <p>Number of Posts in Thread: {item.postCount}</p>
-            <a href="#" id={item.id} onClick={this.props.deleteATopic} owner={item.owner}>Delete</a>
-          </li>
+            <li className="list-group-item" key={item.id}>
+            <Row>
+                <Col>
+                <a
+                    href="#"
+                    onClick={e => this.props.handleLevelChange(e, "Post")}
+                    id={item.id}
+                    txt={item.title}
+                >
+                    <h1>{item.title}</h1>
+                </a>
+                </Col>
+            </Row>
+                <p>Original Poster: {item.owner}</p>
+                             <div style={{display: "inline-block",
+                                        marginTop: "-60px",
+                                        float: 'right'}}
+                             >
+                            <p>Number of Posts in Thread: {item.postCount}</p>
+                            <p>Thread Created At: {this.props.convertTime(item.createdAt)}</p>
+                        </div>
+                <a href="#" id={item.id} onClick={this.props.deleteATopic} owner={item.owner}>Delete</a>
+            </li>
         );
-      });
+    });
+    
 
     }
 

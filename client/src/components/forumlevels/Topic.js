@@ -2,16 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles.css";
 import TopicCard from "../forumcomp/topicCard"
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText,Row, Col } from 'reactstrap';
 import ModalCard from '../forumcomp/modalCard.js'
 const styles = {
-    fontSize: "125%",
-    marginTop: "10%",
-    lineHeight: "200%"
+    display: "inline-block",
+    float: "right",
+    margintop: "-60px"
 };
+const captionStyle ={
+    display: "inline-block",
+    marginTop: "-60px",
+    float: 'right'
+}
 
 const Topic = (props) => {
-    
+
 
     // let section = props.topicResults.map(item => {
     //     // create a route-able link for each item
@@ -50,6 +55,7 @@ const Topic = (props) => {
                         makeATopic={props.makeATopic}
                         onChange={props.handleChange}
                         onClick={props.makeATopic}
+                        convertTime={props.convertTime}
                         >
                 </ModalCard>
                 </section>
