@@ -1,11 +1,17 @@
 import React from "react";
 import axios from "axios";
-import Nav from "./Nav.js";
+import Background from "./images/bg1.png";
 import Waterpark from "./images/waterpark.jpg"
-// import GoogleMapsContainer from './GoogleMapsContainer.js'
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Container, Row, Col } from 'reactstrap';
-// import Geocode from "react-geocode";
+
+var Bg = {
+  backgroundImage: `url(${Background})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed'
+};
+
+
 
 class ThingsToDo extends React.Component {
     state = {
@@ -34,28 +40,12 @@ class ThingsToDo extends React.Component {
           }
     
       })
-
-      axios.get("/carrie/allRedTriTtd").then((response) => {
-        if (response.data.length === 0) {
-            axios.get("/carrie/scrapeRedTriTtd").then((res) => {
-              this.setState({
-                results: res.data
-              })
-            })            
-        }
-        else {
-        this.setState({ results: response.data})
-        }
-  
-    })
-
       }
 
       
      render() {
         return (
-         
-            <div className="topMargin">
+          <div className="topMargin" style={Bg}>
             {this.state.results.map(item => {
                 return (
                 <div className="container py-3">
@@ -84,3 +74,4 @@ class ThingsToDo extends React.Component {
       }
     }
 export default ThingsToDo;
+

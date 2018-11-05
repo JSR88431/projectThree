@@ -1,21 +1,26 @@
 @media all and (min-width: 480px) {
     .Login {
-      padding: 60px 0;
-    }
-  
+     padding: 200px 0;
+     margin-top: 70px;
+    } 
+
     .Login form {
       margin: 0 auto;
       max-width: 320px;
     }
-    .Login{ 
-    /* margin: 0 auto; */
-    margin-top: 70px;
-    /* max-width: 400px; */
-    padding: 40px 40px;
-    background-color: rgba(112, 128, 144, .7);  
-  }
+   
+  .form-group {
+    color:   white; 
+    font-weight: bolder; 
 
+  }
   .center {
     text-align: center;
+  }
+
+  .control-label {
+    color: white;
+    font-weight: bolder; 
+
   }
 }

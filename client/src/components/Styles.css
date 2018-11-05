@@ -9,42 +9,43 @@
 
 
 nav{
-    background-color:slategrey;
+    background-color: rgb(14, 22, 38)
     /* display: inline-block; */
 }
 
 .topMargin{
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .card {
-    border-width: 3px; 
-    border-color: #2074e6; 
+    border-width: 5px; 
+    border-color: rgb(19, 58, 137)
 }
 
 .card-title {
     font-weight: bolder; 
 }
+
 .card-title, .card-text {
     font-family: palatino; 
     color: slategrey 
 }
 
 .btn {
-    background-color:#2074e6; 
+    background-color: rgb(19, 58, 137);
     border-width: 5px; 
     border-color: white; 
 }
 
 .w-100 {
     border-width: 3px;
-    border-color: #2074e6;
+    border-color:rgb(19, 58, 137)
 }
 
 
 .list-group-item {
     border-width: 2.5px; 
-    border-color: #2074e6; 
+    border-color: rgb(19, 58, 137);
     font-family: palatino; 
     color: slategrey
 
@@ -52,11 +53,11 @@ nav{
 
 .list-group-item {
     border-width: 1.5px; 
-    border-color: #2074e6; 
+    border-color: rgb(19, 58, 137)
 }
 .list-group-item-heading {
     font-weight: bolder;
-    color: #2074e6
+    color: rgb(19, 58, 137)
 }
 
 .forum-element {
@@ -80,7 +81,7 @@ nav{
 }
  
 .submit {
-    background-color:#2074e6; 
+    background-color:rgb(19, 58, 137);
     border-width: 5px; 
     border-color: white;
 } 

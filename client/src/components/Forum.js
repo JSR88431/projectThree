@@ -6,10 +6,19 @@ import Category from "./forumlevels/Category";
 import Topic from "./forumlevels/Topic";
 import Post from "./forumlevels/Post";
 import "./Styles.css";
+import Background from "./images/bg1.png"
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 var moment = require('moment');
 moment().format();
 
+
+var Bg = {
+    backgroundImage: `url(${Background})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
+  };
 
 class Forum extends React.Component {
 
@@ -309,10 +318,12 @@ class Forum extends React.Component {
     render() {
 
         return (
+        <div style={Bg}>
             <div className="forum-wrapper">
                 <ForumNav />
                 {this.renderLevel()}
             </div>
+        </div>
         );
     }
 }
