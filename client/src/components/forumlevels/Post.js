@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../Styles.css";
 import ForumCard from "../forumcomp/forumCard"
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
+import ReplyModal from "../forumcomp/replyModal"
 const styles = {
     fontSize: "125%",
     marginTop: "10%",
@@ -28,9 +28,7 @@ const Post = (props) => {
     return (
         <div className="forum-element">
             <Button onClick={props.upOneLevel}>Back to Topics</Button>
-            <h1>{props.topicTitle}</h1>
-            <ul className="list-group">{section}</ul>
-            <ForumCard
+            <ReplyModal
                 postId={props.postId}
                 handleChange={props.handleChange}
                 postInput={props.postInput}
@@ -38,6 +36,9 @@ const Post = (props) => {
                 currentLevel={props.currentLevel}
                 makeAPost={props.makeAPost}
             />
+            <h1>{props.topicTitle}</h1>
+            <ul className="list-group">{section}</ul>
+           
         </div>
     );
 }
