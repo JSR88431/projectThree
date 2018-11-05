@@ -27,9 +27,24 @@ class ReplyModal extends React.Component {
   }
 
   render() {
+
+    let section = this.props.postResults.map(item => {
+      // create a route-able link for each item
+      return (
+          <li className="list-group-item" key={item.id}>
+              <p>
+                  {item.author} ------- {this.props.convertTime(item.createdAt)}
+              </p>
+              <p>{item.body}</p>
+              <a href="#" id={item.id} onClick={this.props.deleteAPost} userid={item.UserId}>Delete</a>
+          </li>
+      );
+  });
+
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Reply To Topic</Button>
+        <Button onClick={this.props.upOneLevel}>Back to Topics</Button>
+        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Add Reply</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <Form>
         <FormGroup>
@@ -45,6 +60,8 @@ class ReplyModal extends React.Component {
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
+        <ul className="list-group">{section}</ul>
+        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Add Reply</Button>
       </div>
     );
   }
