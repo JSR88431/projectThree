@@ -16,7 +16,7 @@ export default class Signup extends Component {
       taken: false
     };
   }
-  
+
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0 && this.state.username.length > 0
   }
@@ -57,15 +57,16 @@ export default class Signup extends Component {
 
     if (this.state.taken === true) {
       error = <div>
-        <p>That username or e-mail is already in use.</p>
+        <br />
+        <p style={{ color: "red", textAlign: "center" }}>That username or e-mail is already in use.</p>
       </div>
     }
 
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-        <h2><strong className="">Create Account</strong></h2>
-        <br />
+          <h2 style={{ textAlign: "center" }}><strong>Create Account</strong></h2>
+          <br />
           <FormGroup controlId="username" bsSize="large">
             <ControlLabel>Username:</ControlLabel>
             <FormControl
@@ -100,8 +101,8 @@ export default class Signup extends Component {
           >
             Signup
           </Button>
+          {error}
         </form>
-        {error}
       </div>
     );
   }

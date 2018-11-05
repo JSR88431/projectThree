@@ -51,8 +51,9 @@ export default class Login extends Component {
     let error;
 
     if (this.state.logInError === true) {
-      error = <div>
-        <p>Incorrect e-mail address or password.</p>
+      error = <div class>
+          <br />
+        <p style={{color: "red", textAlign: "center"}}>Incorrect e-mail address or password.</p>
       </div>
     }
 
@@ -62,7 +63,7 @@ export default class Login extends Component {
        <div class="login-html">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
-          <h2><strong>Member Login</strong></h2>
+          <h2 style={{textAlign: "center"}}><strong>Member Login</strong></h2>
           <br />
             <ControlLabel>Email:</ControlLabel>
             <FormControl
@@ -88,8 +89,9 @@ export default class Login extends Component {
           >
             Login
           </Button>
+          {error}
         </form>
-        {error}
+
       </div>
       </div>
       </div>
