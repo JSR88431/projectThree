@@ -1,0 +1,25 @@
+@media all and (min-width: 480px) {
+    .Forum {
+      padding: 60px 0;
+    }
+  
+    .Forum form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+    .Forum{
+    /* margin: 0 auto; */
+    margin-top: 20px;
+    /* max-width: 400px; */
+    padding: 20px 10px;
+    background-color: rgba(166,172,175, .8);    }
+    
+  }
+  .gradient {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), to(rgba(0,0,0,0.0)));
+  }
+  
+
+  .center{
+    text-align: center;
+}
