@@ -17,7 +17,7 @@ const Post = (props) => {
         return (
             <li className="list-group-item" key={item.id}>
                 <p>
-                    {item.author} ------- {item.createdAt}
+                    {item.author} ------- {props.convertTime(item.createdAt)}
                 </p>
                 <p>{item.body}</p>
                 <a href="#" id={item.id} onClick={props.deleteAPost} userid={item.UserId}>Delete</a>

@@ -6,6 +6,9 @@ import Topic from "./forumlevels/Topic";
 import Post from "./forumlevels/Post";
 import "./Styles.css";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+var moment = require('moment');
+moment().format();
+
 
 class Forum extends React.Component {
 
@@ -284,10 +287,18 @@ class Forum extends React.Component {
                     makeAPost={this.makeAPost}
                     postResults={this.state.postResults}
                     deleteAPost={this.deleteAPost}
+                    convertTime={this.convertTime}
                 />
             );
         }
     };
+
+    convertTime = (time) => {
+
+        let finalDate = moment(time).format("MM-DD-YYYY, h:mm A")
+
+        return finalDate;
+    }
 
     render() {
 
