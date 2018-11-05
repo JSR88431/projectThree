@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ForumNav from "./forumcomp/forumNav";
 import Category from "./forumlevels/Category";
 import Topic from "./forumlevels/Topic";
 import Post from "./forumlevels/Post";
@@ -309,6 +310,7 @@ class Forum extends React.Component {
 
         return (
             <div>
+                <ForumNav />
                 {this.renderLevel()}
             </div>
         );

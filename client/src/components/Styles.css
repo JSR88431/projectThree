@@ -59,7 +59,7 @@ nav{
 }
 
 .forum-element {
-    margin-top:150px;
+    margin-top:50px;
 }
 
 .control-label {
@@ -86,4 +86,8 @@ nav{
 
 .Dadhacks {
     background: url("./images/vintage-leaves.png")
+}
+
+.forum-nav {
+    margin-top: 100px;
 }
