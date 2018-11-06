@@ -311,9 +311,6 @@ router.post("/posts/:topicId", isLoggedIn, function (req, res) {
 
     let userInfo = req.body
 
-    userInfo.UserId = req.user.id
-    userInfo.author = req.user.username
-
     if (req.user.facebookId) {
 
         userInfo.UserId = req.user.id

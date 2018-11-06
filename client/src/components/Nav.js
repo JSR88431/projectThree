@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import Logo from "./images/dadbase.png";
 import "./Styles.css";
+import axios from "axios";
 
 
 class Nav extends React.Component {
     state = {}
+
+    logout = () => {
+        axios.get("/logout").then((res) => {
+
+        })
+    }
+
     render() {
         return (
             <div>
@@ -62,6 +70,8 @@ class Nav extends React.Component {
                     <span><a className="nav-link" href="/Forum">forum</a></span>
                     <span><a className="nav-link" href="/Login">login</a></span>
                     <span><a className="nav-link" href="/Signup">signup</a></span>
+                    <span><a className="nav-link" href="/logout" onClick={this.logout} style={{ color:"red"}}>logout</a></span>
+                    
                 </nav>
             </div>
         );

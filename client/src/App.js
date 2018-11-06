@@ -35,6 +35,7 @@ class App extends React.Component {
       
       <Route exact path="/Login" component={Login} />
       <Route exact path="/Signup" component={Signup} />
+      <Route exact path="/logout" component={Home} />
       <Route exact path="/" component={Home} />
       <Route exact path="/Restaurant" component={Restaurant} />
       <Route exact path="/ThingsToDo" component={ThingsToDo} />
@@ -42,6 +43,7 @@ class App extends React.Component {
       <Route exact path="/Donate" component={Donate} />
       <Route exact path="/Classes" component={Classes} />
       <Route exact path="/Dadhacks" component={Dadhacks} />
+
     </div>
   </Router>
  </div>
