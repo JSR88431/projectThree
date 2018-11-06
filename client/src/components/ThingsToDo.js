@@ -4,13 +4,17 @@ import Background from "./images/bg1.png";
 import Waterslide from "./images/waterslide.png"
 
 var Bg = {
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
-};
+  backgroundAttachment: 'fixed',
+  margin: "0",
+  overflowX: 'hidden'
 
+
+};
 
 
 class ThingsToDo extends React.Component {

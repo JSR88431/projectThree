@@ -4,11 +4,15 @@ import restPic from "./images/restplate.png"
 import Background from "./images/bg1.png"
 
 var Bg = {
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: 'fixed',
+  margin: "0",
+  overflowX: 'hidden'
+
 };
 
 class Restaurant extends React.Component {

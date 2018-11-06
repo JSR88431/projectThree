@@ -4,11 +4,13 @@ import Vaca from "./images/vacapic.png"
 import Background from "./images/bg1.png"
 
 var Bg = {
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
+  backgroundRepeat: 'repeat-y',
+  backgroundAttachment: 'fixed',
+  margin: "0"
 };
 
 
