@@ -37,6 +37,10 @@ nav{
     border-color: white; 
 }
 
+.ttd.btn {
+    color: white; 
+}
+
 .w-100 {
     border-width: 3px;
     border-color:rgb(19, 58, 137)
