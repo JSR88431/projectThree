@@ -40,7 +40,7 @@ nav{
 }
 
 .ttd.btn {
-    color: white; 
+    color: white !important; 
 }
 
 .w-100 {

@@ -56,7 +56,7 @@ class ThingsToDo extends React.Component {
                   <div className="card">
                     <div className="row">
                       <div className="col-md-4">
-                      <img src={Waterslide} width="200" className="w-100"></img>
+                      <img src={Waterslide} width="200" height="275px" className="w-100"></img>
                       </div>
                       <div className="col-md-8 px-3">
                         <div className="card-block px-3 mt-3">
