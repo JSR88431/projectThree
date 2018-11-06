@@ -8,7 +8,9 @@ var Bg = {
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: 'fixed',
+  overflowX: 'hidden'
+
 };
 
 class Donate extends React.Component {

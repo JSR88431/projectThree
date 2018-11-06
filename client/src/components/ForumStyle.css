@@ -19,7 +19,7 @@
     padding: 20px 10px;
     color: white;
     /* background-color: rgba(112, 128, 144, .3);   */
-    background-color:   rgb(14, 22, 38, .9); 
+    background-color:   rgb(14, 22, 38, .85); 
     font-family: palatino;  
   }
 
@@ -28,6 +28,19 @@
     font-weight: bolder;
     text-decoration: none;
     font-family: palatino; 
+    /* border-color: rgb(19, 58, 137);
+    border-width: 5px; */
+  }
+
+  .list-group-item {
+    border-color: rgb(19, 58, 137) !important;
+    border-width: 5px !important; 
+    font-family: palatino; 
+  }
+
+  .list-group-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .forum-nav-link {
@@ -56,6 +69,15 @@
     margin-top: -30px; 
   }
 
+  .forum-nav {
+    margin-top: 125px;
+    border: 5px white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color:  rgb(14, 22, 38, .9);
+    color: white !important;
+}
+
   /* .gradient {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), to(rgba(0,0,0,0.0)));
   } */
@@ -69,10 +91,7 @@
     text-align: center;
 }
 
-.list-group-item {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+
 
 #topic-title {
   color:white;
@@ -93,21 +112,49 @@ hr {
 
 .post-time {
   background-color: skyblue;
-  color: black;
+  color: rgb(14, 22, 38);
   font-size: 14px;
 }
 
 
 .post-user {
   font-size: 20px;
-  color: navy;
+  color: rgb(14, 22, 38);
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .post-body {
   font-size: 16px;
-  color: black;
+  color: rgb(14, 22, 38);
 }
 
+.btn.btn-secondary {
+  background-color:rgb(14, 22, 38) !important;
+  font-family: palatino; 
+}
+
+.btn.btn-danger {
+  background-color: rgb(14, 22, 38);
+  font-family: palatino; 
+}
+
+.btn.btn-primary {
+  background-color:rgb(14, 22, 38) !important;
+  color: white; 
+  font-family: palatino; 
+}
+
+.modal-body {
+  font-family: palatino; 
+}
+.btn.btn-secondary {
+  background-color: rgb(19, 58, 137);
+  color: white; 
+  font-family: palatino; 
+}
+.modal-footer {
+  background-color: rgb(14, 22, 38);
+  color: white;
+}
 }

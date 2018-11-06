@@ -4,13 +4,17 @@ import Background from "./images/bg1.png";
 import Waterslide from "./images/waterslide.png"
 
 var Bg = {
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
-};
+  backgroundAttachment: 'fixed',
+  margin: "0",
+  overflowX: 'hidden'
 
+
+};
 
 
 class ThingsToDo extends React.Component {
@@ -48,11 +52,11 @@ class ThingsToDo extends React.Component {
           <div className="topMargin" style={Bg}>
             {this.state.results.map(item => {
                 return (
-                <div className="container py-3">
+                <div className="container" style={{paddingTop:' 7rem '}}>
                   <div className="card">
                     <div className="row">
                       <div className="col-md-4">
-                      <img src={Waterslide} width="200" className="w-100"></img>
+                      <img src={Waterslide} width="200" height="275px" className="w-100"></img>
                       </div>
                       <div className="col-md-8 px-3">
                         <div className="card-block px-3 mt-3">

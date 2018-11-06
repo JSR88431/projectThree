@@ -40,7 +40,7 @@ nav{
 }
 
 .ttd.btn {
-    color: white; 
+    color: white !important; 
 }
 
 .w-100 {
@@ -92,9 +92,6 @@ nav{
     border-color: white;
 } 
 
-.forum-nav {
-    margin-top: 100px;
-}
 
 .forum-wrapper {
     margin: 100px;

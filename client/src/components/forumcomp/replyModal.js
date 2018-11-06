@@ -52,7 +52,7 @@ class ReplyModal extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <Form>
         <FormGroup>
-          <Label for="exampleText">Reply To Topic</Label>
+          <Label for="exampleText" style={{color:'black'}}>Reply To Topic</Label>
           <Input 
           onChange={this.props.handleChange}
           value={this.props.postInput}
