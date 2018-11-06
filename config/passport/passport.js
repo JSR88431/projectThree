@@ -123,7 +123,7 @@ module.exports = function (passport, user) {
     passport.use(new FacebookStrategy({
         clientID: process.env.DB_ID,
         clientSecret: process.env.DB_SECRET,
-        callbackURL: "https://dad-a-base.herokuapp.com/auth/facebook/callback",
+        callbackURL: "/auth/facebook/callback",
         profileFields: ['name']
     },
         function (accessToken, refreshToken, profile, done) {
