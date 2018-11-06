@@ -61,7 +61,7 @@ export default class Login extends Component {
     if (this.state.logInError === true) {
       error = <div class>
           <br />
-        <p style={{color: "red", textAlign: "center", fontWeight: "bolder"}}>Incorrect e-mail address or password.</p>
+        <p style={{ color: "white", textAlign: "center", textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black" }}>Incorrect e-mail address or password.</p>
       </div>
     }
 

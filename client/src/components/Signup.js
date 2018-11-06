@@ -67,7 +67,7 @@ export default class Signup extends Component {
     if (this.state.taken === true) {
       error = <div>
         <br />
-        <p style={{ color: "red", textAlign: "center" }}>That username or e-mail is already in use.</p>
+        <p style={{ color: "white", textAlign: "center", textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black" }}>That username or e-mail is already in use.</p>
       </div>
     }
 
