@@ -19,15 +19,6 @@ module.exports = function (app) {
         res.json(false)
     });
 
-    // app.get('/signin', authController.signin);
-
-    // app.get('/signinfailure', authController.signinfailure);
-
-    // app.get('/signinsuccess', authController.signinsuccess);
-
-    // app.get('/signupsuccess', authController.signupsuccess);
-
-
     app.post('/signup', passport.authenticate('local-signup', {
 
         successRedirect: '/signupsuccess',
@@ -65,8 +56,8 @@ module.exports = function (app) {
     // authentication has failed.
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/dashboard',
-            failureRedirect: '/signin'
+            successRedirect: '/forum',
+            failureRedirect: '/Login'
         }));
 
     function isLoggedIn(req, res, next) {
@@ -75,7 +66,7 @@ module.exports = function (app) {
 
             return next();
 
-        res.redirect('/signin');
+        res.redirect('/Login');
 
     }
 

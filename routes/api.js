@@ -210,7 +210,7 @@ router.get("/topics/:catId", function (req, res) {
             CategoryId: req.params.catId
         },
         attributes: {
-            include: [[Sequelize.fn("COUNT", Sequelize.col("Posts.id")), "postCount"]] 
+            include: [[Sequelize.fn("COUNT", Sequelize.col("Posts.id")), "postCount"]]
         },
         include: [{
             model: db.Post, attributes: []
@@ -273,16 +273,34 @@ router.post("/categories", function (req, res) {
 router.post("/topics/:catId", isLoggedIn, function (req, res) {
 
     let newTopic = req.body;
-    console.log(newTopic)
-    newTopic.owner = req.user.username
 
-    db.Topic.create(newTopic)
-        .then(function (data) {
-            res.json(data.id);
-        })
-        .catch(function (err) {
-            res.json(err);
-        });
+    if (req.user.facebookId) {
+
+        newTopic.owner = req.user.firstname + " " + req.user.lastname
+
+        db.Topic.create(newTopic)
+            .then(function (data) {
+                res.json(data.id);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    } else {
+
+        newTopic.owner = req.user.username
+
+        db.Topic.create(newTopic)
+            .then(function (data) {
+                res.json(data.id);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    }
+
+
 });
 
 // Post a new Post to specific Topic
@@ -296,13 +314,34 @@ router.post("/posts/:topicId", isLoggedIn, function (req, res) {
     userInfo.UserId = req.user.id
     userInfo.author = req.user.username
 
-    db.Post.create(userInfo)
-        .then(function (data) {
-            res.json(data);
-        })
-        .catch(function (err) {
-            res.json(err);
-        });
+    if (req.user.facebookId) {
+
+        userInfo.UserId = req.user.id
+        userInfo.author = req.user.firstname + " " + req.user.lastname
+
+        db.Post.create(userInfo)
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    } else {
+
+        userInfo.UserId = req.user.id
+        userInfo.author = req.user.username
+
+        db.Post.create(userInfo)
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    }
+
 });
 
 
@@ -327,52 +366,106 @@ router.delete("/topics/:topicId/:owner", isLoggedIn, function (req, res) {
     console.log(req.user.username)
     console.log(req.params.owner)
 
-    if (req.user.username === req.params.owner) {
+    if (req.user.facebookId) {
 
-        res.json(true)
+        let fbUser = req.user.firstname + " " + req.user.lastname
 
-        db.Topic.destroy({
-            where: {
-                id: req.params.topicId
-            }
-        })
-            .then(function (data) {
-                res.json(data);
+        if (fbUser === req.params.owner) {
+
+            res.json(true)
+
+            db.Topic.destroy({
+                where: {
+                    id: req.params.topicId
+                }
             })
-            .catch(function (err) {
-                res.json(err);
-            });
+                .then(function (data) {
+                    res.json(data);
+                })
+                .catch(function (err) {
+                    res.json(err);
+                });
+
+        } else {
+
+            res.json("You cannot delete others' topics.")
+        }
 
     } else {
 
-        res.json("You cannot delete others' topics.")
+        if (req.user.username === req.params.owner) {
+
+            res.json(true)
+
+            db.Topic.destroy({
+                where: {
+                    id: req.params.topicId
+                }
+            })
+                .then(function (data) {
+                    res.json(data);
+                })
+                .catch(function (err) {
+                    res.json(err);
+                });
+
+        } else {
+
+            res.json("You cannot delete others' topics.")
+        }
     }
 
 });
 
 // DELETE post
-router.delete("/posts/:postId/:userId", isLoggedIn, function (req, res) {
+router.delete("/posts/:postId/:userId/:author", isLoggedIn, function (req, res) {
 
     // Using `==` here because req.user.id is a number and req.params.userId is a string
+    if (req.user.facebookId) {
 
-    if (req.user.id == req.params.userId) {
+        let fbUser = req.user.firstname + req.user.lastname
 
-        res.json(true)
+        if (fbUser == req.params.author) {
 
-        db.Post.destroy({
-            where: {
-                id: req.params.postId
-            }
-        })
-            .then(function (data) {
-                res.json(data);
+            res.json(true)
+    
+            db.Post.destroy({
+                where: {
+                    id: req.params.postId
+                }
             })
-            .catch(function (err) {
-                res.json(err);
-            });
+                .then(function (data) {
+                    res.json(data);
+                })
+                .catch(function (err) {
+                    res.json(err);
+                });
+        } else {
+            res.json("You cannot delete others' posts.")
+        }
+
     } else {
-        res.json("You cannot delete others' posts.")
+        if (req.user.id == req.params.userId) {
+
+            res.json(true)
+    
+            db.Post.destroy({
+                where: {
+                    id: req.params.postId
+                }
+            })
+                .then(function (data) {
+                    res.json(data);
+                })
+                .catch(function (err) {
+                    res.json(err);
+                });
+        } else {
+            res.json("You cannot delete others' posts.")
+        }
+
     }
+
 
 });
 
@@ -381,19 +474,19 @@ router.delete("/alltopics", function (req, res) {
     // Using `==` here because req.user.id is a number and req.params.userId is a string
 
 
-        db.Topic.destroy({
-            where: {
-                id: {
-                    [Sequelize.Op.gt]: 0
-                }
+    db.Topic.destroy({
+        where: {
+            id: {
+                [Sequelize.Op.gt]: 0
             }
+        }
+    })
+        .then(function (data) {
+            res.json(data);
         })
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
+        .catch(function (err) {
+            res.json(err);
+        });
 
 });
 
@@ -402,19 +495,19 @@ router.delete("/allposts", function (req, res) {
     // Using `==` here because req.user.id is a number and req.params.userId is a string
 
 
-        db.Post.destroy({
-            where: {
-                id: {
-                    [Sequelize.Op.gt]: 0
-                }
+    db.Post.destroy({
+        where: {
+            id: {
+                [Sequelize.Op.gt]: 0
             }
+        }
+    })
+        .then(function (data) {
+            res.json(data);
         })
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
+        .catch(function (err) {
+            res.json(err);
+        });
 
 });
 
