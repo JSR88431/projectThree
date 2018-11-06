@@ -30,8 +30,13 @@
     font-family: palatino; 
   }
 
-  a {
+  .forum-nav-link {
     color:white;
+    text-decoration: none;
+    font-family: palatino; 
+  } 
+
+  a {
     text-decoration: none;
     font-family: palatino; 
   } 
@@ -63,4 +68,10 @@
   .center{
     text-align: center;
 }
+
+.list-group-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 }

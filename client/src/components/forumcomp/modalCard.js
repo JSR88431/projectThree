@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Row, Col } from 'reactstrap';
 import { Form, FormGroup, Label, FormText } from 'reactstrap';
-
+// import "../ForumStyle.css";
 import TopicCard from './topicCard.js'
 
 class ModalCard extends React.Component {

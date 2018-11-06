@@ -12,10 +12,10 @@ const ForumNav = (props) => {
     return (
         <div className="row forum-nav">
             <div className="col-3 d-flex justify-content-between ">
-                <a href="forum">Home</a> •
-                <a href="http://lmgtfy.com/?iie=1&q=google.com">FAQ</a> •
-                <a href="#com">Community</a> •
-                <a href="#chat">Chat Room</a>
+                <a className="forum-nav-link" href="forum">Home</a> •
+                <a className="forum-nav-link" href="http://lmgtfy.com/?iie=1&q=google.com">FAQ</a> •
+                <a className="forum-nav-link" href="#com">Community</a> •
+                <a className="forum-nav-link" href="#chat">Chat Room</a>
             </div>
         </div>
     );
