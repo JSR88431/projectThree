@@ -100,6 +100,8 @@ export default class Login extends Component {
             Login
           </Button>
           {error}
+          <button className="nav-link" href="/auth/facebook">Facebook</button>
+
         </form>
 
       </div>
