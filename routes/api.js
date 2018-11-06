@@ -316,7 +316,7 @@ router.post("/posts/:topicId", isLoggedIn, function (req, res) {
 
     if (req.user.facebookId) {
 
-        userInfo.UserId = req.user.facebookId
+        userInfo.UserId = req.user.id
         userInfo.author = req.user.firstname + " " + req.user.lastname
 
         db.Post.create(userInfo)
