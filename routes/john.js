@@ -5,7 +5,7 @@ var db = require("../models");
 
 // la curbed scrape
 router.get("/scrapeLaCurbed", function(req, res) {
-    // Make a request via axios for the news section of `ycombinator`
+    // Make a request via axios for the news section of `combinator`
     axios.get("https://la.curbed.com/maps/things-to-do-kids-los-angeles").then(function(response) {
       // Load the html body from axios into cheerio
       var $ = cheerio.load(response.data);
@@ -16,7 +16,7 @@ router.get("/scrapeLaCurbed", function(req, res) {
         var joseph = /\r?\n|\r/g;
         title = title.replace(joseph, "");
         // console.log(title);
-        // var link = $(element).find(".c-entry-content").find(".c-mapstack_info").find(".c-mapstack_phone-url").find(".c-mapstack_phone.mobile-only").find("a").attr("href");
+        // var link = $(element).find("c-mapstack_card-hed").find(".c-entry-content").find(".c-mapstack_info").find(".c-mapstack_phone-url").find(".c-mapstack_phone.mobile-only").find("a").attr("href");
         // console.log(link);
         var description = $(element).find("p").eq(0).text();
         // // var descriptionTwo = $(element).find("p").eq(1).text();

@@ -15,6 +15,15 @@ var Bg = {
   backgroundAttachment: 'fixed'
 };
 
+var textBlock = {
+  position: "absolute",
+    bottom: "20px",
+    right: "20px",
+    color: "white",
+    paddingLeft: "20px",
+    paddingRight: "20px"
+}
+
 
 class Home extends React.Component {
   state = {
@@ -22,7 +31,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    
+
     // // after component loads, get all products from db
     // axios.get("/joseph/scrapeAllRestaurants").then((response) => {
     //   console.log(response.data);
@@ -80,7 +89,7 @@ class Home extends React.Component {
     //   console.log(this.state.results);
     // });
 
-    
+
     // axios.get("/joseph/scrapeAllRestaurants").then((response) => {
     //   console.log(response.data);
     //   this.setState({
@@ -89,7 +98,7 @@ class Home extends React.Component {
     //   console.log(this.state.results);
     // });
 
-   
+
 
     // axios.get("/carrie/scrapeRedTriTtd").then((response) => {
     //   console.log(response.data);
@@ -107,20 +116,23 @@ class Home extends React.Component {
     //   console.log(this.state.results);
     // });
 
-    
+
   }
 
   render() {
     return (
       <div>
-      <div style={Bg} className="container-fluid">
-      
+        <div style={Bg} className="container-fluid"></div>
+        <div className="container">
+          <div style={textBlock}>
+            <h1 className="quicksand">created for dads.<br></br> by dads.</h1>
+          </div>
+        </div>
+
+
       </div>
-     
-        
-      </div>
- 
-     
+
+
     );
   }
 }
