@@ -73,13 +73,13 @@ class ModalCard extends React.Component {
             <Form>
               <h1>Create Topic</h1>
               <FormGroup>
-                <Label for="title">Title</Label>
+                <Label for="title" style={{color:"black"}}>Title</Label>
                 <Input
                   onChange={this.props.handleChange}
                   type="textarea" name="text" id="topicTitle" />
               </FormGroup>
               <FormGroup>
-                <Label for="body">Body</Label>
+                <Label for="body" style={{color:"black"}}>Body</Label>
                 <Input
                   onChange={this.props.handleChange}
                   value={this.props.forumInput}
