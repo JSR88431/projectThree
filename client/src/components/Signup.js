@@ -114,7 +114,7 @@ export default class Signup extends Component {
 
           </Button>
           {error}
-          <button className="nav-link" href="/auth/facebook">Facebook</button>
+          <a href="/auth/facebook"><button className="nav-link">Facebook</button></a>
 
         </form>
       </div>
