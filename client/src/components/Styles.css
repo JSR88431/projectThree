@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+  
   .nav-link,.navbar-brand{
     color: white;
     font-family: palatino; 
@@ -96,4 +98,9 @@ nav{
 
 .forum-wrapper {
     margin: 100px;
+}
+
+.quicksand {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px; 
 }
