@@ -44,7 +44,7 @@ class Vacation extends React.Component {
         <div className="topMargin" style={Bg}>
           {this.state.results.map(item => {
               return (
-              <div className="container py-3">
+              <div className="container" style={{paddingTop:' 5rem '}}>
                 <div className="card">
                   <div className="row ">
                     <div className="col-md-4">
