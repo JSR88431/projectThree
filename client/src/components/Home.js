@@ -6,7 +6,6 @@ import "./Styles.css";
 
 
 var Bg = {
-  
   height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
@@ -14,7 +13,6 @@ var Bg = {
   backgroundRepeat: 'no-repeat',
   backgroundAttachment: 'fixed',
   margin: "0"
-
 };
 
 
