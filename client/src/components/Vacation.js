@@ -10,7 +10,9 @@ var Bg = {
   backgroundPosition: 'center',
   backgroundRepeat: 'repeat-y',
   backgroundAttachment: 'fixed',
-  margin: "0"
+  margin: "0",
+  overflowX: 'hidden'
+
 };
 
 
