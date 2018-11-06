@@ -56,6 +56,15 @@
     margin-top: -30px; 
   }
 
+  .forum-nav {
+    margin-top: 125px;
+    border: 5px solid lemonchiffon;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: navy;
+    color: white !important;
+}
+
   /* .gradient {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), to(rgba(0,0,0,0.0)));
   } */
