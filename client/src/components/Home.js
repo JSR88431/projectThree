@@ -6,14 +6,18 @@ import "./Styles.css";
 
 
 var Bg = {
-  width: "100%",
-  height: "1000px",
+  
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: 'fixed',
+  margin: "0"
+
 };
+
+
 
 var textBlock = {
   position: "absolute",
