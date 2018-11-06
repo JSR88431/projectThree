@@ -37,9 +37,9 @@ module.exports = function (app) {
 
     app.post('/signin',
         passport.authenticate('local-signin', {
-            successRedirect: '/forum',
+            successRedirect: '/signinsuccess',
 
-            failureRedirect: '/Login'
+            failureRedirect: '/signinfailure'
         }),
         function (req, res) {
             console.log(req.body, "req.body")
@@ -56,8 +56,8 @@ module.exports = function (app) {
     // authentication has failed.
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/signinsuccess',
-            failureRedirect: '/signinfailure'
+            successRedirect: '/forum',
+            failureRedirect: '/Login'
         }));
 
     function isLoggedIn(req, res, next) {

@@ -80,7 +80,8 @@ class Forum extends React.Component {
                     console.log(this.state.topicResults, "topic results")
                     this.setState({
                         currentLevel: level,
-                        topicId: topicID
+                        topicId: topicID,
+                        topicResults: []
                     });
                 } else {
                     this.setState({
