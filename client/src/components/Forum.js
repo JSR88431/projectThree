@@ -212,7 +212,7 @@ class Forum extends React.Component {
 
         let specificPost = e.target.id
         let userId = e.currentTarget.getAttribute('userid')
-        let author = e.currentTarget.getAttribute('author')
+        let author = e.currentTarget.getAttribute('author').replace(/\s+/g, '');
         console.log("userid: " + userId)
 
         axios

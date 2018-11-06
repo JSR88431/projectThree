@@ -423,9 +423,9 @@ router.delete("/posts/:postId/:userId/:author", isLoggedIn, function (req, res) 
     // Using `==` here because req.user.id is a number and req.params.userId is a string
     if (req.user.facebookId) {
 
-        let fbUser = req.user.firstname + " " + req.user.lastname
+        let fbUser = req.user.firstname + req.user.lastname
 
-        if (req.user.id == req.params.author) {
+        if (fbUser == req.params.author) {
 
             res.json(true)
     
