@@ -74,4 +74,40 @@
   margin-bottom: 10px;
 }
 
+#topic-title {
+  color:white;
+  text-decoration: none;
+  font-family: palatino; 
+}
+
+hr {
+  border-top: 1px solid skyblue;
+}
+
+.post-time,
+.post-user,
+.post-body {
+  text-decoration: none;
+  font-family: palatino; 
+}
+
+.post-time {
+  background-color: skyblue;
+  color: black;
+  font-size: 14px;
+}
+
+
+.post-user {
+  font-size: 20px;
+  color: navy;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.post-body {
+  font-size: 16px;
+  color: black;
+}
+
 }
