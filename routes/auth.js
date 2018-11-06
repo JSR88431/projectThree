@@ -37,9 +37,9 @@ module.exports = function (app) {
 
     app.post('/signin',
         passport.authenticate('local-signin', {
-            successRedirect: '/signinsuccess',
+            successRedirect: '/forum',
 
-            failureRedirect: '/signinfailure'
+            failureRedirect: '/Login'
         }),
         function (req, res) {
             console.log(req.body, "req.body")
