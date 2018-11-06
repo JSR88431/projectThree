@@ -22,10 +22,19 @@
     background-color: rgb(19, 58, 137); 
     font-family: palatino; 
     color: white; 
-    
-
   }
 
+  .signUpButton {
+    background-color: rgb(19, 58, 137); 
+    font-family: palatino; 
+    color: white; 
+  }
+
+  h2 {
+    color: white;
+    font-weight: bolder;
+    font-family: palatino; 
+  }
   .control-label {
     color: white;
     font-weight: bolder; 
