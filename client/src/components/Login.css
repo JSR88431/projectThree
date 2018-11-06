@@ -18,9 +18,16 @@
     text-align: center;
   }
 
+  .logInButton {
+    background-color: rgb(19, 58, 137); 
+    font-family: palatino; 
+    color: white; 
+    
+
+  }
+
   .control-label {
     color: white;
     font-weight: bolder; 
-
   }
 }

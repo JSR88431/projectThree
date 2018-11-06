@@ -5,6 +5,7 @@ import ForumNav from "./forumcomp/forumNav";
 import Category from "./forumlevels/Category";
 import Topic from "./forumlevels/Topic";
 import Post from "./forumlevels/Post";
+import "./ForumStyle.css";
 import "./Styles.css";
 import Background from "./images/bg1.png"
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
@@ -323,11 +324,15 @@ class Forum extends React.Component {
         return finalDate;
     }
 
+    forumStyle = {
+        marginTop: "-30px"
+    }
+
     render() {
 
         return (
         <div style={Bg}>
-            <div className="forum-wrapper">
+            <div className="forum-wrapper"style={this.forumStyle}>
                 <ForumNav />
                 {this.renderLevel()}
             </div>

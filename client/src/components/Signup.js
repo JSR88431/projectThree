@@ -2,8 +2,17 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
 import "./Styles.css";
+import Background from "./images/bg1.png";
 // import "./Login.css";
 import "./Login.css";
+
+var Bg = {
+  backgroundImage: `url(${Background})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed'
+};
 
 export default class Signup extends Component {
   constructor(props) {
@@ -63,6 +72,7 @@ export default class Signup extends Component {
     }
 
     return (
+      <div style={Bg}>
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
           <h2 style={{ textAlign: "center" }}><strong>Create Account</strong></h2>
@@ -104,6 +114,7 @@ export default class Signup extends Component {
           </Button>
           {error}
         </form>
+      </div>
       </div>
     );
   }
