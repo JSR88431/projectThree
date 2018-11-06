@@ -3,8 +3,8 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
 import "./Styles.css";
 import Background from "./images/bg1.png";
-// import "./Login.css";
 import "./Login.css";
+import fb from './images/connect.png'
 
 var Bg = {
   backgroundImage: `url(${Background})`,
@@ -114,7 +114,7 @@ export default class Signup extends Component {
 
           </Button>
           {error}
-          <button className="nav-link" href="/auth/facebook">Facebook</button>
+          <a href="/auth/facebook"><img className="fb-log" src={fb} /></a>
 
         </form>
       </div>
