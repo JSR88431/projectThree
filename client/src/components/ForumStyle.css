@@ -2,18 +2,49 @@
     .Forum {
      padding: 200px 0;
      margin-top: 70px;
+     font-family: palatino; 
+
     }
   
     .Forum form {
       margin: 0 auto;
       max-width: 320px;
+      font-family: palatino; 
     }
+
     .Forum{
     /* margin: 0 auto; */
     margin-top: 0px;
     /* max-width: 400px; */
     padding: 20px 10px;
-    background-color: rgba(112, 128, 144, .3);      
+    color: white;
+    /* background-color: rgba(112, 128, 144, .3);   */
+    background-color:   rgb(14, 22, 38, .9); 
+    font-family: palatino;  
+  }
+
+  .forum.gradient.list-group-item-heading {
+    color: rgb(14, 22, 38);
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: palatino; 
+  }
+
+  a {
+    color:white;
+    text-decoration: none;
+    font-family: palatino; 
+  } 
+
+  h2 {
+    color: rgb(14, 22, 38);
+    font-weight: bolder; 
+    font-family: palatino; 
+  }
+
+  #forum {
+    color: rgb(14, 22, 38);
+    font-family: palatino; 
   }
 
   .forum-wrapper {
@@ -24,8 +55,9 @@
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), to(rgba(0,0,0,0.0)));
   } */
   
-  .col-3.d-flex {
-    color: white
+  .col-3.d-flex.justify-content-between {
+    color: rgb(14, 22, 38);
+    font-family: palatino; 
   }
 
   .center{

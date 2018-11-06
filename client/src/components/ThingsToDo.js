@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Background from "./images/bg1.png";
-import Waterpark from "./images/waterpark.jpg"
+import Waterslide from "./images/waterslide.png"
 
 var Bg = {
   backgroundImage: `url(${Background})`,
@@ -52,7 +52,7 @@ class ThingsToDo extends React.Component {
                   <div className="card">
                     <div className="row">
                       <div className="col-md-4">
-                        <img src={Waterpark} width="380"></img>
+                      <img src={Waterslide} width="200" className="w-100"></img>
                       </div>
                       <div className="col-md-8 px-3">
                         <div className="card-block px-3 mt-3">
