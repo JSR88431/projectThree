@@ -62,6 +62,8 @@ class Nav extends React.Component {
                     <span><a className="nav-link" href="/Forum">forum</a></span>
                     <span><a className="nav-link" href="/Login">login</a></span>
                     <span><a className="nav-link" href="/Signup">signup</a></span>
+                    <span><a className="nav-link" href='/logout' style={{color:"red"}}>logout</a></span>
+                    
                 </nav>
             </div>
         );
