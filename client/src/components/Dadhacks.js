@@ -45,7 +45,6 @@ class Dadhacks extends React.Component {
             return (
               
             <div className="container py-3">
-            <a className="nav-link" href="/auth/facebook">Facebook</a>
               <div className="card">
                 <div className="row ">
                   <div className="col-md-4">

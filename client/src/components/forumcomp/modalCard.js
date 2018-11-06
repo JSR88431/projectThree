@@ -5,6 +5,10 @@ import { Form, FormGroup, Label, FormText } from 'reactstrap';
 // import "../ForumStyle.css";
 import TopicCard from './topicCard.js'
 
+const gradient = {
+  linearGradient:"to bottom right, red, yellow"
+}
+
 class ModalCard extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +19,7 @@ class ModalCard extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
+ 
   toggle() {
     this.setState({
       modal: !this.state.modal
@@ -30,7 +35,7 @@ class ModalCard extends React.Component {
       section = this.props.topicResults.map(item => {
         // create a route-able link for each item
         return (
-            <li className="list-group-item" key={item.id}>
+            <li className="list-group-item" key={item.id} style={this.gradient}>
             <Row>
                 <Col>
                 <a
