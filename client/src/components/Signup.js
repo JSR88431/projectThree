@@ -7,12 +7,17 @@ import Background from "./images/bg1.png";
 import "./Login.css";
 
 var Bg = {
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: 'fixed',
+  margin: "0",
+  overflowX: 'hidden'
+
 };
+
 
 export default class Signup extends Component {
   constructor(props) {

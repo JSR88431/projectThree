@@ -14,12 +14,18 @@ moment().format();
 
 
 var Bg = {
+    height: "100vh",
     backgroundImage: `url(${Background})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed'
+    backgroundRepeat: 'repeat',
+    backgroundAttachment: 'fixed',
+    margin: "0",
+    // fixed the non repeating background
+    overflowX: 'hidden'
+
   };
+  
 
 class Forum extends React.Component {
 

@@ -7,12 +7,17 @@ import "./Styles.css";
 import "./Login.css";
 
 var Bg = {
+  height: "100vh",
   backgroundImage: `url(${Background})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: 'fixed',
+  margin: "0",
+  overflowX: 'hidden'
+
 };
+
 
 export default class Login extends Component {
   constructor(props) {
