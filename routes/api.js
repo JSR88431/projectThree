@@ -508,6 +508,26 @@ router.delete("/allposts", function (req, res) {
 
 });
 
+// Test User Insert
+
+router.post("/testuser", function (req, res) {
+
+    db.User.findOrCreate({
+        where: {
+            username: 'TestUser'
+        },
+        defaults: {
+            email: 'test@test.com',
+            password: '$2a$08$qjLceM.RWEih7iK8VWe40OqQwHc9CvpPDkjInD.BCDP2eW.xYi1x.'
+        }
+    })
+    .then(function (data) {
+        res.json(data);
+    })
+    .catch(function (err) {
+        res.json(err);
+    });
+});
 
 // ---------- END FORUM SECTION ----------
 
