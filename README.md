@@ -38,9 +38,6 @@ DB_SECRET=[Your Facebook app secret here]
 
 4. Navigate to `config/config.json` and make sure your development username and password match your MySQL credentials. Failure to do so will result in proxy errors when the server is started.
 
-```
-until finished
-```
 
 5. Install the node modules with Yarn.
 
