@@ -20,6 +20,15 @@ class App extends React.Component {
   // getScrape() {
   //   axios.get("/john/scrape")
   // }
+
+  componentDidMount() {
+    console.log("app did mount")
+    axios.post('/api/testuser', function (res) {
+        console.log(res)
+    })
+}
+
+
  render() {
 
 

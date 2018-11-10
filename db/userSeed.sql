@@ -1,0 +1,2 @@
+INSERT INTO `Users` (`id`,`username`,`email`,`password`,`status`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'TestUser','test@test.com','$2a$08$qjLceM.RWEih7iK8VWe40OqQwHc9CvpPDkjInD.BCDP2eW.xYi1x
+.','active','2018-11-09 22:37:02','2018-11-09 22:37:02');
