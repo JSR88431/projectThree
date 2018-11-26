@@ -425,7 +425,7 @@ router.delete("/posts/:postId/:userId/:author", isLoggedIn, function (req, res) 
         if (fbUser == req.params.author) {
 
             res.json(true)
-    
+
             db.Post.destroy({
                 where: {
                     id: req.params.postId
@@ -445,7 +445,7 @@ router.delete("/posts/:postId/:userId/:author", isLoggedIn, function (req, res) 
         if (req.user.id == req.params.userId) {
 
             res.json(true)
-    
+
             db.Post.destroy({
                 where: {
                     id: req.params.postId
@@ -521,13 +521,33 @@ router.post("/testuser", function (req, res) {
             password: '$2a$08$qjLceM.RWEih7iK8VWe40OqQwHc9CvpPDkjInD.BCDP2eW.xYi1x.'
         }
     })
-    .then(function (data) {
-        res.json(data);
-    })
-    .catch(function (err) {
-        res.json(err);
-    });
+        .then(function (data) {
+            res.json(data);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
+
+// Get logged in username
+
+router.get("/username", function (req, res) {
+
+    if (req.user.facebookId) {
+
+        let fbUser = req.user.firstname + " " + req.user.lastname
+
+        res.json(fbUser)
+
+    } else {
+
+        res.json(req.user.username)
+
+    }
+
+
+});
+
 
 // ---------- END FORUM SECTION ----------
 
