@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../Styles.css";
 import TopicCard from "../forumcomp/topicCard"
-import { Button, Form, FormGroup, Label, Input, FormText,Row, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 import ModalCard from '../forumcomp/modalCard.js'
 const styles = {
     display: "inline-block",
     float: "right",
     margintop: "-60px"
 };
-const captionStyle ={
+const captionStyle = {
     display: "inline-block",
     marginTop: "-60px",
     float: 'right'
@@ -45,7 +45,7 @@ const Topic = (props) => {
             </section>
             <ul className="list-group">
                 <section>
-                <ModalCard
+                    <ModalCard
                         topicResults={props.topicResults}
                         handleLevelChange={props.handleLevelChange}
                         deleteATopic={props.deleteATopic}
@@ -56,8 +56,9 @@ const Topic = (props) => {
                         onChange={props.handleChange}
                         onClick={props.makeATopic}
                         convertTime={props.convertTime}
-                        >
-                </ModalCard>
+                        username={props.username}
+                    >
+                    </ModalCard>
                 </section>
                 {/* {section} */}
             </ul>

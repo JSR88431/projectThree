@@ -39,9 +39,10 @@ const Post = (props) => {
                 postResults={props.postResults}
                 convertTime={props.convertTime}
                 deleteAPost={props.deleteAPost}
+                username={props.username}
             />
             {/* <ul className="list-group">{section}</ul> */}
-           
+
         </div>
     );
 }

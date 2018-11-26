@@ -24,8 +24,8 @@ var Bg = {
     // fixed the non repeating background
     overflowX: 'hidden'
 
-  };
-  
+};
+
 
 class Forum extends React.Component {
 
@@ -37,12 +37,11 @@ class Forum extends React.Component {
         topicId: "",
         postId: "",
         postInput: "",
-        topicTitle: ""
+        topicTitle: "",
+        username: ""
     };
 
     componentDidMount() {
-        console.log("component did mount")
-        // after component loads, get all products from db
 
         axios.get("/api/categories/all").then((response) => {
 
@@ -60,6 +59,11 @@ class Forum extends React.Component {
 
         })
 
+        axios.get("/api/username").then((response) => {
+            console.log(response.data, "username")
+            this.setState({ username: response.data })
+
+        })
     }
 
     componentDidUpdate() {
@@ -102,9 +106,7 @@ class Forum extends React.Component {
         if (this.state.currentLevel === "Topic") {
             let postId = e.currentTarget.id
             let topictitle = e.currentTarget.getAttribute('txt')
-            console.log(e.currentTarget, "e.currenttarget")
-            console.log(e.target, "e.target")
-            console.log(topictitle, "topictitle")
+
             this.setState({ currentLevel: level, postId: e.currentTarget.id, topicTitle: topictitle });
             // after component loads, get all products from db
             axios.get(`/api/posts/${postId}`).then(response => {
@@ -143,7 +145,7 @@ class Forum extends React.Component {
 
 
     makeAPost = () => {
-        console.log("makes a post")
+
         let postId = this.state.postId;
         let userId = "1";
 
@@ -155,13 +157,13 @@ class Forum extends React.Component {
             })
             .then(response => {
                 let resInfo = JSON.stringify(response)
-                console.log("post response: " + resInfo)
+
                 if (response.data === false) {
                     return this.props.history.push("/Login")
                 }
 
                 axios.get(`/api/posts/${postId}`).then((res) => {
-                    console.log(res)
+
 
                     this.setState({
                         postResults: res.data,
@@ -261,7 +263,7 @@ class Forum extends React.Component {
         axios
             .delete(`/api/topics/${specificTopic}/${owner}`)
             .then(response => {
-        
+
                 if (response.data === false) {
                     return this.props.history.push("/Login")
                 }
@@ -303,6 +305,7 @@ class Forum extends React.Component {
                     topicResults={this.state.topicResults}
                     deleteATopic={this.deleteATopic}
                     convertTime={this.convertTime}
+                    username={this.state.username}
                 />
             );
         }
@@ -320,6 +323,7 @@ class Forum extends React.Component {
                     postResults={this.state.postResults}
                     deleteAPost={this.deleteAPost}
                     convertTime={this.convertTime}
+                    username={this.state.username}
                 />
             );
         }
@@ -339,12 +343,12 @@ class Forum extends React.Component {
     render() {
 
         return (
-        <div style={Bg}>
-            <div className="forum-wrapper"style={this.forumStyle}>
-                <ForumNav />
-                {this.renderLevel()}
+            <div style={Bg}>
+                <div className="forum-wrapper" style={this.forumStyle}>
+                    <ForumNav />
+                    {this.renderLevel()}
+                </div>
             </div>
-        </div>
         );
     }
 }

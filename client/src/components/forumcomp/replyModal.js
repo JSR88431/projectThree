@@ -15,9 +15,9 @@ class ReplyModal extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  toggleAndMakeAPost (){
+  toggleAndMakeAPost() {
     this.props.makeAPost();
-      this.toggle();
+    this.toggle();
   }
 
   toggle() {
@@ -28,21 +28,31 @@ class ReplyModal extends React.Component {
 
   render() {
 
+
+
     let section = this.props.postResults.map(item => {
       // create a route-able link for each item
+
+      let deleteButton;
+
+      if (this.props.username === item.author) {
+        deleteButton = <a href="#" id={item.id} onClick={this.props.deleteAPost} userid={item.UserId} author={item.author}>Delete</a>
+      }
+
+
       return (
-          <li className="list-group-item" key={item.id}>
-            <p className="post-time">{this.props.convertTime(item.createdAt)}</p>
-            <hr/>
-              <p className="post-user">
-                  {item.author}
-              </p>
-              <hr/>
-              <p className="post-body">{item.body}</p>
-              <a href="#" id={item.id} onClick={this.props.deleteAPost} userid={item.UserId} author={item.author}>Delete</a>
-          </li>
+        <li className="list-group-item" key={item.id}>
+          <p className="post-time">{this.props.convertTime(item.createdAt)}</p>
+          <hr />
+          <p className="post-user">
+            {item.author}
+          </p>
+          <hr />
+          <p className="post-body">{item.body}</p>
+          {deleteButton}
+        </li>
       );
-  });
+    });
 
     return (
       <div>
@@ -50,16 +60,16 @@ class ReplyModal extends React.Component {
         <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Add Reply</Button>
         <h1 id="topic-title">Topic: {this.props.topicTitle}</h1>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-        <Form>
-        <FormGroup>
-          <Label for="exampleText" style={{color:'black'}}>Reply To Topic</Label>
-          <Input 
-          onChange={this.props.handleChange}
-          value={this.props.postInput}
-          type="textarea" name="text" id="postInput" />
-        </FormGroup>
-      </Form>
-            <ModalFooter>
+          <Form>
+            <FormGroup>
+              <Label for="exampleText" style={{ color: 'black' }}>Reply To Topic</Label>
+              <Input
+                onChange={this.props.handleChange}
+                value={this.props.postInput}
+                type="textarea" name="text" id="postInput" />
+            </FormGroup>
+          </Form>
+          <ModalFooter>
             <Button color="primary" onClick={this.toggleAndMakeAPost} >Reply To Topic</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
