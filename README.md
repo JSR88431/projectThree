@@ -1,7 +1,7 @@
 # dad-a-base
 
 
-dad-a-base is a website that scrapes dad-related news and articles from the top dad websites. It helps users find parenting tips, activities to do with their kids, and allows them to connect with others with a built-in forum. Users can log in (via e-mail or Facebook), create discussions, and respond to others' posts.
+[dad-a-base](https://dad-a-base.herokuapp.com/) is a website that scrapes dad-related news and articles from the top dad websites. It helps users find parenting tips, activities to do with their kids, and allows them to connect with others with a built-in forum. Users can log in (via e-mail or Facebook), create discussions, and respond to others' posts.
 
 ## Getting Started
 
