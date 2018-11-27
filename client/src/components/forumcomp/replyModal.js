@@ -29,6 +29,7 @@ class ReplyModal extends React.Component {
   render() {
 
 
+    let replyButton; 
 
     let section = this.props.postResults.map(item => {
       // create a route-able link for each item
@@ -54,6 +55,10 @@ class ReplyModal extends React.Component {
       );
     });
 
+    if (this.props.postResults.length > 0 ) {
+      replyButton = <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Add Reply</Button>
+    }
+
     return (
       <div>
         <Button onClick={this.props.upOneLevel}>Back to Topics</Button>
@@ -75,7 +80,7 @@ class ReplyModal extends React.Component {
           </ModalFooter>
         </Modal>
         <ul className="list-group">{section}</ul>
-        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} Add Reply</Button>
+        {replyButton}
       </div>
     );
   }
