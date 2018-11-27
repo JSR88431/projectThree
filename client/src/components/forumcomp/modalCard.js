@@ -63,8 +63,8 @@ class ModalCard extends React.Component {
               float: 'right'
             }}
             >
-              <p>Number of Posts in Thread: {item.postCount}</p>
-              <p>Thread Created At: {this.props.convertTime(item.createdAt)}</p>
+              <p>Replies: {item.postCount}</p>
+              <p>Thread Created On: {this.props.convertTime(item.createdAt)}</p>
             </div>
             {deleteButton}
           </li>

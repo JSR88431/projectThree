@@ -48,7 +48,7 @@ class ReplyModal extends React.Component {
             {item.author}
           </p>
           <hr />
-          <p className="post-body">{item.body}</p>
+          <p className="post-body" style={{ border: "1px solid black", padding: "10px", lineHeight: "150%" }}>{item.body}</p>
           {deleteButton}
         </li>
       );
