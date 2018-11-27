@@ -14,6 +14,13 @@ class Nav extends React.Component {
     }
 
     render() {
+
+        let welcome;
+
+        if (this.props.username) {
+            welcome = <span id="nav-username">Welcome, {this.props.username}</span>
+        }
+        
         return (
             <div>
                 <nav className="navbar navbar-expand-lg fixed-top">
@@ -71,6 +78,7 @@ class Nav extends React.Component {
                     <span><a className="nav-link" href="/Login">login</a></span>
                     <span><a className="nav-link" href="/Signup">signup</a></span>
                     <span><a className="nav-link" href="/logout" onClick={this.logout} style={{ color: "red" }}>logout</a></span>
+                    {welcome}
 
                 </nav>
             </div>

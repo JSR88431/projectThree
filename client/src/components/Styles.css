@@ -110,3 +110,13 @@ nav{
     margin-right: auto;
     margin-top: 10px;
   }
+
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  #nav-username{
+      color: white;
+      font-family: palatino;
+  }

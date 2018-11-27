@@ -29,10 +29,11 @@ class ModalCard extends React.Component {
   render() {
 
     let section;
-    let deleteButton;
-
+    let topicButton;
 
     if (this.props.topicResults.length > 0) {
+
+      topicButton = <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} New Topic</Button>
 
       section = this.props.topicResults.map(item => {
         // create a route-able link for each item
@@ -63,8 +64,8 @@ class ModalCard extends React.Component {
               float: 'right'
             }}
             >
-              <p>Number of Posts in Thread: {item.postCount}</p>
-              <p>Thread Created At: {this.props.convertTime(item.createdAt)}</p>
+              <p>Replies: {item.postCount}</p>
+              <p>Thread Created On: {this.props.convertTime(item.createdAt)}</p>
             </div>
             {deleteButton}
           </li>
@@ -109,7 +110,7 @@ class ModalCard extends React.Component {
           </ModalFooter>
         </Modal>
         {section}
-        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} New Topic</Button>
+        {topicButton}
       </div>
     );
   }
