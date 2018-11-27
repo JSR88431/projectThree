@@ -21,42 +21,58 @@ class App extends React.Component {
   //   axios.get("/john/scrape")
   // }
 
+  state = {
+    username: ""
+  };
+
   componentDidMount() {
     console.log("app did mount")
+
     axios.post('/api/testuser', function (res) {
-        console.log(res)
+      console.log(res)
     })
+
+    axios.get("/api/username").then((response) => {
+      this.setState({ username: response.data })
+    })
+
+  }
+
+  checkLogIn = () => {
+    axios.get("/api/username").then((response) => {
+      this.setState({ username: response.data })
+    })
+  }
+
+  render() {
+
+
+    return (
+      <div>
+        <Router>
+          <div>
+
+            <Route exact path="/forum" render={() => <Forum username={this.state.username} checkLogIn={this.checkLogIn}/>} />
+            <Route exact path="/categories/:catname" component={Forum} />
+            {/* <Route exact path="/product/:id" component={Product} /> */}
+            <Nav username={this.state.username} />
+
+            <Route exact path="/Login" component={Login} />
+            <Route exact path="/Signup" component={Signup} />
+            <Route exact path="/logout" component={Home} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Restaurant" component={Restaurant} />
+            <Route exact path="/ThingsToDo" component={ThingsToDo} />
+            <Route exact path="/Vacation" component={Vacation} />
+            <Route exact path="/Donate" component={Donate} />
+            <Route exact path="/Classes" component={Classes} />
+            <Route exact path="/Dadhacks" component={Dadhacks} />
+
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
-
-
- render() {
-
-
- return (
-  <div>
-  <Router>
-    <div>
-
-      <Route exact path="/forum" component={Forum} />
-      <Route exact path="/categories/:catname" component={Forum} />
-      {/* <Route exact path="/product/:id" component={Product} /> */}
-      <Nav/>
-      
-      <Route exact path="/Login" component={Login} />
-      <Route exact path="/Signup" component={Signup} />
-      <Route exact path="/logout" component={Home} />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/Restaurant" component={Restaurant} />
-      <Route exact path="/ThingsToDo" component={ThingsToDo} />
-      <Route exact path="/Vacation" component={Vacation} />
-      <Route exact path="/Donate" component={Donate} />
-      <Route exact path="/Classes" component={Classes} />
-      <Route exact path="/Dadhacks" component={Dadhacks} />
-
-    </div>
-  </Router>
- </div>
-);
- }}
 
 export default App;

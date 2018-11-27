@@ -59,11 +59,7 @@ class Forum extends React.Component {
 
         })
 
-        axios.get("/api/username").then((response) => {
-            console.log(response.data, "username")
-            this.setState({ username: response.data })
-
-        })
+        this.props.checkLogIn();
     }
 
     componentDidUpdate() {
@@ -305,7 +301,7 @@ class Forum extends React.Component {
                     topicResults={this.state.topicResults}
                     deleteATopic={this.deleteATopic}
                     convertTime={this.convertTime}
-                    username={this.state.username}
+                    username={this.props.username}
                 />
             );
         }
@@ -323,7 +319,7 @@ class Forum extends React.Component {
                     postResults={this.state.postResults}
                     deleteAPost={this.deleteAPost}
                     convertTime={this.convertTime}
-                    username={this.state.username}
+                    username={this.props.username}
                 />
             );
         }
