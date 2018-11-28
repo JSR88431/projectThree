@@ -52,7 +52,7 @@ class App extends React.Component {
         <Router>
           <div>
 
-            <Route exact path="/forum" render={() => <Forum username={this.state.username} checkLogIn={this.checkLogIn}/>} />
+            <Route exact path="/forum" render={(props) => <Forum {...props} username={this.state.username} checkLogIn={this.checkLogIn}/>} />
             <Route exact path="/categories/:catname" component={Forum} />
             {/* <Route exact path="/product/:id" component={Product} /> */}
             <Nav username={this.state.username} />
