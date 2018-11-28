@@ -38,14 +38,21 @@ DB_SECRET=[Your Facebook app secret here]
 
 4. Navigate to `config/config.json` and make sure your development username and password match your MySQL credentials. Failure to do so will result in proxy errors when the server is started.
 
+5. Open up MySQL Workbench and execute the following statement:
 
-5. Install the node modules with Yarn.
+```
+DROP DATABASE IF EXISTS familyRestaurant;
+CREATE DATABASE familyRestaurant;
+```
+
+
+6. Install the node modules with Yarn.
 
 ```
 yarn install
 ```
 
-6. Use yarn to start both the front and back end servers concurrently.
+7. Use yarn to start both the front and back end servers concurrently.
 
 ```
 yarn start
@@ -59,6 +66,7 @@ The main page should pop up in your main browser after the server starts running
 
 
 A test user for log-ins is set up upon app mounting:
+
 ```
 Email: test@test.com
 Password: test
